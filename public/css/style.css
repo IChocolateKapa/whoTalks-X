@@ -1,0 +1,23 @@
+.main_wrap {
+  height: 100%;
+  width: 100%;
+  padding: 0 0 10px 0;
+  background: salmon;
+}
+.banner {
+  background: url("../images/12.jpg") no-repeat center;
+  background-size: 100%;
+  width: 100%;
+  height: 50%;
+}
+.loginSection {
+  width: 100%;
+  height: 60px;
+}
+.loginSection a {
+  width: 100%;
+  font-size: .6rem;
+  display: inline-block;
+  height: 100%;
+  line-height: 60px;
+}

@@ -1,0 +1,114 @@
+/*public*/
+html {
+    font-size : 20px;
+}
+
+/*iphone 6*/
+@media only screen and (min-width: 375px){
+    html {
+        font-size: 37.5px !important;
+    }
+}
+
+@media only screen and (min-width: 401px){
+    html {
+        font-size: 40px !important;
+    }
+}
+
+/*iphone 6 plus*/
+@media only screen and (min-width: 414px){
+    html {
+        font-size: 41.4px !important;
+    }
+}
+
+
+@media only screen and (min-width: 428px){
+    html {
+        font-size: 42.8px !important;
+    }
+}
+@media only screen and (min-width: 481px){
+    html {
+        font-size: 48.1px !important;
+    }
+}
+@media only screen and (min-width: 569px){
+    html {
+        font-size: 56.9px !important;
+    }
+}
+@media only screen and (min-width: 641px){
+    html {
+        font-size: 64.1px !important;
+    }
+}
+body{
+    font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, "STHeiTi", sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: .7rem;
+}
+
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border: none;
+}
+.default{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.primary{
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.success{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.info{
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.warning{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.danger{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.imgListItem img{
+    width: 100%;
+    height: auto;
+}
