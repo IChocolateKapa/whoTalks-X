@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   padding: 0 0 10px 0;
-  background: salmon;
+  //background: salmon;
 }
 .banner{
   background: url("../images/12.jpg") no-repeat center;
@@ -11,15 +11,17 @@
   height: 50%;
 }
 
-@ah: 60px;
+@ah: 80px;
 .loginSection{
   width: 100%;
   height: @ah;
+  position: relative;
+  bottom: 0;
   a{
     width: 100%;
     font-size: .6rem;
     display: inline-block;
-    height: 100%;
-    line-height: @ah;
+    height: 50%;
+    line-height: @ah/2;
   }
 }
