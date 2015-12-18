@@ -4,7 +4,8 @@
   "description": "mobile chat project",
   "main": "www.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "supervisor ./bin/www"
   },
   "repository": {
     "type": "git",
