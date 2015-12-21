@@ -6,6 +6,7 @@
   height: calc(100% - 20px);
   padding: 10px;
   background: #fff;
+  position: relative;
 }
 .banner {
   background: url("../images/12.jpg") no-repeat;
@@ -17,7 +18,7 @@
   width: 100%;
   height: 80px;
   position: relative;
-  bottom: 0;
+  top: 25%;
 }
 .loginSection a {
   width: calc(100% - 24px);
@@ -26,5 +27,4 @@
   height: 50%;
   line-height: 40px;
   margin-top: 5px;
-  border: none !important;
 }
