@@ -1,6 +1,7 @@
 /*public*/
-html {
-    font-size : 20px;
+html{
+    height: 100%;
+    font-size: 20px;
 }
 
 /*iphone 6*/
@@ -44,11 +45,16 @@ html {
         font-size: 64.1px !important;
     }
 }
+
+
 body{
     font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, "STHeiTi", sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
     font-size: .7rem;
+    height: calc(100% - 20px);
+    padding: 10px;
+    background: #fff;
 }
 
 .btn{
