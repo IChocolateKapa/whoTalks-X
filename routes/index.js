@@ -6,6 +6,14 @@ var router = express.Router();
 
 /* first page user can access */
 router.get('/', function(req, res, next) {
+    res.render("login/index");
+});
+
+router.get('/login', function(req, res, next) {
+    res.render("login/login");
+});
+
+router.get('/login', function(req, res, next) {
     res.render("login/login");
 });
 
