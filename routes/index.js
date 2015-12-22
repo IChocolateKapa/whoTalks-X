@@ -13,8 +13,16 @@ router.get('/login', function(req, res, next) {
     res.render("login/login");
 });
 
-router.get('/login', function(req, res, next) {
-    res.render("login/login");
+router.get('/register', function(req, res, next) {
+    res.render("login/register");
+});
+
+router.post('/sendCode', function(req, res, next) {
+    console.log("Fuck all of you!");
+    var phoneNum = req.body.phone;
+    console.log(phoneNum);
+    /*需要验证手机号的格式*/
+    res.send({'status': 'success'});
 });
 
 

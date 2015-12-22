@@ -5,8 +5,11 @@ extends ../base
 
 block content
     div.main_wrap
-        p.pageTitle 账户注册
+        p.pageTitle.color-primary 账户注册
         div.dialog
-            div.
+            input(type='tel', placeholder="请输入电话号码", required="true", id="phone").input.input-mid.color-default.w_100
+            <a href="javascript:void(0)" class="btn danger w_100-24" id="getCode">点击获取验证码</a>
 
+
+    script(src="/js/index.js")
 
