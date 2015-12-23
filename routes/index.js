@@ -17,13 +17,22 @@ router.get('/register', function(req, res, next) {
     res.render("login/register");
 });
 
+
 router.post('/sendCode', function(req, res, next) {
     console.log("Fuck all of you!");
     var phoneNum = req.body.phone;
     console.log(phoneNum);
     /*需要验证手机号的格式*/
-    res.send({'status': 'success'});
+    global.phone = phoneNum;
+    res.send({'status': 'success', 'code': 235821});
 });
+
+router.get('/fillCode', function(req, res, next) {
+    var code = req.query.code;
+    console.log(code);
+    res.render("login/fillCode", {'code': code});
+});
+
 
 
 

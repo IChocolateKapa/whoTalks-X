@@ -2,3 +2,10 @@
    Created by Echo on 2015/12/22.
 
 extends ../base
+
+block content
+    div.main_wrap
+        p.pageTitle.color-primary 输入验证码
+        div.dialog
+            input(type='tel', placeholder="请输入电话号码", required="true", id="phone").input.input-mid.color-default.w_100
+            <a href="javascript:void(0)" class="btn danger w_100-24" id="getCode">点击获取验证码</a>

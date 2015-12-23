@@ -22,8 +22,9 @@ $(function () {
                     },
                     dataType: "json",
                     success: function (data) {
+                        //alert(global.phone);//js里面是获取不到node中global对象中数据的
                         if (data.status === "success") {
-                            window.location.href = "/login"
+                            window.location.href = "/fillCode?code=" + data.code;
                         }
                     }
                 })
