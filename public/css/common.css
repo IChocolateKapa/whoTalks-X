@@ -153,9 +153,25 @@ a{
 .color-default{
     color: #333;
 }
+.color-999{
+    color: #999;
+}
+.color-fff{
+    color: #fff !important;
+}
 .imgListItem img{
     width: 100%;
     height: auto;
 }
 .w_100{width: 100%;}
 .w_100-24{width: calc(100% -  24px);}
+
+/*定位*/
+.pr{position: relative;}
+.pa{position: absolute;}
+
+/*元素 展示布局*/
+.inlineBlock{display: inline-block;}
+.block{display: block;}
+.inline{display: inline;}
+.flex{display: flex;}

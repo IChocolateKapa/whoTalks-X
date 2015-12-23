@@ -6,6 +6,16 @@ extends ../base
 block content
     div.main_wrap
         p.pageTitle.color-primary 输入验证码
-        div.dialog
-            input(type='tel', placeholder="请输入电话号码", required="true", id="phone").input.input-mid.color-default.w_100
-            <a href="javascript:void(0)" class="btn danger w_100-24" id="getCode">点击获取验证码</a>
+        div.dialog.pr
+            span.reSend.input-mid.pa.inlineBlock 重发验证码
+                span#count 60s
+            input(type='tel', placeholder="请输入短信验证码", required="true", id="code").input.input-mid.color-default.w_100
+            input(type='password', placeholder="请设定密码", required="true", id="password").input.input-mid.color-default.w_100
+            <a href="javascript:void(0)" class="btn danger w_100-24" id="save">完成</a>
+
+
+
+    script.
+        var phoneNum = !{JSON.stringify(phone)};//从js中获取render进来的变量
+
+    script(src='js/fillCode.js')

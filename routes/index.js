@@ -19,18 +19,28 @@ router.get('/register', function(req, res, next) {
 
 
 router.post('/sendCode', function(req, res, next) {
-    console.log("Fuck all of you!");
     var phoneNum = req.body.phone;
     console.log(phoneNum);
     /*需要验证手机号的格式*/
-    global.phone = phoneNum;
-    res.send({'status': 'success', 'code': 235821});
+    var code = Math.floor(Math.random()*1000000);
+    global.code = code;
+
+    /*其实是需要给手机号发送短信， 这里就简化下流程吧*/
+    res.send({'status': 'success', 'code': code, 'phone': phoneNum});
 });
 
 router.get('/fillCode', function(req, res, next) {
     var code = req.query.code;
     console.log(code);
     res.render("login/fillCode", {'code': code});
+});
+
+
+router.post('/saveAccount', function(req, res, next) {
+    var phone = req.body.phone;
+    var password = req.body.password;
+    console.log(phone, ": ", password);
+    res.render("login/", {'code': code});
 });
 
 

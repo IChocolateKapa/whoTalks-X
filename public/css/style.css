@@ -23,10 +23,10 @@
   margin-top: 5px;
 }
 .pageTitle {
-  height: 1.5rem;
-  line-height: 1.5rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .dialog {
   margin-top: .5rem;
@@ -35,4 +35,17 @@
   margin-top: 10px;
   line-height: 1.4rem;
   font-size: .8rem;
+}
+.dialog .reSend {
+  font-size: 100%;
+  right: -1px;
+  padding: 1.5px 5px;
+  border-radius: 5px;
+  color: #999;
+}
+.dialog .reSend span {
+  padding: 0 2px;
+}
+.dialog input {
+  margin-bottom: 10px;
 }
