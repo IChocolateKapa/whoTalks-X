@@ -19,6 +19,12 @@ $(function () {
     }, 1000);
 
 
+    /**
+     * 输入验证码时 重发验证码的提示以及计时器都应清空 -- 逻辑错误-- give up
+     * */
+    /*$("#code").keyup(function () {
+        clearInterval(timer);
+    });*/
 
     /*给重新发送按钮绑定touch事件*/
     var reSendDom = document.getElementsByClassName("reSend");
@@ -97,7 +103,8 @@ $(function () {
             type: 'post',
             data: {
                 phone: phoneNum,
-                password: $("#password").val()
+                password: $("#password").val(),
+                code: $("#code").val()
             },
             dataType: 'json',
             beforeSend: function (XMLHttpRequest) {

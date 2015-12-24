@@ -37,9 +37,19 @@ router.get('/fillCode', function(req, res, next) {
 
 
 router.post('/saveAccount', function(req, res, next) {
-    var phone = req.body.phone;
-    var password = req.body.password;
-    console.log(phone, ": ", password);
+    var phone = req.body.phone,
+        password = req.body.password,
+        code = req.body.code;
+
+    /*验证 验证码输入是否正确*/
+    if (code != global.code) {
+        res.send({'status': 'failed'})
+    } else {
+        res.send({'status': 'success'})
+    }
+
+    console.log(phone, ": ", phone);
+
     res.render("login/", {'code': code});
 });
 
