@@ -20,10 +20,11 @@ router.get('/register', function(req, res, next) {
 
 router.post('/sendCode', function(req, res, next) {
     var phoneNum = req.body.phone;
-    console.log(phoneNum);
+    console.log("in req, phone is: ", phoneNum);
     /*需要验证手机号的格式*/
     var code = Math.floor(Math.random()*1000000);
     global.code = code;
+    global.phoneNum = phoneNum;
 
     /*其实是需要给手机号发送短信， 这里就简化下流程吧*/
     res.send({'status': 'success', 'code': code, 'phone': phoneNum});
@@ -45,12 +46,16 @@ router.post('/saveAccount', function(req, res, next) {
     if (code != global.code) {
         res.send({'status': 'failed'})
     } else {
+
+        /*这里其实是需要操作数据库--暂定mysql*/
+
+
         res.send({'status': 'success'})
     }
 
-    console.log(phone, ": ", phone);
+    //console.log(phone, ": ", phone);
 
-    res.render("login/", {'code': code});
+    //res.render("login/", {'code': code});
 });
 
 

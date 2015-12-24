@@ -35,6 +35,7 @@ $(function () {
         }, false);
 
         $(".reSend").on("touchend", function () {
+            alert(phoneNum)
             var ret = confirm("重新发送验证码到" + phoneNum + "吗？");
             if (ret) {
                 $.ajax({
@@ -107,6 +108,7 @@ $(function () {
                 code: $("#code").val()
             },
             dataType: 'json',
+            /*beforeSend中注册onprogress事件,跟踪进度*/
             beforeSend: function (XMLHttpRequest) {
                 //Upload progress
                 XMLHttpRequest.upload.addEventListener("progress", function(evt){
@@ -126,6 +128,9 @@ $(function () {
                 }, false);
             },
             success: function (data, status) {
+                if (data.status !== "success") {
+                    alert("验证码输入错误,请重新检查!");
+                }
                 console.log(data);
             }
 
