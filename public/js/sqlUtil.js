@@ -4,7 +4,31 @@
 
 
 var mysqlUtil = {
+    config: {
+        host: 'localhost',
+        user: 'root',
+        password: 'whp123292',
+        database: 'whoTalkx'
+    },
+    getConnection: function (cfg) {
+        var _this = this,
+            connectionConfig = {};
 
+        if (cfg) {
+            connectionConfig = cfg;
+        } else {
+            connectionConfig = _this.config;
+        }
+
+        client = mysql.createConnection(connectionConfig);
+
+        client.connect();
+
+        return client;
+
+
+
+    }
 }
 
 var http = require('http'),
