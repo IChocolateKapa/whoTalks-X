@@ -5,18 +5,22 @@
 $(function () {
 
 
-    var cn = 5;
+    function countDown () {
+        var cn = 5;
+        var timer = setInterval(function () {
+            if (cn >= 0) {
+                $("#count").html(cn+"s");
+                cn--;
+            } else {
+                clearInterval(timer);
+                $("#count").hide().html("60s");
+                $(".reSend").addClass("danger").addClass("color-fff");
+            }
+        }, 1000);
+    }
 
-    var timer = setInterval(function () {
-        if (cn >= 0) {
-            $("#count").html(cn+"s");
-            cn--;
-        } else {
-            clearInterval(timer);
-            $("#count").hide();
-            $(".reSend").addClass("danger").addClass("color-fff");
-        }
-    }, 1000);
+
+    countDown();
 
 
     /**
@@ -48,7 +52,11 @@ $(function () {
                     success: function (data) {
                         //alert(global.phone);//js里面是获取不到node中global对象中数据的
                         if (data.status === "success") {
-                            window.location.reload();
+                            //window.location.href = "/fillCode?code=" + data.code;
+                            phoneNum = data.phone;
+                            countDown();
+                            $("#count").show();
+                            $(".reSend").removeClass("danger").removeClass("color-fff");
                         }
                     }
                 })
@@ -109,7 +117,7 @@ $(function () {
             },
             dataType: 'json',
             /*beforeSend中注册onprogress事件,跟踪进度*/
-            beforeSend: function (XMLHttpRequest) {
+            /*beforeSend: function (XMLHttpRequest) {
                 //Upload progress
                 XMLHttpRequest.upload.addEventListener("progress", function(evt){
                     if (evt.lengthComputable) {
@@ -126,7 +134,7 @@ $(function () {
                         console.log(percentComplete);
                     }
                 }, false);
-            },
+            },*/
             success: function (data, status) {
                 if (data.status !== "success") {
                     alert("验证码输入错误,请重新检查!");
