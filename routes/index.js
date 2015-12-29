@@ -20,7 +20,7 @@ router.get('/register', function(req, res, next) {
 
 router.post('/sendCode', function(req, res, next) {
     var phoneNum = req.body.phone;
-    console.log("in req, phone is: ", phoneNum);
+    //console.log("in req, phone is: ", phoneNum);
     /*需要验证手机号的格式*/
     var code = Math.floor(Math.random()*1000000);
     global.code = code;
@@ -32,8 +32,9 @@ router.post('/sendCode', function(req, res, next) {
 
 router.get('/fillCode', function(req, res, next) {
     var code = req.query.code;
-    console.log(code);
-    res.render("login/fillCode", {'code': code});
+    //console.log("code is: ", code);
+    //console.log("global.phoneNum is: ", global.phoneNum);
+    res.render("login/fillCode", {'code': code, 'phone': global.phoneNum});
 });
 
 

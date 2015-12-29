@@ -12,14 +12,10 @@ block content
             input(type='tel', placeholder="请输入短信验证码", required="true", id="code").input.input-mid.color-default.w_100
             input(type='password', placeholder="请设定密码", required="true", id="password").input.input-mid.color-default.w_100
             <a href="javascript:void(0)" class="btn danger w_100-24" id="save">完成</a>
-            -var ph= phone
-            p #{ph}
 
 
 
     script.
-        console.log("lklklk");
-        //window.phoneNum = !{JSON.stringify(phone)};//从js中获取render进来的变量
-        //console.log("lklklk", phoneNum);
+        window.phoneNum = !{JSON.stringify(phone)};//从js中获取render进来的变量
 
     script(src='js/fillCode.js')
