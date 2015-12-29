@@ -37,7 +37,7 @@ var http = require('http'),
 var sqlInfo = {
     host: 'localhost',
     user: 'root',
-    password: 'whp123292',
+    password: 'secret',
     database: 'whoTalkx'
 }
 
