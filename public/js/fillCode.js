@@ -138,8 +138,16 @@ $(function () {
             success: function (data, status) {
                 if (data.status !== "success") {
                     alert("验证码输入错误,请重新检查!");
+                } else {
+                    window.localStorage["user"] = JSON.stringify([{
+                        'userID': phoneNum,
+                        'password':  $("#password").val()
+                    }]);
+                    //取值： $.parseJSON(window.localStorage["user"]), 就可以愉快的取值了
+
+
+
                 }
-                console.log(data);
             }
 
         })

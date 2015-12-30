@@ -43,6 +43,10 @@ router.post('/saveAccount', function(req, res, next) {
         password = req.body.password,
         code = req.body.code;
 
+    console.log("in save, code=", code);
+    console.log("in save, global.code=", global.code);
+
+
     /*验证 验证码输入是否正确*/
     if (code != global.code) {
         res.send({'status': 'failed'})
@@ -50,13 +54,8 @@ router.post('/saveAccount', function(req, res, next) {
 
         /*这里其实是需要操作数据库--暂定mysql*/
 
-
         res.send({'status': 'success'})
     }
-
-    //console.log(phone, ": ", phone);
-
-    //res.render("login/", {'code': code});
 });
 
 
