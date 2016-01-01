@@ -7,7 +7,7 @@ var mysqlUtil = {
     config: {
         host: 'localhost',
         user: 'root',
-        password: 'whp123292',
+        password: '',
         database: 'whoTalkx'
     },
     getConnection: function (cfg) {
