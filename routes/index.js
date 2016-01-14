@@ -17,6 +17,10 @@ router.get('/register', function(req, res, next) {
     res.render("login/register");
 });
 
+router.get('/index', function (req, res, next) {
+    console.log("ldskafdkfkdjskfjdsjfdjsfid")
+    res.render("")
+})
 
 router.post('/sendCode', function(req, res, next) {
     var phoneNum = req.body.phone;

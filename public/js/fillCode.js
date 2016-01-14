@@ -144,9 +144,6 @@ $(function () {
                         'password':  $("#password").val()
                     }]);
                     //取值： $.parseJSON(window.localStorage["user"]), 就可以愉快的取值了
-
-
-
                 }
             }
 

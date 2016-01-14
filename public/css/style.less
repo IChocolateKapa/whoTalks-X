@@ -4,18 +4,23 @@
   padding: 10px;
   background: #fff;
   position: relative;
+  //display: flex;
+  //flex-direction: column;
 }
 .banner{
   background: url("../images/12.jpg") no-repeat;
   background-size: 100%;
   height: 50%;
+  //flex: 1;
 }
 
 @ah: 80px;
 .loginSection{
+  //flex: 1;
   height: @ah;
   position: relative;
-  top: 25%;
+  margin-top: 2rem;
+  //top: 25%;
   //bottom: 40px;
   a{
     font-size: .6rem;
@@ -35,7 +40,7 @@
 
 .dialog{
   margin-top: .5rem;
-  a{
+  &>*{
     margin-top: 10px;
     line-height: 1.4rem;
     font-size: .8rem;

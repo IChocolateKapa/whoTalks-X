@@ -54,6 +54,7 @@ body{
     font-size: .7rem;
     height: calc(100% - 20px);
     background: #fff;
+    -webkit-overflow-scrolling: touch;
 }
 .input{
     outline: none;
