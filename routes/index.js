@@ -18,8 +18,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/index', function (req, res, next) {
-    console.log("ldskafdkfkdjskfjdsjfdjsfid")
-    res.render("")
+    res.render("main/main")
 })
 
 router.post('/sendCode', function(req, res, next) {
@@ -57,6 +56,31 @@ router.post('/saveAccount', function(req, res, next) {
     } else {
 
         /*这里其实是需要操作数据库--暂定mysql*/
+        /*Echo Added --2016.01.15-- 使用mongodb*/
+        var mongodb = require('mongodb');
+        var server = new mongodb.Server("127.0.0.1", 27017, {});//本地27017端口
+
+        new mongodb.Db('echotest', server, {}).open(function (error, client) {//数据库：echotest
+
+            if(error) throw error;
+
+            var collection = new mongodb.Collection(client, 'userList');//表：userList
+
+            collection.insert({
+                'username': phone,
+                'password': password
+            });
+
+            collection.find(function (error, cursor) {
+
+                cursor.each(function (error, doc) {
+                    if (doc) {
+                        console.log(doc);
+                    }
+                });
+            });
+        });
+
 
         res.send({'status': 'success'})
     }
