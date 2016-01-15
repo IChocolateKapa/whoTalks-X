@@ -4,6 +4,27 @@
 var express = require('express');
 var router = express.Router();
 
+/*node.js 复制， 扩展对象 -- 开始 --*/
+var config = {
+    'name': '23243',
+    'props': {
+        'age': 34,
+        'leave': {
+            'a': 1,
+            'b': 2
+        }
+    }
+};
+
+var util = require("util"),
+    extend = util._extend;
+
+var er = extend({'gender': 'female'}, config);
+console.log("thisCfg: ", er);
+
+/*node.js 复制， 扩展对象 -- 结束 --*/
+
+
 /* first page user can access */
 router.get('/', function(req, res, next) {
     res.render("login/index");
