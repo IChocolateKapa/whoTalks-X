@@ -1,3 +1,8 @@
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 .main_wrap{
   width: ~'calc(100% - 20px)';
   height: ~'calc(100% - 20px)';
@@ -51,6 +56,7 @@
     padding: 1.5px 5px;
     border-radius: 5px;
     color: #999;
+    line-height: 2rem;
     //border: 1px solid #209599;
     //background: #209599;
     span{
@@ -60,4 +66,103 @@
   input{
     margin-bottom: 10px;
   }
+}
+
+@leftClr: #FAF2DA;
+.left_menu{
+  width: 3rem;
+  top: 5px;
+  left: 5px;
+  position: fixed;
+  box-shadow: 1px 0 10px 2px rgba(209, 214, 72, .4);
+  ul{
+    width: 100%;
+    border: 1px solid @leftClr;
+    li{
+      height: 2rem;
+      background: #414039;
+      border-bottom: 1px solid @leftClr;
+      line-height: 2rem;
+      color: #D1D648;
+      text-align: center;
+      &:nth-last-of-type(1){
+        border-bottom: none;
+      }
+    }
+    li.active{
+      background: white !important;
+      color: #666 !important;
+    }
+  }
+}
+.right_content{
+  width: ~'calc(100% - 3rem)';
+  margin-left: 3rem;
+  //border: 1px springgreen solid;
+  height: auto;
+  min-height: 350px;
+  .mask{
+    height: 95%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    pointer-events: none;
+    background: rgba(0,0,0,0);
+    overflow-y: scroll;
+  }
+  ul, li{
+    width: 100%;
+  }
+  li{
+    height: 4rem;
+    box-shadow: 1px 0 10px 2px rgba(0,0,0,.2);
+    margin-bottom: 3px;
+  }
+  .section{
+    width: 100%;
+    height: 100%;
+    .head{
+      float: left;
+      img{
+        max-height: 100%;
+        max-width: 100%;
+        width: 4rem;
+        height: auto;
+        vertical-align: middle;
+        margin-left: .1rem;
+      }
+    }
+
+    .info1{
+      background: white;
+      padding-left: .5rem;
+      width: ~'calc(100% - 4.6rem)';
+      float: right;
+    }
+
+
+    span{
+      line-height: 2rem;
+      &.word{
+        display: block;
+        line-height: 1rem;
+      }
+    }
+
+
+    &.highlight{
+      z-index: 18;
+      box-shadow: 1px 0 10px 3px rgba(58, 109, 160, .6);
+    }
+  }
+
+}
+
+.input_bar{
+  position: fixed;
+  z-index: 100;
+  bottom: 5px;
+  width: 97%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }

@@ -4,26 +4,10 @@
 var express = require('express');
 var router = express.Router();
 
-/*node.js 复制， 扩展对象 -- 开始 --*/
-var config = {
-    'name': '23243',
-    'props': {
-        'age': 34,
-        'leave': {
-            'a': 1,
-            'b': 2
-        }
-    }
-};
+var mongoUtil = require('../public/js/mongoUtils');
 
-var util = require("util"),
-    extend = util._extend;
-
-var er = extend({'gender': 'female'}, config);
-console.log("thisCfg: ", er);
-
-/*node.js 复制， 扩展对象 -- 结束 --*/
-
+console.log("mongoUtil: ", mongoUtil);
+//mongoUtil.init();
 
 /* first page user can access */
 router.get('/', function(req, res, next) {
@@ -78,35 +62,24 @@ router.post('/saveAccount', function(req, res, next) {
 
         /*这里其实是需要操作数据库--暂定mysql*/
         /*Echo Added --2016.01.15-- 使用mongodb*/
-        var mongodb = require('mongodb');
-        var server = new mongodb.Server("127.0.0.1", 27017, {});//本地27017端口
-
-        new mongodb.Db('echotest', server, {}).open(function (error, client) {//数据库：echotest
-
-            if(error) throw error;
-
-            var collection = new mongodb.Collection(client, 'userList');//表：userList
-
-            collection.insert({
-                'username': phone,
-                'password': password
-            });
-
-            collection.find(function (error, cursor) {
-
-                cursor.each(function (error, doc) {
-                    if (doc) {
-                        console.log(doc);
-                    }
-                });
-            });
-        });
-
 
         res.send({'status': 'success'})
     }
 });
 
+router.get('/main', function(req, res, next) {
+    res.render("main/main", {
+        countrys: ['中国', '日本', '韩国', '美国', '新西兰', '澳大利亚',
+        '英国', '俄罗斯', '北京', '上海', '成都', '青岛', '云南', '益阳', '徐州', '海南', '天津', '深圳', '香港', '台北', '新竹']
+    });
+});
+
+
+router.get('/chat', function (req, res, next) {
+    res.render('chat/chat', {
+        'name': 'Echo'
+    });
+});
 
 
 

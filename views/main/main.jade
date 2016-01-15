@@ -3,12 +3,52 @@
 
 extends ../base
 
-block content
-    div.footer
-        //form(action="server.cgi", method='post', enctype='multipart/form-data')
-        //    input(type='file', name='image', accept='image/*', capture=camera)
-        //    input(type='submit', value='Upload')
-        input
 
-    div.main_wrap
+block content
+    div.main_wrap(style=" padding: 0; width: 100% !important; height: 100% !important;")
+        div.left_menu
+            ul
+                - var countryList= ['中国', '日本', '韩国', '美国', '新西兰', '澳大利亚', '英国', '俄罗斯', '北京', '上海', '成都', '青岛', '云南', '益阳', '徐州', '海南', '天津', '深圳', '香港', '台北', '新竹']
+                    each country, i in countryList
+                        if (i == 0)
+                            li.active #{country}
+                        else
+                            li #{country}
+
+
+        div.right_content
+            div.mask
+            ul
+                - for (var i = 0; i < 200; i++)
+                    li
+                        div.section
+                            div.head
+                                a(href="javascript:void(0)")
+                                    img(src='./images/head.jpg', width='100px', height='100px')
+
+                            div.info1
+                                span Lily&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                span 女
+                                span.word 乱花监狱迷人眼， 飞入寻常百姓家
+
+
+
+    //script(src="js/main.js")
+    script.
+        $(".section").bind("touchstart", function () {
+            $(this).addClass("highlight");
+        });
+
+        $(".section").bind("touchend", function () {
+            $(".section").removeClass("highlight");
+            window.location.href = "/chat";
+        });
+
+
+
+
+
+
+
+
 
