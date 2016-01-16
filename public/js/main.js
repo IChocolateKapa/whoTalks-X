@@ -10,5 +10,4 @@ $(function () {
         $(".section").removeClass("highlight");
     });
 
-
 });

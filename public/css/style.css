@@ -157,3 +157,10 @@ ul {
   border-radius: 5px;
   text-indent: 15px;
 }
+.dialog.chatmsg p {
+  line-height: 2rem;
+}
+p.tip {
+  font-size: .5rem;
+  color: #D1D648;
+}

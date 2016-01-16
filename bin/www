@@ -26,8 +26,13 @@ var server = http.createServer(app);
 
 
 
-global.totalUser = 0;
+
 var io = require('socket.io')(server);
+io.socket
+
+global.io = io;
+global.totalUser = 0;
+
 
 io.on('connection', function (socket) {
 
@@ -45,15 +50,9 @@ io.on('connection', function (socket) {
 
     socket.on('chatMessage', function (msg) {
         console.log('received message: ' + msg);
-
-        //io.emit('chat message', { for: 'everyone' });
-        //socket.broadcast.emit('hi');
         io.emit('chat message', msg);
     });
 });
-
-
-
 /**
  * Listen on provided port, on all network interfaces.
  */

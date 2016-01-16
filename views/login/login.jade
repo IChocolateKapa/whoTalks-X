@@ -7,9 +7,9 @@ block content
     div.main_wrap
         p.pageTitle.color-primary 账户登录
         div.dialog
-            form(action='/index')
-                input(type='text', placeholder="请输入用户名", autocapitalize='off', required="true", id="phone").input.input-mid.color-default.w_100
+            form(action='/index', .method='get')
+                input(type='text', placeholder="请输入用户名", name="user", autocapitalize='off', required="true", id="phone").input.input-mid.color-default.w_100
 
-                input(type='password', placeholder="请输入密码", autocapitalize='off', required="true", id="phone").input.input-mid.color-default.w_100
+                input(type='password', placeholder="请输入密码", name="password", autocapitalize='off', required="true", id="phone").input.input-mid.color-default.w_100
 
                 input(type='submit' class="btn danger w_100 input-mid", value="立即登录")

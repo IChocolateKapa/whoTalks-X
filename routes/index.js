@@ -3,7 +3,6 @@
  */
 var express = require('express');
 var router = express.Router();
-
 //var mongoUtil = require('../public/js/mongoUtils');
 
 //console.log("mongoUtil: ", mongoUtil);
@@ -23,7 +22,17 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/index', function (req, res, next) {
-    res.render("main/main")
+    var username = req.query.user;
+    console.log("someone just logged in! name: ", username);
+
+    console.log("global.io: ", global.io);
+
+    global.io.on('connection', function (socket) {
+        console.log("login emit!!!!");
+        global.io.emit("userLogin", username);
+    });
+
+    res.render("main/main");
 })
 
 router.post('/sendCode', function(req, res, next) {
@@ -62,7 +71,6 @@ router.post('/saveAccount', function(req, res, next) {
 
         /*这里其实是需要操作数据库--暂定mysql*/
         /*Echo Added --2016.01.15-- 使用mongodb*/
-
         res.send({'status': 'success'})
     }
 });
@@ -76,6 +84,7 @@ router.get('/main', function(req, res, next) {
 
 
 router.get('/chat', function (req, res, next) {
+
     res.render('chat/chat', {
         'name': 'Echo'
     });
