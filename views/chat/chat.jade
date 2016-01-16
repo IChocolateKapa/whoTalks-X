@@ -5,11 +5,9 @@ extends ../base
 
 block content
    div.main_wrap(style="border:none; padding: 0; width: 100% !important; height: 100% !important;")
-       div.dialog.w_50
-           p nihao
-
-       div.dialog.tr.w_50
-           p buhaho
+       p#total
+       //div.dialog.w_50
+       //    p nihao
 
 
 
@@ -17,7 +15,7 @@ block content
 block footer
     div.dialog.pr.input_bar
         span.reSend.input-mid.pa.inlineBlock.success.color-fff#send(style="padding: 2px 15px; cursor: pointer;") Send
-        input(type='text', placeholder="Say Something...", autocapitalize='off', required="true", id="chat-msg").input.input-mid.color-info.w_100
+        input(type='text', placeholder="Say Something...", autocapitalize='off', required="true", id="chat-msg").input.input-mid.color-info.w_100(style="background-color: white;")
 
     script(src="js/socket.io.js")
     script(src="js/chat.js")
