@@ -18,9 +18,8 @@ var mongoUtil = {
 
         var thisCfg = extend(this.config, config);
 
-        console.log(thisCfg);
-        var mongoose = require('mongoose');
-        var Schema = mongoose.Schema;
+        var mongoose = require('mongoose'),
+            Schema = mongoose.Schema;
 
         // Define User schema
         var UserSchema = new Schema({

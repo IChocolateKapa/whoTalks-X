@@ -3,10 +3,11 @@
  */
 var express = require('express');
 var router = express.Router();
-//var mongoUtil = require('../public/js/mongoUtils');
 
-//console.log("mongoUtil: ", mongoUtil);
-//mongoUtil.init();
+var mongoUtil = require('../public/js/mongoUtils');
+
+console.log("mongoUtil: ", mongoUtil);
+mongoUtil.init();
 
 /* first page user can access */
 router.get('/', function(req, res, next) {
