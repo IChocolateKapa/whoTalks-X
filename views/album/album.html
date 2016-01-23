@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <title></title>
+    <script src="../../public/js/zepto.min.js"></script>
+    <style>
+        body{
+            background: #414039;
+        }
+        ul, img, ol, fieldset, body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .img-container{
+            margin: 0 auto;
+        }
+        .img-container li{
+            float: left;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            padding: 2px;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .img-container li img{
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+<ul class="img-container" id="container"></ul>
+
+
+<script>
+
+    var imgPath = '../../public/images/';
+//    var imgList = [
+//        {
+//            'src': imgPath + '7.jpg'
+//        },
+//        {
+//            'src': imgPath + '8.jpg'
+//        },
+//        {
+//            'src': imgPath + '9.jpg'
+//        },
+//        {
+//            'src': imgPath + '10.jpg'
+//        },
+//        {
+//            'src': imgPath + '11.jpg'
+//        },
+//        {
+//            'src': imgPath + '12.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/anim-banner1.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/anim-banner2.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/anim-banner3.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/cws-pic.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/lj-pic.jpg'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-1.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-2.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-3.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-4.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-5.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/third-step-you.png'
+//        },
+//        {
+//            'src': imgPath + 'dj/ymh-pic.jpg'
+//        }
+//    ];
+
+    var imgList = [
+        {
+            "src": imgPath + "7.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "8.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "9.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "10.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "11.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "12.jpg",
+            "height": 768,
+            "width": 1366
+        },
+        {
+            "src": imgPath + "dj/anim-banner1.jpg",
+            "height": 280,
+            "width": 220
+        },
+        {
+            "src": imgPath + "dj/anim-banner2.jpg",
+            "height": 280,
+            "width": 220
+        },
+        {
+            "src": imgPath + "dj/anim-banner3.jpg",
+            "height": 280,
+            "width": 220
+        },
+        {
+            "src": imgPath + "dj/cws-pic.jpg",
+            "height": 336,
+            "width": 300
+        },
+        {
+            "src": imgPath + "dj/lj-pic.jpg",
+            "height": 336,
+            "width": 300
+        },
+        {
+            "src": imgPath + "dj/third-step-1.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/third-step-2.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/third-step-3.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/third-step-4.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/third-step-5.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/third-step-you.png",
+            "height": 121,
+            "width": 99
+        },
+        {
+            "src": imgPath + "dj/ymh-pic.jpg",
+            "height": 336,
+            "width": 300
+        }
+    ];
+
+    var imgHtml = '';
+
+    imgList = preSetImgList(imgList);
+
+    for (var  i = 0; i < imgList.length; i++) {
+
+        imgHtml += '<li><img src="' + imgList[i].src + '" alt="img"';
+        var imgH = imgList[i].height,
+            imgW = imgList[i].width,
+            r = imgW/imgH;
+
+        if (r > 1) {
+            imgHtml += 'width="100px" height="auto"';
+        } else {
+            imgHtml += 'height="100px" width="auto"';
+        }
+        imgHtml += '/></li>';
+
+    }
+
+    $("#container").html(imgHtml);
+
+
+
+    function preSetImgList (imgList) {
+        for (var  i = 0; i < imgList.length; i++) {
+            var newImg = new Image();
+            newImg.src = imgList[i].src;
+            newImg.onload = function () {
+                var imgH = this.height,
+                        imgW = this.width,
+                        src = this.src;
+                r = imgW/imgH;
+
+                src = imgPath + src.substr(47, src.length);
+
+
+                for (var j = 0; j < imgList.length; j++) {
+                    if (imgList[j].src == src) {
+                        imgList[j].height = imgH;
+                        imgList[j].width = imgW;
+                    }
+                }
+                //拿到最后一次的imgList在线解析一下, 重新赋值给imgList即可。
+                console.log("imgList: ", JSON.stringify(imgList));
+            };
+        }
+
+        return imgList;
+    }
+
+
+
+
+</script>
+</body>
+</html>
