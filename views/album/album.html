@@ -201,23 +201,35 @@
 
     var imgHtml = '';
 
-    imgList = preSetImgList(imgList);
+//    imgList = preSetImgList(imgList);
 
     for (var  i = 0; i < imgList.length; i++) {
 
-        imgHtml += '<li><img src="' + imgList[i].src + '" alt="img"';
-        var imgH = imgList[i].height,
-            imgW = imgList[i].width,
-            r = imgW/imgH;
+        imgHtml += '<li><canvas id="cvs_' + i + '"></canvas></li>';
+        var newImg = new Image();
+        newImg.index = i;
+        newImg.onload = function () {
+            var imgH = this.height;
+            var imgW = this.width;
+            var r = imgW/imgH;
 
-        if (r > 1) {
-            imgHtml += 'width="100px" height="auto"';
-        } else {
-            imgHtml += 'height="100px" width="auto"';
-        }
-        imgHtml += '/></li>';
+            var cvs = $("#cvs_" + this.index)[0].getContext('2d');
+            cvs.height = imgH;
+            cvs.width = imgW;
+            cvs.drawImage(this, 0, 0);
 
+            /*if (r > 1) {
+                imgHtml += 'width="100px" height="auto"';
+            } else {
+                imgHtml += 'height="100px" width="auto"';
+            }*/
+
+            imgHtml += '/></li>';
+        };
+
+        newImg.src= imgList[i].src;
     }
+
 
     $("#container").html(imgHtml);
 
@@ -226,7 +238,6 @@
     function preSetImgList (imgList) {
         for (var  i = 0; i < imgList.length; i++) {
             var newImg = new Image();
-            newImg.src = imgList[i].src;
             newImg.onload = function () {
                 var imgH = this.height,
                         imgW = this.width,
@@ -243,9 +254,13 @@
                     }
                 }
                 //拿到最后一次的imgList在线解析一下, 重新赋值给imgList即可。
-                console.log("imgList: ", JSON.stringify(imgList));
             };
+
+            newImg.src = imgList[i].src;
+
+            console.log("让位二天4 imgList: ", JSON.stringify(imgList));
         }
+
 
         return imgList;
     }
