@@ -214,9 +214,23 @@
             var r = imgW/imgH;
 
             var cvs = $("#cvs_" + this.index)[0].getContext('2d');
-            cvs.height = imgH;
-            cvs.width = imgW;
-            cvs.drawImage(this, 0, 0);//, 100, 100
+            cvs.height = 100;
+            cvs.width = 100;
+//            cvs.height = imgH;
+//            cvs.width = imgW;
+
+            console.log("original width=%d, height=%d", imgW, imgH);
+            var iw, ih;
+            if (r > 1) {
+                iw = 100;
+                ih = 100/imgW * imgH;
+            } else {
+                ih = 100;
+                iw = 100/imgH * imgW;
+            }
+
+            console.log("after zoom as 100px, width=%d, height=%d", iw, ih);
+            cvs.drawImage(this, 0, 50, iw, ih);//, 100, 100
 //            cvs.drawImage(this, 0, 0, 100, 100, 0, 10, 40, 56);//, 100, 100
 
             imgHtml += '/></li>';
