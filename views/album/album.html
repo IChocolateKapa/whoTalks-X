@@ -216,13 +216,8 @@
             var cvs = $("#cvs_" + this.index)[0].getContext('2d');
             cvs.height = imgH;
             cvs.width = imgW;
-            cvs.drawImage(this, 0, 0);
-
-            /*if (r > 1) {
-                imgHtml += 'width="100px" height="auto"';
-            } else {
-                imgHtml += 'height="100px" width="auto"';
-            }*/
+            cvs.drawImage(this, 0, 0);//, 100, 100
+//            cvs.drawImage(this, 0, 0, 100, 100, 0, 10, 40, 56);//, 100, 100
 
             imgHtml += '/></li>';
         };
@@ -233,11 +228,28 @@
 
     $("#container").html(imgHtml);
 
+/*    setTimeout(function () {
+        saveImage();
+    }, 500);*/
+
+
+    function saveImage () {
+        var len = $("#container li").length;
+        for (var i = 0; i < 1; i++) {//len
+            var mycanvas = document.getElementById("cvs_" + i);
+//            var image = mycanvas.toDataURL("image/png");
+            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
+            window.location.href=image; // it will save locally
+        }
+    }
+
 
 
     function preSetImgList (imgList) {
         for (var  i = 0; i < imgList.length; i++) {
             var newImg = new Image();
+            /*异步的，所以是无序的*/
             newImg.onload = function () {
                 var imgH = this.height,
                         imgW = this.width,
