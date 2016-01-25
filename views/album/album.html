@@ -251,8 +251,7 @@
         var len = $("#container li").length;
         for (var i = 0; i < 1; i++) {//len
             var mycanvas = document.getElementById("cvs_" + i);
-//            var image = mycanvas.toDataURL("image/png");
-            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+//            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
             var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
             window.location.href=image; // it will save locally
         }
@@ -286,8 +285,6 @@
 
             console.log("让位二天4 imgList: ", JSON.stringify(imgList));
         }
-
-
         return imgList;
     }
 
