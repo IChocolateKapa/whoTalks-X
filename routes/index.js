@@ -10,19 +10,19 @@ console.log("mongoUtil: ", mongoUtil);
 mongoUtil.init();
 
 /* first page user can access */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.render("login/index");
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/login', function(req, res) {
     res.render("login/login");
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function(req, res) {
     res.render("login/register");
 });
 
-router.get('/index', function (req, res, next) {
+router.get('/index', function (req, res) {
     var username = req.query.user;
     console.log("someone just logged in! name: ", username);
 
@@ -34,9 +34,9 @@ router.get('/index', function (req, res, next) {
     });
 
     res.render("main/main");
-})
+});
 
-router.post('/sendCode', function(req, res, next) {
+router.post('/sendCode', function(req, res) {
     var phoneNum = req.body.phone;
     //console.log("in req, phone is: ", phoneNum);
     /*需要验证手机号的格式*/
@@ -48,7 +48,7 @@ router.post('/sendCode', function(req, res, next) {
     res.send({'status': 'success', 'code': code, 'phone': phoneNum});
 });
 
-router.get('/fillCode', function(req, res, next) {
+router.get('/fillCode', function (req, res) {
     var code = req.query.code;
     //console.log("code is: ", code);
     //console.log("global.phoneNum is: ", global.phoneNum);
@@ -56,7 +56,7 @@ router.get('/fillCode', function(req, res, next) {
 });
 
 
-router.post('/saveAccount', function(req, res, next) {
+router.post('/saveAccount', function(req, res) {
     var phone = req.body.phone,
         password = req.body.password,
         code = req.body.code;
@@ -67,16 +67,16 @@ router.post('/saveAccount', function(req, res, next) {
 
     /*验证 验证码输入是否正确*/
     if (code != global.code) {
-        res.send({'status': 'failed'})
+        res.send({'status': 'failed'});
     } else {
 
         /*这里其实是需要操作数据库--暂定mysql*/
         /*Echo Added --2016.01.15-- 使用mongodb*/
-        res.send({'status': 'success'})
+        res.send({'status': 'success'});
     }
 });
 
-router.get('/main', function(req, res, next) {
+router.get('/main', function(req, res) {
     res.render("main/main", {
         countrys: ['中国', '日本', '韩国', '美国', '新西兰', '澳大利亚',
         '英国', '俄罗斯', '北京', '上海', '成都', '青岛', '云南', '益阳', '徐州', '海南', '天津', '深圳', '香港', '台北', '新竹']
@@ -84,7 +84,7 @@ router.get('/main', function(req, res, next) {
 });
 
 
-router.get('/chat', function (req, res, next) {
+router.get('/chat', function (req, res) {
 
     res.render('chat/chat', {
         'name': 'Echo'

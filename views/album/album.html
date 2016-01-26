@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="Echo,echochocolatekapa@163.com">
     <meta name="robots" content="index,follow">
+    <link rel="stylesheet" href="../../public/css/animate.css"/>
     <title></title>
     <script src="../../public/js/zepto.min.js"></script>
     <style>
@@ -39,15 +40,28 @@
         .img-container li img{
             flex: 1;
         }
+        .large{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #414039;
+            z-index: 10;
+            display: none;
+        }
 
     </style>
 </head>
 <body>
 <ul class="img-container" id="container"></ul>
 
-
+<div class="large">
+    <img id="large_img" class="animated bounceIn"/>
+</div>
 <script>
-
+    var zWin = $(window);
+    var zDoc = $(document);
     var imgPath = '../../public/images/';
 //    var imgList = [
 //        {
@@ -205,7 +219,7 @@
 
     for (var  i = 0; i < imgList.length; i++) {
 
-        imgHtml += '<li><canvas id="cvs_' + i + '"></canvas></li>';
+        imgHtml += '<li class="animated bounceIn" data-id="' + i + '" ><canvas id="cvs_' + i + '"></canvas></li>';
         var newImg = new Image();
         newImg.index = i;
         newImg.onload = function () {
@@ -216,21 +230,24 @@
             var cvs = $("#cvs_" + this.index)[0].getContext('2d');
             cvs.height = 100;
             cvs.width = 100;
-//            cvs.height = imgH;
-//            cvs.width = imgW;
 
             console.log("original width=%d, height=%d", imgW, imgH);
             var iw, ih;
-            if (r > 1) {
+            if (r > 1.2) {
                 iw = 100;
                 ih = 100/imgW * imgH;
+                var posy = ih/2;
+//                var posy = (100 - ih)/2;
+                cvs.drawImage(this, 0, 50, iw, ih);
             } else {
                 ih = 100;
                 iw = 100/imgH * imgW;
+                var posx = (100 - iw)/2;
+                cvs.drawImage(this, posx, 0, iw, ih);
             }
 
             console.log("after zoom as 100px, width=%d, height=%d", iw, ih);
-            cvs.drawImage(this, 0, 50, iw, ih);//, 100, 100
+//            cvs.drawImage(this, 0, 50, iw, ih);//, 100, 100
 //            cvs.drawImage(this, 0, 0, 100, 100, 0, 10, 40, 56);//, 100, 100
 
             imgHtml += '/></li>';
@@ -241,6 +258,7 @@
 
 
     $("#container").html(imgHtml);
+    bindLargeImg();
 
 /*    setTimeout(function () {
         saveImage();
@@ -251,14 +269,15 @@
         var len = $("#container li").length;
         for (var i = 0; i < 1; i++) {//len
             var mycanvas = document.getElementById("cvs_" + i);
-//            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
+            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+//            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
             window.location.href=image; // it will save locally
         }
     }
 
 
 
+    var cid;
     function preSetImgList (imgList) {
         for (var  i = 0; i < imgList.length; i++) {
             var newImg = new Image();
@@ -283,12 +302,93 @@
 
             newImg.src = imgList[i].src;
 
-            console.log("让位二天4 imgList: ", JSON.stringify(imgList));
+            console.log("imgList: ", JSON.stringify(imgList));
         }
         return imgList;
     }
 
 
+
+    var cid;
+    var total = imgList.length;
+    function bindLargeImg () {
+
+        $("#container").on("tap", "li", function () {
+            var $this = $(this);
+            var _id = $this.attr("data-id");
+            loadImage(_id);
+        })
+
+        $(".large").tap(function () {
+            $(this).hide();
+        }).swipeLeft(function () {
+//            $(this).find('img').
+            cid++;
+            if (cid > total) {
+                cid = total;
+            } else {
+                loadImage(cid);
+            }
+
+        }).swipeRight(function () {
+            cid--;
+            if (cid < 0) {
+                cid = 0;
+            } else {
+                loadImage(cid);
+            }
+
+        });
+    }
+
+    function swipeLeft (cb) {
+        $(".large").on('touchstart', function () {
+
+        })
+    }
+
+
+    function loadImage (id) {
+
+        var $wImage = $("#large_img");
+
+        $(".large").css({
+            'width': zWin.width(),
+            'height': zWin.height()
+        }).show();
+
+        var imgObj = new Image();
+        imgObj.onload = function () {
+            var imgW = this.width,
+                imgH = this.height,
+                r = imgH/imgW;
+
+            var zW = zWin.width();
+            var zH = zWin.height();
+
+
+            var realW = zH/imgH * imgW;
+            var realH = zW/imgW * imgH;
+
+            var paddingleft = (zWin.width() - realW) / 2;
+            var paddingtop = (zWin.height() - realH) / 2;
+
+            if (r < 1.2) {
+                $wImage.attr('src', this.src).css({
+                    'width': zWin.width(),
+                    'height': 'auto',
+                    'padding-top': paddingtop + 'px'
+                })
+            } else {
+                $wImage.attr('src', this.src).css({
+                    'height': zWin.height(),
+                    'width': 'auto',
+                    'padding': paddingleft + 'px'
+                })
+            }
+        };
+        imgObj.src = imgList[id].src;
+    }
 
 
 </script>
