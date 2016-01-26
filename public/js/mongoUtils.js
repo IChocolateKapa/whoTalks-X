@@ -65,7 +65,7 @@ var mongoUtil = {
     },
 
 
-}
+};
 
 
 // export them
