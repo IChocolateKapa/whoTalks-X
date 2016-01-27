@@ -26,19 +26,31 @@
         }
         .img-container{
             margin: 0 auto;
+            /*新flex*/
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            -webkit-flex-wrap: wrap;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: center;
+            /*新flex*/
+
+            /*旧flex*/
+           /* display:-webkit-box;
+            display:-moz-box;
+            box-align: center;
+            box-lines：multiple;*/
+            /*旧flex*/
+
         }
         .img-container li{
-            float: left;
             width: 100px;
             height: 100px;
             overflow: hidden;
             padding: 2px;
             margin: 2px;
-            display: flex;
-            align-items: center;
-        }
-        .img-container li img{
-            flex: 1;
         }
         .large{
             width: 100%;
@@ -321,6 +333,10 @@
 
         $(".large").tap(function () {
             $(this).hide();
+        }).longTap(function () {
+            alert("fires long tap!");
+            window.event.preventDefault();
+            window.event.stopPropagation();
         }).swipeLeft(function () {
 //            $(this).find('img').
             cid++;
@@ -351,12 +367,10 @@
     function loadImage (id) {
 
         var $wImage = $("#large_img");
-
         $(".large").css({
             'width': zWin.width(),
             'height': zWin.height()
         }).show();
-
         var imgObj = new Image();
         imgObj.onload = function () {
             var imgW = this.width,
