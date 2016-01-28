@@ -321,50 +321,25 @@
 
 
 
-    var cid;
     var total = imgList.length;
     function bindLargeImg () {
 
         $("#container").on("tap", "li", function () {
             var $this = $(this);
             var _id = $this.attr("data-id");
-            loadImage(_id);
-        })
+            loadImage(_id, 'bounceIn');
+            swipeEvent(_id);
+        });
 
         $(".large").tap(function () {
             $(this).hide();
-        }).longTap(function () {
-            alert("fires long tap!");
-            window.event.preventDefault();
-            window.event.stopPropagation();
-        }).swipeLeft(function () {
-//            $(this).find('img').
-            cid++;
-            if (cid > total) {
-                cid = total;
-            } else {
-                loadImage(cid);
-            }
-
-        }).swipeRight(function () {
-            cid--;
-            if (cid < 0) {
-                cid = 0;
-            } else {
-                loadImage(cid);
-            }
-
         });
     }
 
-    function swipeLeft (cb) {
-        $(".large").on('touchstart', function () {
 
-        })
-    }
+    function loadImage (id, cls) {
 
-
-    function loadImage (id) {
+//        $("#large_img").addClass(cls);
 
         var $wImage = $("#large_img");
         $(".large").css({
@@ -402,6 +377,65 @@
             }
         };
         imgObj.src = imgList[id].src;
+
+
+    }
+
+
+    function swipeEvent (id) {
+        var self = this;
+        var len = imgList.length;
+        var orgX, orgY;
+        var offsetX = 0;
+        var startTime, endTime;
+        var cid = id;
+        var startHandler =  function (evt) {
+            orgX = evt.touches[0].pageX;
+            offsetX = 0;
+            startTime = new Date() * 1;
+        };
+
+        var moveHandler = function (evt) {
+            evt.preventDefault();
+            offsetX = evt.touches[0].pageX - orgX;
+        };
+
+        var endHandler =  function () {
+            endTime = new Date() * 1;
+
+            var timeDif = endTime - startTime;
+            var cls = '';
+            if (timeDif < 200) {
+                if (offsetX > 50) {
+                    cid--;
+                    cls = 'bounceInLeft';
+                } else if (offsetX < -50) {
+                    cid++;
+                    cls = 'bounceInRight';
+                }
+            } else {
+                if (offsetX > $(window).width()/6) {
+                    cid--;
+                    cls = 'bounceInLeft';
+                } else if (offsetX < -$(window).width()/6) {
+                    cid++;
+                    cls = 'bounceInRight';
+                }
+            }
+
+
+            if (cid < 0) {
+                cid = len;
+            }
+            if (cid > len) {
+                cid = 0;
+            }
+            loadImage(cid, cls);
+        };
+
+        $(".large").on('touchstart', startHandler);
+        $(".large").on('touchmove', moveHandler);
+        $(".large").on('touchend', endHandler);
     }
 
 
