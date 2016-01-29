@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="../../public/css/animate.css"/>
     <title>相册</title>
     <script src="../../public/js/zepto.min.js"></script>
-    <script src="touch.js"></script>
     <style>
         body{
             background: #414039;
@@ -64,6 +63,43 @@
             z-index: 10;
             display: none;
         }
+
+        .animated{
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .animated.bounceIn{
+            -webkit-animation-duration: .75s;
+            animation-duration: .75s;
+        }
+
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+        }
+
 
     </style>
 </head>
