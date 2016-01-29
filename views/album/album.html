@@ -11,11 +11,13 @@
     <meta name="author" content="Echo,echochocolatekapa@163.com">
     <meta name="robots" content="index,follow">
     <link rel="stylesheet" href="../../public/css/animate.css"/>
-    <title></title>
+    <title>相册</title>
     <script src="../../public/js/zepto.min.js"></script>
+    <script src="touch.js"></script>
     <style>
         body{
             background: #414039;
+            position: sticky;
         }
         ul, img, ol, fieldset, body{
             margin: 0;
@@ -68,8 +70,8 @@
 <body>
 <ul class="img-container" id="container"></ul>
 
-<div class="large">
-    <img id="large_img" class="animated bounceIn"/>
+<div class="large animated fadeIn">
+    <img id="large_img" class="animated"/>
 </div>
 <script>
     var zWin = $(window);
@@ -302,7 +304,6 @@
 
                 src = imgPath + src.substr(47, src.length);
 
-
                 for (var j = 0; j < imgList.length; j++) {
                     if (imgList[j].src == src) {
                         imgList[j].height = imgH;
@@ -333,15 +334,14 @@
 
         $(".large").tap(function () {
             $(this).hide();
-        });
+        })
     }
 
 
     function loadImage (id, cls) {
 
-//        $("#large_img").addClass(cls);
-
         var $wImage = $("#large_img");
+        $wImage.attr('class', 'animated');
         $(".large").css({
             'width': zWin.width(),
             'height': zWin.height()
@@ -375,6 +375,8 @@
                     'padding': paddingleft + 'px'
                 })
             }
+
+            $wImage.addClass(cls);
         };
         imgObj.src = imgList[id].src;
 
@@ -422,7 +424,6 @@
                     cls = 'bounceInRight';
                 }
             }
-
 
             if (cid < 0) {
                 cid = len;
