@@ -10,98 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="Echo,echochocolatekapa@163.com">
     <meta name="robots" content="index,follow">
-    <link rel="stylesheet" href="../../public/css/animate.css"/>
     <title>相册</title>
     <script src="../../public/js/zepto.min.js"></script>
-    <style>
-        body{
-            background: #414039;
-            position: sticky;
-        }
-        ul, img, ol, fieldset, body{
-            margin: 0;
-            padding: 0;
-        }
-        ul{
-            list-style: none;
-        }
-        .img-container{
-            margin: 0 auto;
-            /*新flex*/
-            display: -webkit-flex;
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-            -webkit-flex-wrap: wrap;
-            justify-content: center;
-            flex-wrap: wrap;
-            align-content: center;
-            /*新flex*/
 
-            /*旧flex*/
-           /* display:-webkit-box;
-            display:-moz-box;
-            box-align: center;
-            box-lines：multiple;*/
-            /*旧flex*/
-
-        }
-        .img-container li{
-            width: 100px;
-            height: 100px;
-            overflow: hidden;
-            padding: 2px;
-            margin: 2px;
-        }
-        .large{
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: #414039;
-            z-index: 10;
-            display: none;
-        }
-
-        .animated{
-            -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-        }
-        .animated.bounceIn{
-            -webkit-animation-duration: .75s;
-            animation-duration: .75s;
-        }
-
-        @-webkit-keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fadeIn {
-            -webkit-animation-name: fadeIn;
-            animation-name: fadeIn;
-        }
-
-
-    </style>
 </head>
 <body>
 <ul class="img-container" id="container"></ul>
