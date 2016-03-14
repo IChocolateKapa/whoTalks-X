@@ -1,0 +1,215 @@
+/*除字体之外的元素的尺寸转换方法*/
+// 例如: .px2rem(height, 80);
+//此处的75是 设计师给出的设计稿是750px宽的， 基准值就是750/10=75, 如果是640px， 则基准值是640/10=64;
+.px2rem(@name, @px){
+  @{name}: @px / 72 * 1rem;
+}
+.px2rem_border(@name, @px, @bdr){
+  @{name}: @px / 72 * 1rem @bdr;
+}
+
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+//例如.px2px(font-szie, 22px);
+.px2px(@name, @px){
+  @{name}: round(@px / 2) * 1px;
+  [data-dpr="2"] & {
+    @{name}: @px * 1px;
+  }
+  // for mx3
+  [data-dpr="2.5"] & {
+    @{name}: round(@px * 2.5 / 2) * 1px;
+  }
+  // for 小米note
+  [data-dpr="2.75"] & {
+    @{name}: round(@px * 2.75 / 2) * 1px;
+  }
+  [data-dpr="3"] & {
+    @{name}: round(@px / 2 * 3) * 1px
+  }
+  // for 三星note4
+  [data-dpr="4"] & {
+    @{name}: @px * 2px;
+  }
+}
+
+
+
+body, ul, nav{
+  margin: 0;
+  padding: 0;
+}
+.main_wrap{
+  flex-direction: column;
+  .header,
+  .slide_wrap,
+  .menu_wrap,
+  footer{
+    width: 100%;
+  }
+}
+.header{
+  //height: 0.96rem;
+  .px2rem(height, 96);
+  position: relative;
+  border: 1px solid transparent;
+  text-align: center;
+  //line-height: 0.9rem;
+  .px2rem(line-height, 90);
+  span{
+    color: #3284a7;
+    font-family: 'sans-serif';
+    //font-size: 0.44rem;
+    .px2px(font-size, 44px);
+    font-weight: 500;
+  }
+  .icon-person{
+    position: absolute;
+    background-image: url("../img/person.png");
+    background-size: cover;
+    display: inline-block;
+    //width: 23px;
+    //height: 23px;
+    //right: 15px;
+    .px2rem(width, 46);
+    .px2rem(height, 46);
+    .px2rem(right, 30);
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+.slide_wrap{
+  //height: 3.53rem;
+  .px2rem(height, 353);
+  ul{
+    width: 600%;
+    height: 100%;
+  }
+  li{
+    float: left;
+    overflow: hidden;
+    //display: none;
+    width: 100%/6;
+    //transition: all .5s ease-out 0s;
+    img{
+      height: auto;
+      width: 100%;
+      display: block;
+    }
+    &.cur{
+      display: block;
+    }
+  }
+}
+.menu_wrap{
+  //height: 6.84rem;
+  //padding-bottom: .97rem;
+  .px2rem(height, 684);
+  .px2rem(padding-bottom, 97);
+  width: 100%;
+  ul{
+    width: 100%;
+    height: 100%;
+  }
+  li{
+    float: left;
+    //width: ~'calc(33.33% - 1px)';
+    width: 33.1%;
+    height: 33.3%;
+    .px2rem_border(border-right, 1, solid #eeeeee);
+    .px2rem_border(border-bottom, 1, solid #eeeeee);
+    //border-right: 1px solid #eeeeee;
+    //border-bottom: 1px solid #eeeeee;
+    &:nth-of-type(3),
+    &:nth-of-type(6){
+      border-right: none;
+      //width: 33.3%;
+    }
+  }
+  .menu_item{
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    box-orient: vertical;
+    box-pack: justify;
+    box-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    img{
+      //margin-top: .4rem;
+      flex: 1;
+      //width: 1rem;
+      //height: 1rem;
+      box-flex: 1;
+      .px2rem(margin-top, 40);
+      .px2rem(width, 100);
+      .px2rem(height, 100);
+    }
+    span{
+      flex: 1;
+      //font-size: 0.28rem;
+      .px2px(font-size, 28px);
+      .px2rem(line-height, 100);
+      //line-height: 1rem;
+      box-flex: 1;
+    }
+  }
+}
+footer{
+  position: fixed;
+  width: 100%;
+  //height: 0.96rem;
+  .px2rem(height, 96);
+  left: 0;
+  bottom: 0;
+  background-color: #333;
+  nav a{
+    position: relative;
+    display: inline-block;
+    width: 33.3%;
+    height: 100%;
+    //line-height: 0.96rem;
+    .px2rem(line-height, 96);
+    text-align: center;
+    &.cur{
+      box-shadow: inset 3px 3px 5px 2px rgba(0,0,0,.3);
+      background: #424647;
+    }
+    img{
+      //width: 0.4rem;
+      //height: 0.4rem;
+      position: absolute;
+      //top: 0.12rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      .px2rem(width, 40);
+      .px2rem(height, 40);
+      .px2rem(top, 12);
+    }
+    span{
+      //font-size: .28rem;
+      .px2px(font-size, 20px);
+      position: relative;
+      //top: .1rem;
+      .px2rem(top, 10);
+    }
+
+    &:not(:nth-of-type(1))::before{
+      content: '';
+      //width: 1px;
+      .px2rem(width, 1);
+      //height: 0.88rem;
+      .px2rem(height, 88);
+      background: linear-gradient(to bottom, #333, #eee, #333);
+      position: absolute;
+      z-index: 10;
+      //left: -.5px;
+      //top: 0.04rem;
+      .px2rem(left, -0.5);
+      .px2rem(top, 4);
+      border-radius: 50%;
+    }
+  }
+}

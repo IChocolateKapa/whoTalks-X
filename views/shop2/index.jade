@@ -1,0 +1,223 @@
+extends ../base
+
+block append head
+    link(rel='stylesheet', href='./css/index.css')
+    link(rel='stylesheet', href='./css/swiper-3.3.1.min.css')
+    script(src='./js/change.js')
+    script(src='./js/vue.js')
+    script(src='./js/zepto.min.js')
+    script(src='./js/swiper-3.3.1.jquery.min.js')
+
+
+block content
+    //表体
+    div.main_wrap
+        header.header
+            span 商店首页
+            i.icon-person
+        div.slide_wrap.swiper-container
+            ul.swiper-wrapper
+                li.swiper-slide.cur
+                    img(src='./img/slide1.png')
+                li.swiper-slide
+                    img(src='./img/slide2.png')
+                li.swiper-slide
+                    img(src='./img/slide1.png')
+                li.swiper-slide
+                    img(src='./img/slide2.png')
+                li.swiper-slide
+                    img(src='./img/slide1.png')
+                li.swiper-slide
+                    img(src='./img/slide2.png')
+
+        div.menu_wrap
+            ul#menuUl
+                li(v-for="menu in menuList")
+                    div.menu_item
+                        img(src="{{menu.src}}")
+                        span {{menu.text}}
+
+        footer
+            //页脚
+            nav.footer
+                a.cur
+                    img(src='./img/footer-1.png')
+                    span 首页
+
+                a
+                    img(src='./img/footer-2.png')
+                    span 找保姆
+
+                a
+                    img(src='./img/footer-3.png')
+                    span 个人中心
+
+
+
+
+    script.
+        var menuList = [
+            {
+                src: './img/baojie.png',
+                text: '临时保洁'
+            },
+            {
+                src: './img/zhongdian.png',
+                text: '长期钟点工'
+            },
+            {
+                src: './img/baomu.png',
+                text: '住家保姆'
+            },
+            {
+                src: './img/yuesao.png',
+                text: '月嫂'
+            },
+            {
+                src: './img/yuer.png',
+                text: '育儿嫂'
+            },
+            {
+                src: './img/laoren.png',
+                text: '看护老人'
+            },
+            {
+                src: './img/peihu.png',
+                text: '陪护'
+            },
+            {
+                src: './img/more.png',
+                text: '更多服务'
+            }
+        ];
+        var vm  =  new Vue({
+            el: '.menu_wrap',
+            data: {
+                menuList: menuList
+            }
+        });
+
+        //这个是使用Swiper插件
+        //$(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                //direction: 'vertical',
+                loop: true,
+                // 如果需要分页器
+                //pagination: '.swiper-pagination',
+                // 如果需要前进后退按钮
+                //nextButton: '.swiper-button-next',
+                //prevButton: '.swiper-button-prev',
+            })
+        //})
+
+
+
+
+        //滑动banner监听事件
+        //v-bind:src="{{menu.src}}"
+        var vm2 = new Vue({el: '.slide_wrap'});
+        var orgPosX, offsetX, startTime;
+        vm2.$on('touchstart', function (event) {
+            orgPosX = event.touches[0].pageX;
+            offsetX = 0;
+            startTime = new Date() * 1;
+        });
+        vm2.$on('touchmove', function (event) {
+            event.preventDefault();
+            offsetX = event.touches[0].pageX - orgPosX;
+        });
+        vm2.$on('touchend', function (event) {
+
+            console.log('offsetX=%d', offsetX);
+
+            endTime = new Date() * 1;
+            var timeDif = endTime - startTime;
+
+            var cls = '';
+
+            if (timeDif < 200) {
+                if (offsetX > 50) {
+                    cid--;
+                } else if (offsetX < -50) {
+                    cid++;
+                }
+            } else {
+                if (offsetX > $(window).width()/6) {
+                    cid--;
+                } else if (offsetX < -$(window).width()/6) {
+                    cid++;
+                }
+            }
+
+
+            if (cid < 0) {
+                cid = len;
+            }
+            if (cid > len) {
+                cid = 0;
+            }
+        })
+
+        //swipeEvent();
+
+        var clientW = $(window).width();
+        function swipeEvent(id) {
+            console.log(window.devicePixelRatio)//我的htc是2k屏， dpr是4， 魅族是2
+
+            var self = this;
+            var cid = id,
+                $slideWrap = $(".slide_wrap li"),
+                len = $slideWrap.length;
+
+            var startHandler = function (evt) {
+                self.cid = $(this).index();
+                console.log(self.cid);
+                self.startX = evt.touches[0].pageX;
+                self.offsetX = 0;
+                self.startTime = new Date() * 1;
+            };
+            var moveHandler = function (evt) {
+                evt.preventDefault();
+                self.offsetX = evt.touches[0].pageX - self.startX;
+                console.log(self.offsetX);
+
+                var i = self.cid - 1,
+                    n = i+3;
+                for (i; i < n; i++) {
+                    $slideWrap.eq(i).css({
+                        'transform': 'translate3d(' + (/*clientW/6 * i +*/ offsetX) + 'px, 0, 0)',
+                        '-webkit-transform': 'translate3d(' + (/*clientW/6 * i*/ + offsetX) + 'px, 0, 0)',
+                        'transition': 'all .5s ease-out 0s',
+                        '-webkit-transition': 'all .5s ease-out 0s'
+                    })
+                }
+            };
+            var endHandler = function () {
+                endTime = new Date() * 1;
+                var timeDif = endTime - startTime;
+                var cls = '';
+                if (timeDif < 200) {
+                    if (offsetX > 50) {
+                        cid--;
+                    } else if (offsetX < -50) {
+                        cid++;
+                    }
+                } else {
+                    if (offsetX > clientW / 6) {
+                        cid--;
+                    } else if (offsetX < - clientW / 6) {
+                        cid++;
+                    }
+                }
+                if (cid < 0) {
+                    cid = len;
+                }
+                if (cid > len) {
+                    cid = 0;
+                }
+            };
+
+            $(".slide_wrap li").on('touchstart', startHandler);
+            $(".slide_wrap li").on('touchmove', moveHandler);
+            $(".slide_wrap li").on('touchend', endHandler);
+        }

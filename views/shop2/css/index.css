@@ -1,0 +1,196 @@
+/*除字体之外的元素的尺寸转换方法*/
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+body,
+ul,
+nav {
+  margin: 0;
+  padding: 0;
+}
+.main_wrap {
+  flex-direction: column;
+}
+.main_wrap .header,
+.main_wrap .slide_wrap,
+.main_wrap .menu_wrap,
+.main_wrap footer {
+  width: 100%;
+}
+.header {
+  height: 1.33333333rem;
+  position: relative;
+  border: 1px solid transparent;
+  text-align: center;
+  line-height: 1.25rem;
+}
+.header span {
+  color: #3284a7;
+  font-family: 'sans-serif';
+  font-size: 22px;
+  font-weight: 500;
+}
+[data-dpr="2"] .header span {
+  font-size: 44px;
+}
+[data-dpr="2.5"] .header span {
+  font-size: 55px;
+}
+[data-dpr="2.75"] .header span {
+  font-size: 61px;
+}
+[data-dpr="3"] .header span {
+  font-size: 66px;
+}
+[data-dpr="4"] .header span {
+  font-size: 88px;
+}
+.header .icon-person {
+  position: absolute;
+  background-image: url("../img/person.png");
+  background-size: cover;
+  display: inline-block;
+  width: 0.63888889rem;
+  height: 0.63888889rem;
+  right: 0.41666667rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.slide_wrap {
+  height: 4.90277778rem;
+}
+.slide_wrap ul {
+  width: 600%;
+  height: 100%;
+}
+.slide_wrap li {
+  float: left;
+  overflow: hidden;
+  width: 16.66666667%;
+}
+.slide_wrap li img {
+  height: auto;
+  width: 100%;
+  display: block;
+}
+.slide_wrap li.cur {
+  display: block;
+}
+.menu_wrap {
+  height: 9.5rem;
+  padding-bottom: 1.34722222rem;
+  width: 100%;
+}
+.menu_wrap ul {
+  width: 100%;
+  height: 100%;
+}
+.menu_wrap li {
+  float: left;
+  width: 33.1%;
+  height: 33.3%;
+  border-right: 0.01388889rem solid #eeeeee;
+  border-bottom: 0.01388889rem solid #eeeeee;
+}
+.menu_wrap li:nth-of-type(3),
+.menu_wrap li:nth-of-type(6) {
+  border-right: none;
+}
+.menu_wrap .menu_item {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  box-orient: vertical;
+  box-pack: justify;
+  box-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.menu_wrap .menu_item img {
+  flex: 1;
+  box-flex: 1;
+  margin-top: 0.55555556rem;
+  width: 1.38888889rem;
+  height: 1.38888889rem;
+}
+.menu_wrap .menu_item span {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.38888889rem;
+  box-flex: 1;
+}
+[data-dpr="2"] .menu_wrap .menu_item span {
+  font-size: 28px;
+}
+[data-dpr="2.5"] .menu_wrap .menu_item span {
+  font-size: 35px;
+}
+[data-dpr="2.75"] .menu_wrap .menu_item span {
+  font-size: 39px;
+}
+[data-dpr="3"] .menu_wrap .menu_item span {
+  font-size: 42px;
+}
+[data-dpr="4"] .menu_wrap .menu_item span {
+  font-size: 56px;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  height: 1.33333333rem;
+  left: 0;
+  bottom: 0;
+  background-color: #333;
+}
+footer nav a {
+  position: relative;
+  display: inline-block;
+  width: 33.3%;
+  height: 100%;
+  line-height: 1.33333333rem;
+  text-align: center;
+}
+footer nav a.cur {
+  box-shadow: inset 3px 3px 5px 2px rgba(0, 0, 0, 0.3);
+  background: #424647;
+}
+footer nav a img {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 0.55555556rem;
+  height: 0.55555556rem;
+  top: 0.16666667rem;
+}
+footer nav a span {
+  font-size: 10px;
+  position: relative;
+  top: 0.13888889rem;
+}
+[data-dpr="2"] footer nav a span {
+  font-size: 20px;
+}
+[data-dpr="2.5"] footer nav a span {
+  font-size: 25px;
+}
+[data-dpr="2.75"] footer nav a span {
+  font-size: 28px;
+}
+[data-dpr="3"] footer nav a span {
+  font-size: 30px;
+}
+[data-dpr="4"] footer nav a span {
+  font-size: 40px;
+}
+footer nav a:not( :nth-of-type(1))::before {
+  content: '';
+  width: 0.01388889rem;
+  height: 1.22222222rem;
+  background: linear-gradient(to bottom, #333333, #eeeeee, #333333);
+  position: absolute;
+  z-index: 10;
+  left: -0.00694444rem;
+  top: 0.05555556rem;
+  border-radius: 50%;
+}
