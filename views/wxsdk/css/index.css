@@ -1,0 +1,164 @@
+/*除字体之外的元素的尺寸转换方法*/
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+body,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100%;
+}
+header {
+  background: #4889DB;
+  color: #fff;
+  height: 1.171875rem;
+}
+header i,
+header span {
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 23px;
+  line-height: 1.171875rem;
+  height: 100%;
+}
+[data-dpr="2"] header i,
+[data-dpr="2"] header span {
+  font-size: 45px;
+}
+[data-dpr="2.5"] header i,
+[data-dpr="2.5"] header span {
+  font-size: 56px;
+}
+[data-dpr="2.75"] header i,
+[data-dpr="2.75"] header span {
+  font-size: 62px;
+}
+[data-dpr="3"] header i,
+[data-dpr="3"] header span {
+  font-size: 68px;
+}
+[data-dpr="4"] header i,
+[data-dpr="4"] header span {
+  font-size: 90px;
+}
+header ._back {
+  font-style: normal;
+  width: 0.9375rem;
+}
+header ._title {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+header ._share {
+  float: right;
+  width: 1.40625rem;
+  height: 1.1875rem;
+}
+header ._share img {
+  vertical-align: middle;
+  width: 0.484375rem;
+  height: 0.484375rem;
+}
+.shake_wrap {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  background: linear-gradient(to bottom, #2d2d49, #f6514b);
+}
+.shake_wrap img {
+  height: 12.640625rem;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.shake_wrap .shake_mask {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  width: 100%;
+  height: 6.25rem;
+  top: 50%;
+  background: red;
+  transform: translate3d(0, -50%, 0);
+  -webkit-transform: translate3d(0, -50%, 0);
+  transition: height 0.6s ease-out 0s;
+  -webkit-transition: height 0.6s ease-out 0s;
+}
+.send_wrap {
+  margin-top: -2px;
+  background: #F6514B;
+  height: 3.125rem;
+}
+.send_wrap p {
+  padding: 0 3px;
+  margin: 0 auto;
+  width: 70%;
+  background: #CFC809;
+  border-radius: 20px;
+  text-align: center;
+  color: #2C3E48;
+  font-size: 13px;
+  height: 0.9375rem;
+  line-height: 0.9375rem;
+}
+[data-dpr="2"] .send_wrap p {
+  font-size: 25px;
+}
+[data-dpr="2.5"] .send_wrap p {
+  font-size: 31px;
+}
+[data-dpr="2.75"] .send_wrap p {
+  font-size: 34px;
+}
+[data-dpr="3"] .send_wrap p {
+  font-size: 38px;
+}
+[data-dpr="4"] .send_wrap p {
+  font-size: 50px;
+}
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 0.90625rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+.footer a {
+  display: inline-block;
+  float: left;
+  width: 49%;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  line-height: 0.90625rem;
+  color: #fff;
+}
+[data-dpr="2"] .footer a {
+  font-size: 40px;
+}
+[data-dpr="2.5"] .footer a {
+  font-size: 50px;
+}
+[data-dpr="2.75"] .footer a {
+  font-size: 55px;
+}
+[data-dpr="3"] .footer a {
+  font-size: 60px;
+}
+[data-dpr="4"] .footer a {
+  font-size: 80px;
+}
+.footer a:nth-of-type(1) {
+  border-right: 0.015625px #ffffff solid;
+}
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}

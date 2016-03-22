@@ -12,6 +12,7 @@ var fontEl = document.createElement('style');
 var metaEl = document.querySelector('meta[name="viewport"]');
 
 dpr = window.devicePixelRatio || 1;
+//alert(dpr);
 rem = docEl.clientWidth * dpr / 10;
 scale = 1 / dpr;
 

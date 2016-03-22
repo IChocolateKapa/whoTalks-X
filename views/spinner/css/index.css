@@ -1,0 +1,147 @@
+/*除字体之外的元素的尺寸转换方法*/
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+body,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+.banner_wrap {
+  width: 100%;
+  height: 4.625rem;
+  background: url("../img/banner.png") no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.banner_wrap,
+.banner_wrap .title,
+.banner_wrap .activity {
+  background-size: cover;
+}
+.banner_wrap .title,
+.banner_wrap .activity {
+  position: absolute;
+}
+.banner_wrap .title {
+  top: 0.9375rem;
+  left: 0;
+  width: 100%;
+  height: 1.9375rem;
+  background: url("../img/title.png") no-repeat;
+}
+.banner_wrap .activity {
+  cursor: pointer;
+  z-index: 5;
+  width: 2.59375rem;
+  height: 0.890625rem;
+  bottom: 0.625rem;
+  right: 0.578125rem;
+  background: url("../img/activity.png") no-repeat;
+}
+.content_wrap {
+  width: 100%;
+  background: #691B4F;
+  height: 10.46875rem;
+  border-top: 0.125rem #330033 solid;
+}
+.content_wrap .spinner_wrap {
+  height: 8.1875rem;
+}
+.content_wrap p {
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+[data-dpr="2"] .content_wrap p {
+  font-size: 30px;
+}
+[data-dpr="2.5"] .content_wrap p {
+  font-size: 38px;
+}
+[data-dpr="2.75"] .content_wrap p {
+  font-size: 41px;
+}
+[data-dpr="3"] .content_wrap p {
+  font-size: 45px;
+}
+[data-dpr="4"] .content_wrap p {
+  font-size: 60px;
+}
+.content_wrap p.tip {
+  color: #B33541;
+}
+.content_wrap p.tip span {
+  color: white;
+}
+.content_wrap p.tip2 {
+  margin: 0.46875rem auto;
+  text-align: center;
+  height: 0.9375rem;
+  line-height: 0.9375rem;
+  width: 4.53125rem;
+  border-radius: 0.46875rem;
+  color: white;
+  letter-spacing: .06rem;
+  background: linear-gradient(to bottom, #fe5859, #dd354f);
+}
+.footer_top {
+  width: 100%;
+  height: 0.59375rem;
+  background: url("../img/footer.png") no-repeat;
+  background-size: cover;
+}
+.footer {
+  background: #D02D48;
+  padding: 5px 0;
+}
+.footer h3 {
+  padding-left: 0.59375rem;
+  font-style: italic;
+  color: white;
+  font-size: 15px;
+}
+[data-dpr="2"] .footer h3 {
+  font-size: 30px;
+}
+[data-dpr="2.5"] .footer h3 {
+  font-size: 38px;
+}
+[data-dpr="2.75"] .footer h3 {
+  font-size: 41px;
+}
+[data-dpr="3"] .footer h3 {
+  font-size: 45px;
+}
+[data-dpr="4"] .footer h3 {
+  font-size: 60px;
+}
+.footer ul {
+  width: 100%;
+}
+.footer ul li {
+  text-align: center;
+  border-radius: 0.3125rem;
+  width: 8.3125rem;
+  margin: 0.15625rem auto;
+  height: 0.875rem;
+  line-height: 0.875rem;
+  background: white;
+  color: #666;
+  font-size: 12px;
+}
+[data-dpr="2"] .footer ul li {
+  font-size: 24px;
+}
+[data-dpr="2.5"] .footer ul li {
+  font-size: 30px;
+}
+[data-dpr="2.75"] .footer ul li {
+  font-size: 33px;
+}
+[data-dpr="3"] .footer ul li {
+  font-size: 36px;
+}
+[data-dpr="4"] .footer ul li {
+  font-size: 48px;
+}

@@ -9,7 +9,7 @@ ul{list-style: none;}
 
 .img-container{
     margin: 0 auto;
-    /*ÐÂflex*/
+    /*æ–°flex*/
     display: -webkit-flex;
     display: flex;
     align-items: center;
@@ -18,14 +18,14 @@ ul{list-style: none;}
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
-    /*ÐÂflex*/
+    /*æ–°flex*/
 
-    /*¾Éflex*/
+    /*æ—§flex*/
     /* display:-webkit-box;
      display:-moz-box;
      box-align: center;
-     box-lines£ºmultiple;*/
-    /*¾Éflex*/
+     box-linesï¼šmultiple;*/
+    /*æ—§flex*/
 
 }
 .img-container li{

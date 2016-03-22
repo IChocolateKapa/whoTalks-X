@@ -5,6 +5,8 @@
 
 
 var mongoUtil = {
+    db: '',
+    cfg: {},
     config: {
         'host': '127.0.0.1',
         'port': 27017,
@@ -18,51 +20,48 @@ var mongoUtil = {
 
         var thisCfg = extend(this.config, config);
 
-        var mongoose = require('mongoose'),
-            Schema = mongoose.Schema;
+        this.cfg = thisCfg;
 
-        // Define User schema
-        var UserSchema = new Schema({
-            email : String,
-            username : String,
-            password : String
-        });
-        var UserModel = mongoose.model('UserModel', UserSchema);
+        var myDb = this.getConnection();
 
-        var alexEntity = new UserModel({
-            email: 'echo@145.com',
-            username: 'wuhaiping',
-            password: '123643r43'
-        });
+        //console.log("myDb = ", myDb);
 
-        alexEntity.save();
+        return myDb;
 
-        console.log("alexEntity'info: ", alexEntity);
-        //console.log("alexEntity.speak: ", alexEntity.speak());
+    },
+    getConnection: function () {
+        if (!this.db) {
+            var mongoose = require('mongoose');
+            //this.db = mongoose.createConnection('mongodb://' + this.cfg.host + ':' + this.cfg.port + '/' + this.cfg.dbname, {
+            //    server: {poolSize: 10}
+            //});
 
-        /*alexEntity.virtual('email').get(function () {
-            console.log("in getter, this: ", this)
-        })*/
+            this.db = mongoose.connect('mongodb://' + this.cfg.host + ':' + this.cfg.port + '/' + this.cfg.dbname);
 
-        var db = mongoose.createConnection('mongodb://' + thisCfg.host + ':' + thisCfg.port + '/' + thisCfg.dbname, {
-            server: {poolSize: 4}
-        });
-
-        console.log("db = ", db);
-
-
-        db.on('error',console.error.bind(console,'连接错误:'));
-
-        //db.
-
-
-
-
+            //this.db.on('error', console.error.bind(console, 'mongoDb 连接错误:'));
+        }
+        return this.db;
     },
 
     use: function () {
 
     },
+
+    insert: function () {
+
+    },
+
+    update: function () {
+
+    },
+
+    remove: function () {
+
+    },
+
+    select: function () {
+
+    }
 
 
 };

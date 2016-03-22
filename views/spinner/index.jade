@@ -1,0 +1,39 @@
+//
+   Created by Echo on 2016/3/8.
+
+extends ../base
+
+block append head
+   link(rel='stylesheet', href='./css/index.css')
+   script(src='./js/change.js')
+   script(src='./js/vue.js')
+   script(src='./js/zepto.min.js')
+
+block content
+   div.main_wrap
+       div.banner_wrap
+           div.title
+           div.activity
+
+
+       div.content_wrap
+            div.spinner_wrap
+                div.spinner_bg
+
+
+
+            p.tip 抽奖次数：<span>3</span> 次
+            p.tip2 我的中奖记录
+
+       div.footer_top
+       div.footer
+           h3 获奖名单
+           ul
+               li: span 恭喜手机尾号为****8890的用户
+               li: span 恭喜手机尾号为****8890的用户
+               li: span 恭喜手机尾号为****8890的用户
+               li: span 恭喜手机尾号为****8890的用户
+               li: span 恭喜手机尾号为****8890的用户
+               li: span 恭喜手机尾号为****8890的用户
+
+

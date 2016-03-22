@@ -25,6 +25,7 @@ app.use(cookieParser());
 //挂载一个虚拟的文件路径
 app.use('/lib', express.static(path.join(__dirname, 'node_modules')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 
 

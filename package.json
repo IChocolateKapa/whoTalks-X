@@ -4,6 +4,7 @@
   "description": "mobile chat project",
   "main": "www.js",
   "scripts": {
+    "mk": "mkdir abc",
     "test": "node-debug ./bin/www",
     "start": "supervisor ./bin/www"
   },
