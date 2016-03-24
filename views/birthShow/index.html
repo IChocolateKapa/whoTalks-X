@@ -9,49 +9,16 @@
     <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="css/animate.min.css"/>
     <script src="js/change.js"></script>
-    <script src="js/jweixin-1.1.0.js"></script>
-
-    <script>
-        /*$(function () {
-            $.ajax({
-                url: '/getAppInfo',
-                data: {
-                    url: 'http://zhidaoer.com:5664/birthShow'
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (data) {
-                    initWx(data);
-                }
-            });
-        });*/
-
-
-        function initWx(data) {
-            wx.config({
-                debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                appId: data.appid, // 必填，公众号的唯一标识
-                timestamp: data.timestamp, // 必填，生成签名的时间戳
-                nonceStr: data.nonceStr, // 必填，生成签名的随机串
-                signature: data.signature,// 必填，签名，见附录1
-                jsApiList: [
-                    'checkJsApi',
-                    'onMenuShareTimeline',
-                    'onMenuShareAppMessage',
-                    'onMenuShareQQ',
-                    'onMenuShareWeibo'
-                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-            });
-        }
-
-    </script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="userPicture/users.js"></script>
 </head>
 <body>
 <main>
 
 </main>
 <div id='wx_pic' style='margin:0 auto; display:none;'>
-    <img src='http://zhidaoer.com:5664/wxsdk/img/banner.jpg'/>
+    <img src='img/icon.jpg'/>
 </div>
 
 <div class="pf music play">
@@ -73,167 +40,186 @@
 </main>
 
 
-<div class="slide_wrap swiper-container">
-    <ul class="swiper-wrapper">
+<div class="slide_wrap swiper-container" id="swiper">
+    <div class="swiper-wrapper">
 
-        <li class="swiper-slide curr">
-            <div class="pr flowerBg ani"  swiper-animate-effect="bounceInDown" swiper-animate-duration=".5s" swiper-animate-delay="0.2s">
-                <img src="img/flowerbg.png" alt="花环"/>
+        <div class="swiper-slide curr">
+            <div class="page">
+                <div class="pr flowerBg ani"  swiper-animate-effect="bounceInDown" swiper-animate-duration=".6s" swiper-animate-delay="0.2s">
+                    <img src="img/flowerbg.png" alt="花环"/>
 
-                <div class="pa moon ani"  swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay="1s">
-                    <img src="img/moon.png" alt="饼图"/>
+                    <div class="pa moon ani"  swiper-animate-effect="bounceInLeft" swiper-animate-duration=".8s" swiper-animate-delay="1.1s">
+                        <img src="img/moon.png" alt="饼图"/>
+                    </div>
+                    <div class="pa bird ani" swiper-animate-effect="bounceInRight" swiper-animate-duration=".8s" swiper-animate-delay="2.2s">
+                        <img src="img/bird.png" alt="鸟儿"/>
+                    </div>
+
+                   <!-- <div class="pa titile ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".8s" swiper-animate-delay="2.6s">
+                        &lt;!&ndash;<span>58赶集信息系统部</span>&ndash;&gt;
+                        <img src="img/chupin.png" alt=""/>
+                    </div>-->
+
+
+                    <div class="pa huaban ani" swiper-animate-effect="zoomInLeft" swiper-animate-duration=".9s" swiper-animate-delay="3.2s">
+                        <img src="img/huaban.png" alt="花瓣"/>
+                    </div>
+
                 </div>
-                <div class="pa bird ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".8s" swiper-animate-delay="1.8s">
-                    <img src="img/bird.png" alt="鸟儿"/>
-                </div>
 
-                <div class="pa titile ani" swiper-animate-effect="rotateIn" swiper-animate-duration=".8s" swiper-animate-delay="2.6s">
-                    <span>58赶集信息系统部</span>
-                </div>
-
-                <div class="pa huaban ani" swiper-animate-effect="zoomInLeft" swiper-animate-duration=".9s" swiper-animate-delay="3.2s">
-                    <img src="img/huaban.png" alt="花瓣"/>
+                <div class="pa myfooter ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.6s" swiper-animate-delay="4s">
+                    <img src="img/footer-1.png" alt="蜡烛"/>
                 </div>
 
             </div>
 
+        </div>
 
 
-            <div class="pa myfooter ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.6s" swiper-animate-delay="4s">
-                <img src="img/footer-1.png" alt="蜡烛"/>
+        <div v-for="person in userList" class="swiper-slide picPart">
+            <div class="page">
+                <header class="header ani" swiper-animate-effect="bounceInDown" swiper-animate-duration=".8s" swiper-animate-delay="0.1s">
+                    <img src="img/headBanner.png" alt="生日童鞋"/>
+                </header>
+
+                <section class="userSection clearFix ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="1.1s">
+
+                    <div class="userItem">
+                        <div class="userItem-l ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".7s" swiper-animate-delay="1.4s">
+                            <img src="{{person[0].pic}}" alt="小伙伴的灶片"/>
+                        </div>
+
+
+                        <div class="userItem-r ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="2.2s">
+                            <div class="userInfo">
+                                <span class="userInfo-l">生日：</span>
+                                <span class="userInfo-r">{{person[0].birthday}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">入职时间：</span>
+                                <span class="userInfo-r">{{person[0].inTime}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">二级部门：</span>
+                                <span class="userInfo-r">{{person[0].department}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">职位：</span>
+                                <span class="userInfo-r">{{person[0].title}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">心愿/寄语：</span>
+                                <span class="userInfo-r">{{person[0].wish}}</span>
+                            </div>
+                        </div>
+
+                        <span class="userName ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".5s" swiper-animate-delay="1.6s">{{person[0].name}}</span>
+
+                        <i class="sideBar _t"></i>
+                        <i class="sideBar _b"></i>
+                    </div>
+                </section>
+
+
+                <section v-if="person[1]" class="userSection clearFix ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="2.8s">
+                    <div class="userItem">
+                        <div class="userItem-l ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="3.2s">
+                            <img src="{{person[1].pic}}" alt="小伙伴的灶片"/>
+                        </div>
+                        <div class="userItem-r ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="3.8s">
+                            <div class="userInfo">
+                                <span class="userInfo-l">生日：</span>
+                                <span class="userInfo-r">{{person[1].birthday}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">入职时间：</span>
+                                <span class="userInfo-r">{{{{person[1].inTime}}}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">二级部门：</span>
+                                <span class="userInfo-r">{{person[1].department}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">职位：</span>
+                                <span class="userInfo-r">{{person[1].title}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">心愿/寄语：</span>
+                                <span class="userInfo-r">{{person[1].wish}}</span>
+                            </div>
+                        </div>
+
+                        <span class="userName ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".5s" swiper-animate-delay="3.4s">{{person[1].name}}</span>
+
+                        <i class="sideBar _t"></i>
+                        <i class="sideBar _b"></i>
+                    </div>
+                </section>
+
+                <div v-else class="weiwan clearFix ani" swiper-animate-effect="bounceInDown" swiper-animate-duration=".6s" swiper-animate-delay="2.8s">
+                    <img src="img/weiwan.png" alt="未完待续"/>
+                </div>
+
+                <footer class="footer ani" swiper-animate-effect="bounceInUp" swiper-animate-duration=".8s" swiper-animate-delay="4.5s">
+                    <img src="img/footer.png" alt=""/>
+                </footer>
             </div>
-
-        </li>
-
-
-        <li class="swiper-slide picPart">
-
-            <header class="header ani" swiper-animate-effect="bounceInDown" swiper-animate-duration=".8s" swiper-animate-delay="0.1s">
-                <img src="img/headBanner.png" alt="生日童鞋"/>
-            </header>
-
-            <section class="userSection ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="1s">
-                <div class="userItem">
-                    <div class="userItem-l ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1.1s">
-                        <img src="img/person.png" alt="小伙伴的灶片"/>
-                    </div>
-                    <div class="userItem-r ani" swiper-animate-effect="bounceInRight" swiper-animate-duration=".6s" swiper-animate-delay="2s">
-                        <div class="userInfo">
-                            <span class="userInfo-l">生日：</span>
-                            <span class="userInfo-r">3/13</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">入职时间：</span>
-                            <span class="userInfo-r">2015/3/2</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">二级部门：</span>
-                            <span class="userInfo-r">数据部</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">职位：</span>
-                            <span class="userInfo-r">开发工程师</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">心愿/寄语：</span>
-                            <span class="userInfo-r">开心就好</span>
-                        </div>
-                    </div>
-
-                    <span class="userName ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="1.2s">姜振兴</span>
-
-                    <i class="sideBar _t"></i>
-                    <i class="sideBar _b"></i>
-                </div>
-            </section>
-
-            <section class="userSection ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="2.6s">
-                <div class="userItem">
-                    <div class="userItem-l ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration=".6s" swiper-animate-delay="2.6s">
-                        <img src="img/person.png" alt="小伙伴的灶片"/>
-                    </div>
-                    <div class="userItem-r ani" swiper-animate-effect="bounceInRight" swiper-animate-duration=".6s" swiper-animate-delay="3s">
-                        <div class="userInfo">
-                            <span class="userInfo-l">生日：</span>
-                            <span class="userInfo-r">3/13</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">入职时间：</span>
-                            <span class="userInfo-r">2015/3/2</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">二级部门：</span>
-                            <span class="userInfo-r">数据部</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">职位：</span>
-                            <span class="userInfo-r">开发工程师</span>
-                        </div>
-                        <div class="userInfo">
-                            <span class="userInfo-l">心愿/寄语：</span>
-                            <span class="userInfo-r">开心就好</span>
-                        </div>
-                    </div>
-
-                    <span class="userName ani" swiper-animate-effect="fadeInUp" swiper-animate-duration=".5s" swiper-animate-delay="2.7s">姜振兴</span>
-
-                    <i class="sideBar _t"></i>
-                    <i class="sideBar _b"></i>
-                </div>
-            </section>
-
-            <footer class="footer ani" swiper-animate-effect="bounceInUp" swiper-animate-duration=".6s" swiper-animate-delay="3.3s">
-                <img src="img/footer.png" alt=""/>
-            </footer>
-
-        </li>
+        </div>
 
         <!---->
-        <li class="swiper-slide">
-            <div class="line">
-                <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
-                    <img src="img/line1.png" alt=""/>
+        <div class="swiper-slide">
+
+            <div class="page">
+                <div class="line">
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                        <img src="img/line1.png" alt=""/>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s">
+                        <img src="img/line2.png" alt=""/>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.1s">
+                        <img src="img/line3.png" alt=""/>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.6s">
+                        <img src="img/line4.png" alt=""/>
+                    </div>
+                    <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2.1s">
+                        <img src="img/line5.png" alt=""/>
+                    </div>
+                    <div class="ani tr"  swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="2.6s">
+                        <img src="img/laojia.png" alt=""/>
+                    </div>
+
+                    <div class="laojiaPic ani"  swiper-animate-effect="rotateInUpLeft" swiper-animate-duration="0.8s" swiper-animate-delay="3.4s">
+                        <img src="img/laojiaPic.png" alt="老贾照片" />
+                    </div>
                 </div>
-                <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s">
-                    <img src="img/line2.png" alt=""/>
+
+                <div class="handFlower ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.8s" swiper-animate-delay="4.2s">
+                    <img src="img/hand.png" alt="手捧花"/>
                 </div>
-                <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.1s">
-                    <img src="img/line3.png" alt=""/>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="swiper-slide last">
+            <div class="page">
+                <div class="happy ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="0.1s">
+                    <img src="img/happy.png" alt="happy birthday"/>
                 </div>
-                <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.6s">
-                    <img src="img/line4.png" alt=""/>
-                </div>
-                <div class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2.1s">
-                    <img src="img/line5.png" alt=""/>
-                </div>
-                <div class="ani tr"  swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="2.6s">
-                    <img src="img/laojia.png" alt=""/>
+
+                <div class="candle ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.7s">
+                    <img src="img/candle.png" alt="蜡烛"/>
                 </div>
             </div>
 
-            <div class="handFlower ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.5s" swiper-animate-delay="3.1s">
-                <img src="img/hand.png" alt="手捧花"/>
-            </div>
 
-        </li>
+        </div>
 
-
-
-        <li class="swiper-slide">
-            <div class="happy ani" swiper-animate-effect="bounceInLeft" swiper-animate-duration="0.8s" swiper-animate-delay="0.1s">
-                <img src="img/happy.png" alt="happy birthday"/>
-            </div>
-            <div class="mytip ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.8s" swiper-animate-delay="0.9s">
-                <p>58赶集信息系统部出品</p>
-                <input type="button" class="repeat" value="再看一遍啦~"/>
-            </div>
-            <div class="candle ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.6s" swiper-animate-delay="1.7s">
-                <img src="img/candle.png" alt="蜡烛"/>
-            </div>
-
-        </li>
-
-    </ul>
+    </div>
 
 
     <!-- 如果需要滚动条 -->
@@ -241,19 +227,35 @@
 </div>
 
 
-<script src="js/zepto.min.js"></script>
 <script src="js/swiper-3.3.1.jquery.min.js"></script>
 <script src="js/swiper.animate1.0.2.min.js"></script>
 
 <script>
 
+    var vm  =  new Vue({
+        el: '.swiper-wrapper',
+        data: {
+            userList: userList,
+            animationList: ['bounceInLeft', 'rollIn', 'fadeInUp', 'zoomInUp', 'flipInY', 'bounceInUp', 'fadeInDown', 'flipInX'],
+            num: 8
+        }
+    });
+
     window.onload = function () {
 
         $(".loading").hide();
 
+        var flag = false;
+        var ua = navigator.userAgent;
+        if (ua.indexOf('SM-N9100') != -1) {
+            flag = true;
+        }
+        var eswiper = document.getElementById("swiper");
+        var scale = window.screen.height / window.screen.width;
+        eswiper.style.height = document.body.clientWidth * scale + "px";
+
         var mymusic = document.getElementById('music');
         mymusic.play();
-
         var mySwiper = new Swiper('.swiper-container', {
             direction: 'vertical',
             loop: true,
@@ -263,18 +265,25 @@
             scrollbar: '.swiper-scrollbar',
             loopedSlides: $(".swiper-slide").length,//此参数最大设定为slide的个数，表示循环播放animation最多只能两遍
             onSlideChangeEnd: function(swiper){
+                $(".page").css({
+                    'width': $(window).width(),
+                    'height': $(window).height()
+                });
                 swiperAnimate(swiper);
+                var curIndex = swiper.activeIndex,
+                    $curSlide = $(".swiper-slide").eq(curIndex);
+                if (flag && $curSlide.hasClass('picPart')) {
+                    $(".userSection").css({
+                        'margin-top': '10%'
+                    });
+                }
             }
         });
 
 
-        $(".swiper-container").on('click', ".repeat", function () {
-//            mySwiper.params.slidesPerView=4;
-//            mySwiper.reLoop();
-//            mySwiper.slideTo(0);
-            mySwiper.slideNext();
-//            mySwiper.update();
-        })
+        $(".swiper-container").on('click', ".happy", function () {
+            window.location.reload();
+        });
 
 
         $(".music").click(function () {
@@ -286,36 +295,7 @@
                 $this.addClass('play');
                 document.getElementById('music').play();
             }
-
-        })
-
-
-
-        wx.ready(function () {
-            wx.onMenuShareAppMessage({
-                title: '惊呆了！刘林林居然是个Gay!', // 分享标题
-                desc: '惊天爆料,近日风行记者跟踪多日的天王巨星刘林林，被目击带疑似男宠回其在朝阳区的豪宅，男子在寓所内逗留整夜！', // 分享描述
-                link: 'http://zhidaoer.com:5664/wxsdk/', // 分享链接
-                imgUrl: 'http://zhidaoer.com:5664/wxsdk/img/banner.jpg', // 分享图标
-                type: 'link', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    alert('用户确认点击了分享给朋友按钮！');
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                    alert('用户取消了分享给朋友按钮~~~');
-                }
-            });
         });
-
-
-        $(".swiper-container").css({
-            'width': $(window).width(),
-            'height': screen.height
-        });
-
     };
 
 
