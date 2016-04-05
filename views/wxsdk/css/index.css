@@ -41,6 +41,10 @@ header span {
 [data-dpr="3"] header span {
   font-size: 68px;
 }
+[data-dpr="3.5"] header i,
+[data-dpr="3.5"] header span {
+  font-size: 79px;
+}
 [data-dpr="4"] header i,
 [data-dpr="4"] header span {
   font-size: 90px;
@@ -119,6 +123,9 @@ header ._share img {
 [data-dpr="3"] .send_wrap p {
   font-size: 38px;
 }
+[data-dpr="3.5"] .send_wrap p {
+  font-size: 44px;
+}
 [data-dpr="4"] .send_wrap p {
   font-size: 50px;
 }
@@ -149,6 +156,9 @@ header ._share img {
 }
 [data-dpr="3"] .footer a {
   font-size: 60px;
+}
+[data-dpr="3.5"] .footer a {
+  font-size: 70px;
 }
 [data-dpr="4"] .footer a {
   font-size: 80px;
