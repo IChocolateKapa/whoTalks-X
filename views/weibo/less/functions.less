@@ -1,0 +1,80 @@
+/**
+ * Created by Echo on 2016/4/6.
+ */
+
+@base: 75;
+.px2rem(@name, @px){
+    @{name}: @px / @base * 1rem;
+}
+.px2rem_border(@name, @px, @bdr){
+    @{name}: @px / @base * 1rem @bdr;
+}
+.px2rem_border-radius(@px){
+    border-radius: @px / @base * 1rem;;
+    -webkit-border-radius: @px / @base * 1rem;
+    -moz-border-radius: @px / @base * 1rem;
+}
+.px2rem_translate2d(@x, @y) {
+    transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -webkit-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -moz-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -ms-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -o-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+}
+.px2rem_translate3d(@x, @y, @z) {
+    transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -webkit-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -moz-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -ms-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -o-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+}
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+//例如.px2px(font-szie, 22px);
+.px2px(@name, @px){
+    @{name}: round(@px / 2) * 1px;
+    [data-dpr="2"] & {
+    @{name}: @px * 1px;
+}
+// for mx3
+[data-dpr="2.5"] & {
+@{name}: round(@px * 2.5 / 2) * 1px;
+}
+// for 小米note
+[data-dpr="2.75"] & {
+@{name}: round(@px * 2.75 / 2) * 1px;
+}
+[data-dpr="3"] & {
+@{name}: round(@px / 2 * 3) * 1px
+}
+[data-dpr="3.5"] & {
+@{name}: round(@px / 2 * 3.5) * 1px
+}
+// for 三星note4
+[data-dpr="4"] & {
+@{name}: @px * 2px;
+}
+}
+
+
+.animation(@args){
+    animation: @args;
+    -webkit-animation: @args;
+    -moz-animation: @args;
+    -ms-animation: @args;
+}
+.transform(@args){
+    transform: @args;
+    -webkit-transform: @args;
+    -moz-transform: @args;
+    -ms-transform: @args;
+    -o-transform: @args;
+}
+
+.transition(@trans){
+    transition: @trans;
+    -webkit-transition: @trans;
+    -moz-transition: @trans;
+    -ms-transition: @trans;
+    -o-transition: @trans;
+}
