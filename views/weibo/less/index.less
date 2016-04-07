@@ -144,6 +144,20 @@ header h4{
   .px2rem(margin-top, 50);
   height: auto;
   .px2rem_border(border, 1, solid #eee);
+
+  &::before{
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    .transform(translate(-50%, -100%));
+    .px2rem_border(border-bottom, 50, solid #eee);
+    .px2rem_border(border-right, 25, solid transparent);
+    .px2rem_border(border-left, 25, solid transparent);
+  }
+
+
   .none{
     .px2px(font-size, 26);
     text-align: center;

@@ -12,8 +12,19 @@
     <meta name="robots" content="index,follow">
     <link rel="stylesheet" href="css/index.css"/>
     <script src="js/lib/change.js"></script>
-    <script src="js/lib/zepto.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/lib/require.js" data-main="main"></script>
+    <script>
+        require.config({
+            baseUrl: 'js',
+            paths: {
+                jquery: 'lib/jquery.min',
+                zepto: 'lib/zepto.min',
+                text: 'lib/text',
+                'vue': 'lib/vue.min',
+                niceScroll: 'http://j2.58cdn.com.cn/mis/common/dep/jquery.nicescroll/jquery.nicescroll.min'
+            }
+        });
+    </script>
     <title>你我的新鲜事儿~快来动弹一下吧</title>
 </head>
 <body>
@@ -47,8 +58,8 @@
             </div>
 
             <div class="commentPanel">
-                <div class="triangle"></div>
-                <p class="none">暂无评论</p>
+                <!--<p class="none">暂无评论</p>-->
+                <comment-template></comment-template>
                 <!--<div class="commentItem">
                     <img class="headimg" src="img/myhead/3.jpg" alt="头像"/>
                     <div class="dongtan-content">
