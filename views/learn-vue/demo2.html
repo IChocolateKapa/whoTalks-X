@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <script src="vue.min.js"></script>
+    <title>demo2</title>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+
+    <script>
+        /*注意！在模版中使用指令时，Data是在extend方法中【创建构造器】指定的，不是在创建根实例时指定*/
+        var MyComponent  = Vue.extend({
+            template: '<div v-for="person in peopleList">{{ tip }} ==> {{person.name}}</div>',
+            data: function () {
+                return {
+                    tip: 'caution! water! wet paint!',
+                    peopleList: [
+                        {
+                            name: '_哈哈哈',
+                            time: '2016.03.02 13:24:43',
+                            word: '真的假的啊？看起来平时人还不错啊？求真相~'
+                        },
+                        {
+                            name: '_哈哈哈333',
+                            time: '2023.03.02 13:24:43',
+                            word: 'ewe？r3wtrtfewtr543t？求真相~'
+                        },
+                        {
+                            name: '查查互踩3',
+                            time: '2014.03.02 13:24:43',
+                            word: '单位的洼地？受委屈啊死亡线上小娃潇洒思想？额的洼地完善地方~'
+                        }
+                    ]
+                }
+            }
+        });
+        // 注册
+        Vue.component('my-component', MyComponent);
+        // 创建根实例
+        new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>
