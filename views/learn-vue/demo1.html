@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <title>demo1</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <p>单选框， select,复选框默认都是字符串类型的，多个在一起时要在创建根实例的时候在data中显示声明模型的类型</p>
+    <p>checkbox 多个在一起时</p>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames | json }}</span>
+
+    <br/>
+    <br/>
+
+    <p>select </p>
+    <select v-model="selected">
+        <option selected>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <br/>
+    <br/>
+
+    <p>radio 单选框</p>
+    <input type="radio" id="man" value="男人" v-model="checkedSex">
+    <label for="man">男人</label>
+    <input type="radio" id="woman" value="女人" v-model="checkedSex">
+    <label for="woman">女人</label>
+    <input type="radio" id="nothing" value="中性人" v-model="checkedSex">
+    <label for="nothing">中性人</label>
+    <br>
+    <span>Checked sex: {{ checkedSex }}</span>
+
+    <br/>
+    <br/>
+
+
+
+    <p>单个checkbox值 选中与否</p>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <br/>
+    <br/>
+
+
+
+    <p>输入增加列表项</p>
+    <input type="text" v-model="myAdd" placeholder="enter something~~" @keyup.enter="enterFunction"/>
+    <ul>
+        <!--v-on可以缩写为@-->
+        <li v-for="todo in todos" @click="callBackClick($index, $event)">
+            {{ todo.text }}
+        </li>
+    </ul>
+
+
+    <br/>
+    <br/>
+    <p>测试计算属性:</p>
+    <p>
+        计算所有的列表元素相加：　{{allIn}}
+    </p>
+    <p>
+        my FullName is {{fullName}}
+    </p>
+
+
+    <br/><br/>
+    <p>测试降频指令及过滤器</p>
+    <div>
+        您输入的内容是：　{{msg}}
+        <!--<input v-model="msg" debounce="500" @keydown="getList"> 降频，在模糊匹配下拉列表时十分有用;但是这样写法是没用的，看下面这样的写法-->
+        <input v-model="msg" @keydown="getList | debounce 500"><!--这样的写法正确，使用了debounce过滤器-->
+    </div>
+
+
+    <br/><br/><br/>
+    <p>测试filterBy过滤器</p>
+    <div id="filter-by-example">
+        <input v-model="ttname">
+        <ul>
+            <li v-for="user in users | filterBy ttname in 'name' 'age'">
+                {{ user.name }}
+            </li>
+        </ul>
+    </div>
+
+    <br/><br/><br/>
+    <p>测试orderBy过滤器</p>
+    <div id="filter-by-example2">
+        <ul>
+            <li v-for="user in users | orderBy 'age' -1 "><!-- 'age'表示排序的属性依据， -1表示降序， 不填-1的话默认是1，表示升序  -->
+                {{ user.name }} ==> {{ user.age }}
+            </li>
+        </ul>
+    </div>
+    <br/><br/><br/>
+
+
+    <p>测试orderBy过滤器 -- 对于数组的排序 -- 升序排序 --
+            尝试了false或者-1的值好像对排序都没有影响，貌似只能进行升序排序</p>
+    <div id="filter-by-example3">
+        <ul>
+            <li v-for="n in numbers | orderBy true | Reverse">
+                {{ n }}
+            </li>
+
+        </ul><br/><br/>
+        <ul>
+            <li v-for="m in numbers2 | orderBy true">
+                {{ m }}
+            </li>
+        </ul>
+        <br/><br/>
+        <ul>
+            <li v-for="myname in names | orderBy true">
+                {{ myname }}
+            </li>
+        </ul>
+    </div>
+
+
+    <br/><br/>
+    <p>测试动态排序-- 不能增加后依然正确排序呀?</p>
+    <div id="orderby-example">
+        <input v-model="myName" @keyup.enter="addName"/>
+        <button id="cckk" @click="order = order * -1">Reverse Sort Order</button>
+        <ul>
+            <li v-for="user in users | orderBy 'name' order">
+                {{ user.name }}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            order: '-1',//这个值是在测试动态改变排序的时候用到的
+            numbers: [100, 34, 56, 1, -210, 39, 53],
+            numbers2: [324, 23, 177, 19, -10, -800, 533],
+            names: ['echo', 'lily', 'joecy', 'apple', 'tracy'],
+            users: [
+                {
+                    name: 'Echo',
+                    age: 25
+                },
+                {
+                    name: 'Bruce',
+                    age: 51
+                },
+                {
+                    name: 'Greens',
+                    age: 45
+                },
+                {
+                    name: 'ZhuLin',
+                    age: 76
+                },
+                {
+                    name: 'Grag.J.Daniel',
+                    age: 15
+                }
+            ],
+            checkedNames: [],
+            firstName: 'Haiping',
+            lastName: 'Wu',
+            todos: [
+                {
+                    text: 'Apple'
+                },
+                {
+                    text: 'Banana'
+                },
+                {
+                    text: 'watermelon'
+                },
+                {
+                    text: 'pear'
+                }
+            ]
+        },
+        computed: {
+            /*相当于一个watch的作用*/
+            allIn: function () {
+                var tds = this.todos,
+                    ret = '';
+                for (var i = 0; i < tds.length; i++) {
+                    ret += tds[i].text + ' #$# ';
+                }
+                return ret.substr(0, ret.length-4) ;
+            },
+            fullName: {
+                // getter这个是默认的
+                /*计算属性的function默认的是get方法，当然可以自己重定义set方法
+                * fullName: function () {
+                *   return this.firstName + ' ' + this.lastName;
+                * }
+                * */
+                get: function () {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        },
+        methods: {
+            callBackClick: function (index, event) {
+                console.log(this.todos[index]);
+                console.log(event.target);
+            },
+            enterFunction: function () {
+                /*myAdd相当于一个模型*/
+                var newText = this.myAdd.trim();
+                console.log(newText);
+                if (newText) {
+                    this.todos.push({
+                        text: newText
+                    });
+                }
+                /*清空输入框的内容*/
+                this.myAdd = '';
+            },
+            getList: function () {
+                var text = this.msg;
+                console.log(text);
+            },
+            addName: function () {
+                var newName = this.myName.trim();
+                if (newName) {
+                    this.users.push({
+                        name: newName,
+                        age: Math.floor(Math.random() * 50)
+                    });
+                }
+//                this.order = this.order * -1;
+                //貌似不能实现输入新内容同时排序
+                this.myName = '';
+            },
+
+        }
+    })
+</script>
+</body>
+</html>
