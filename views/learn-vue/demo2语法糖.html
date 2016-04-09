@@ -11,7 +11,7 @@
     <meta name="author" content="Echo,echochocolatekapa@163.com">
     <meta name="robots" content="index,follow">
     <script src="vue.min.js"></script>
-    <title>demo2</title>
+    <title>demo2的语法糖</title>
 </head>
 <body>
     <div id="app">
@@ -19,8 +19,9 @@
     </div>
 
     <script>
-        /*注意！在模版中使用指令时，Data是在extend方法中【创建构造器】指定的，不是在创建根实例时指定*/
-        var MyComponent  = Vue.extend({
+        /*语法糖： 可以省略vue.extend方法直接使用commponent方法*/
+        // 注册, data和el是两个特殊属性，在extend方法中必须使用function
+        Vue.component('my-component', {
             template: '<div v-for="person in peopleList">{{ tip }} ==> {{person.name}}</div>',
             data: function () {
                 return {
@@ -45,8 +46,6 @@
                 }
             }
         });
-        // 注册
-        Vue.component('my-component', MyComponent);
         // 创建根实例
         new Vue({
             el: '#app'
