@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <title>demo3局部注册</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<child-temp></child-temp>
+    <div id="parent">
+        <parent-temp></parent-temp>
+    </div>
+
+    <script>
+        var Child = Vue.extend({
+            template: '<p>{{ msg }}</p>',
+            props: ['msg']
+        });
+
+        var Parent = Vue.extend({
+            template: '<div>'
+                        + '<p>author: {{msg.author}}</p>'
+                        + '<p>name: {{msg.name}}</p>'
+//                        + '<child-temp></child-temp>'
+                    + '</div>',
+            components: {
+                'child-temp': Child
+            },
+            data: function () {
+                return {
+                    msg: {
+                        age: 123,
+                        author: 'Echo',
+                        name: 'Haiping'
+                    }
+                }
+            }
+        });
+
+        Vue.component('parent-temp', Parent);
+
+        new Vue({
+            el: '#parent'
+        })
+
+    </script>
+</body>
+</html>
