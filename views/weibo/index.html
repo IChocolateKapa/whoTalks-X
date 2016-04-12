@@ -12,6 +12,7 @@
     <meta name="robots" content="index,follow">
     <link rel="stylesheet" href="css/index.css"/>
     <script src="js/lib/change.js"></script>
+    <!--<script src="js/lib/vue.min.js"></script>-->
     <script src="js/lib/require.js" data-main="main"></script>
     <script>
         require.config({
@@ -57,7 +58,7 @@
                 <div class="like"></div>
             </div>
 
-            <div class="commentPanel">
+            <div class="commentPanel" id="commentPanel">
                 <!--<p class="none">暂无评论</p>-->
                 <comment-template></comment-template>
                 <!--<div class="commentItem">
@@ -74,20 +75,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

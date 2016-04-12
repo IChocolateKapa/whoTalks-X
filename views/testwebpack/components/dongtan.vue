@@ -1,5 +1,7 @@
 <template>
-    <h2>{{title.title}}</h2>
+    <div class="aaatest">
+        <my-weibo></my-weibo>
+    </div>
 </template>
 
 <script>

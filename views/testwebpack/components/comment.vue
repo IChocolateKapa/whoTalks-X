@@ -1,6 +1,9 @@
 
 <template>
-    {{title.title}}
+    <h2>{{title.title}}</h2>
+    <p>{{title.author}}</p>
+    <p>{{title.time}}</p>
+    <p>{{title.likes}}</p>
 </template>
 
 <script>

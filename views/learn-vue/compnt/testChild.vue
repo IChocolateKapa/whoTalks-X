@@ -23,7 +23,7 @@
 
 
 <script>
-    module.exports = {
+    export default {
         name: 'articleSection',
         data: function () {
             return {
@@ -36,6 +36,16 @@
                     likes: ''
                 }
             }
-        }
+        },
+        props: [{
+            info: {
+                title: '',
+                subTitle: '',
+                author: '',
+                time: '',
+                content: '',
+                likes: ''
+            }
+        }]
     }
 </script>
