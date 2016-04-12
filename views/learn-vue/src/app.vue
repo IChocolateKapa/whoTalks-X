@@ -21,7 +21,7 @@
 </template>
 
 <script>
-    import articleSection from 'testChild.vue'
+    import articleSection from '../compnt/testChild.vue'
 
     export default {
         components: {
