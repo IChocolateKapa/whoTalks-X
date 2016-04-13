@@ -18,12 +18,20 @@
         <p>{{info.time}}</p>
         <p class="content">{{info.content}}</p>
         <p>{{info.likes}}</p>
+        <ul>
+            <li v-for="prop in info" tracke-by="$index">
+                {{$index}} -- {{info}}
+            </li>
+            <li v-repeat="{{info}}">
+                {{$key}}: {{$value}}
+            </li>
+        </ul>
     </child-section>
 </template>
 
 
 <script>
-    export default {
+    module.exports = {
         name: 'articleSection',
         data: function () {
             return {
