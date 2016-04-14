@@ -1,29 +1,18 @@
-<style lang="less">
-    .profile{
-        background: rgba(0,0,0,.1);
-        box-shadow: 1px 0 10px 53px #467820;
-        border-radius: 8px;
-        padding: 10px;
-        font-family: 'MicroSoft Yahei';
-        &-item{
-            color: #467820;
-        }
-    }
-</style>
+
 
 <template>
     <div class="profile">
-        <img src="http://10.252.55.48:8081/whoTalks-X/views/weibo/img/myhead/0.jpg" alt="headimg"/>
-        <p class="profile-item" >{{msg}}</p>
-        <p class="profile-item" v-for="kk in pro">
-            {{kk}}
-        </p>
-        <my-cmt :info="info"></my-cmt>
+        <!--<img src="http://10.252.55.48:8081/whoTalks-X/views/weibo/img/myhead/0.jpg" alt="headimg"/>-->
+        <!--<p class="profile-item" >{{msg}}</p>-->
+        <!--<p class="profile-item" v-for="kk in pro">-->
+            <!--{{kk}}-->
+        <!--</p>-->
+        <my-cmt :pro="pro" :info="info"></my-cmt>
     </div>
 </template>
 
 <script>
-    var cmtVue = require('../compnt/testChild.vue');
+    var cmtVue = require('../compnt/testParent.vue');
     module.exports = {
         components: {
           'my-cmt': cmtVue
