@@ -18,7 +18,7 @@
         <p class="profile-item" v-for="kk in pro">
             {{kk}}
         </p>
-        <my-cmt info="{{info}}"></my-cmt>
+        <my-cmt :info="info"></my-cmt>
     </div>
 </template>
 
@@ -39,6 +39,7 @@
                     home: '山西',
                     number: '18623749599'
                 },
+//                info: 'YoYo Hello World!',
                 info: {
                     title: '人生起伏不定',
                     subTitle: '小计工作二三事',
