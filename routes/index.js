@@ -274,6 +274,87 @@ var getTicket = function (url, res, accessData) {
     });
 };
 
+router.get('/weibo', function (req, res) {
+    res.render('weibo/index');
+});
+
+/*generate fake data for weibo*/
+router.post('/getFakeData', function(req, res) {
+
+    function getRanDomNumber (n) {
+        return Math.floor(Math.random*n);
+    }
+    var base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    function getChar (m) {
+        var ret = '';
+        while(m != 0) {
+            ret += base[getRanDomNumber(52)];
+            m--;
+        }
+        return ret;
+    }
+    /*return:
+    * yyyy-mm-dd hh:mm:ss
+    * */
+    function getFormatTime () {
+        var ret = '';
+        var curD = new Date(),
+            oTime = curD.getTime();
+
+        var yesD = new Date();
+        yesD.setTime(oTime);
+
+
+        var year = yesD.getFullYear(),
+            month = (yesD.getMonth() + 1) > 9 ? yesD.getMonth() + 1 : '0' + (yesD.getMonth() + 1),
+            day = yesD.getDate() > 9 ? yesD.getDate(): '0' + yesD.getDate(),
+            hour = yesD.getHours(),
+            minute = yesD.getMinutes(),
+            sec = yesD.getSeconds();
+
+
+        return ('' + year + '-' + month + '-' + day + '  ' + hour + ':' + minute + ':' + sec);
+    }
+
+    var clients = ['三星Note5', 'MX4', '华为Mate8', '红米', 'HTC One', '安卓客户端', 'iphone 5', 'iphone 6', 'iphone 6s', 'iphone 6s plus'];
+    var contents = [
+        '乱花渐欲迷人眼，浅草才能没马蹄, 又来到颐和园的白堤，心情仿佛也回到了3年前那次春游，愿我们心如明镜，不卑不亢，接受生活的美好和丑恶',
+        '终于爬到山顶啦！快看是谁在偷笑~~',
+        '昨天加班到深夜，今天又在催，妈的智障吗？不会安排工作就不要安排',
+        '秒针分针滴答滴答在转动，我的内心忽上忽下的阵阵悸动。明天我要嫁给你啦，明天我要嫁给你啦，要不是你问我，要不是你劝我，要不是适当的时候，你让我心动。【此时应该响起婚礼进行曲的钢琴版.....】',
+        '看来我真的不适合养花啊，花都死掉了，绿色盆栽都被太阳烤糊了。cry...',
+        '窗户开或者关，完全看个人心情， 就像我的头发，我自己的头发爱怎么弄就怎么弄，你他妈算个鸟，用你来指导！',
+        '路过森林，山泉的声音非常吸引人，就像森林在低吟浅唱',
+        '"靠过来，听回响，永恒就是这一秒的时间"'
+    ];
+    var pro = [],
+        cmt = [];
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 3; j++) {
+            cmt.push({
+                headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
+                author: getChar(6),
+                time: getFormatTime(),
+                likes: getRanDomNumber(30),
+                content: contents[getRanDomNumber(contents.length)]
+            })
+        }
+
+        pro.push({
+            headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
+            author: getChar(6),
+            time: getFormatTime(),
+            client: clients[getRanDomNumber(10)],
+            likes: getRanDomNumber(30),
+            content: contents[getRanDomNumber(contents.length)],
+            comments: cmt
+        })
+    }
+
+    res.send({'data': pro});
+});
+
+
 
 
 module.exports = router;

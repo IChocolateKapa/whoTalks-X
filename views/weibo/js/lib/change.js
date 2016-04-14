@@ -1,5 +1,5 @@
-//6´ú±íÉè¼Æ¸åÊÇ600ÏñËØ
-//Èç¹ûÉè¼Æ¸åÊÇ720px,ÔòÊı×ÖÎª720/100=7.2
+//6ä»£è¡¨è®¾è®¡ç¨¿æ˜¯600åƒç´ 
+//å¦‚æœè®¾è®¡ç¨¿æ˜¯720px,åˆ™æ•°å­—ä¸º720/100=7.2
 /*document.getElementsByTagName('html')[0].style.fontSize=document.documentElement.clientWidth/7.2+'px';
 window.onresize=function(){
 	document.getElementsByTagName('html')[0].style.fontSize=document.documentElement.clientWidth/7.2+'px';
@@ -16,20 +16,20 @@ rem = docEl.clientWidth * dpr / 10;
 scale = 1 / dpr;
 
 
-// ÉèÖÃviewport£¬½øĞĞËõ·Å£¬´ïµ½¸ßÇåĞ§¹û
+// è®¾ç½®viewportï¼Œè¿›è¡Œç¼©æ”¾ï¼Œè¾¾åˆ°é«˜æ¸…æ•ˆæœ
 metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
 
-// ÉèÖÃdata-dprÊôĞÔ£¬Áô×÷µÄcss hackÖ®ÓÃ
+// è®¾ç½®data-dprå±æ€§ï¼Œç•™ä½œçš„css hackä¹‹ç”¨
 docEl.setAttribute('data-dpr', dpr);
 
-// ¶¯Ì¬Ğ´ÈëÑùÊ½
+// åŠ¨æ€å†™å…¥æ ·å¼
 docEl.firstElementChild.appendChild(fontEl);
 fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
 
 
 
 
-// ¸øjsµ÷ÓÃµÄ£¬Ä³Ò»dprÏÂremºÍpxÖ®¼äµÄ×ª»»º¯Êı
+// ç»™jsè°ƒç”¨çš„ï¼ŒæŸä¸€dprä¸‹remå’Œpxä¹‹é—´çš„è½¬æ¢å‡½æ•°
 window.rem2px = function(v) {
 	v = parseFloat(v);
 	return v * rem;
