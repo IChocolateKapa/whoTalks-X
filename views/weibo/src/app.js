@@ -4,6 +4,8 @@
 
 var Vue = require('vue');
 var App = require('./app.vue');
+var VueAsyncData = require('vue-async-data');
+Vue.use(VueAsyncData);
 var vm = new Vue({
     el: 'body',
     components: {

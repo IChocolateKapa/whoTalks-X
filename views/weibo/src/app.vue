@@ -10,15 +10,12 @@
         </div>
     </section>
 
-    <!--<send-text v-on:notify="generate-send"></send-text>-->
-
-    <dongtan :prodata="prodata" :cmtdata="cmtdata"></dongtan>
+    <dongtan :prodata="prodata"></dongtan>
 </template>
 
 <script>
     var dongtanVue = require('../components/dongtan.vue'),
         $ = require('jquery');
-    console.log('expecting jquery is: ', $);
 
     module.exports = {
         components: {
@@ -44,7 +41,8 @@
                     time: new Date() + '',
                     likes: 0,
                     client: '三星S5',
-                    headimg: './img/myhead/'+Math.floor(Math.random() * 6) + '.jpg'
+                    headimg: './img/myhead/'+Math.floor(Math.random() * 6) + '.jpg',
+                    comments: []
                 };
                 self.prodata.push(protemp);
 
@@ -56,89 +54,26 @@
               prodata: [],
           }
         },
-        computed: {
-            prodata: function () {
-                var prod = [],
-                    self = this;
-                $.ajax({
-                    type: 'post',
-                    url: '/getFakeData',
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log('fakedata: ', data);
-                        self.setData(data.data);
-                    }
-                })
-            }
-        },
-        /*data: function () {
-            return {
-                'msg': '',
-                'prodata': [
-                {
-                    headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                    author: 'Echo'+Math.random()*10,
-                    time: '2015-10-10 12:12:12',
-                    client: '小米Note',
-                    content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                    likes: Math.floor(Math.random() * 10000)
+        asyncData: function (resolve, reject) {
+            // load data and call resolve(data)
+            // or call reject(reason) if something goes wrong
+            $.ajax({
+                type: 'post',
+                url: '/getFakeData',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('fakedata: ', data);
+                    resolve({
+                        msg: 'success',
+                        prodata: data.data
+                    })
                 },
-                {
-                    headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                    author: 'Echo'+Math.random()*10,
-                    time: '2015-10-10 12:12:12',
-                    client: '小米Note',
-                    content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                    likes: Math.floor(Math.random() * 10000)
-                },
-                {
-                    headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                    author: 'Echo'+Math.random()*10,
-                    time: '2015-10-10 12:12:12',
-                    client: '小米Note',
-                    content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                    likes: Math.floor(Math.random() * 10000)
-                },
-                {
-                    headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                    author: 'Echo'+Math.random()*10,
-                    time: '2015-10-10 12:12:12',
-                    client: '小米Note',
-                    content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                    likes: Math.floor(Math.random() * 10000)
+                error: function () {
+                    reject({
+                        msg: 'failed'
+                    })
                 }
-            ],
-                'cmtdata': [
-                    {
-                        headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                        author: 'Echo'+Math.random()*10,
-                        time: '2015-10-10 12:12:12',
-                        content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                        likes: Math.floor(Math.random() * 10000)
-                    },
-                    {
-                        headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                        author: 'Echo'+Math.random()*10,
-                        time: '2015-10-10 12:12:12',
-                        content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                        likes: Math.floor(Math.random() * 10000)
-                    },
-                    {
-                        headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                        author: 'Echo'+Math.random()*10,
-                        time: '2015-10-10 12:12:12',
-                        content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                        likes: Math.floor(Math.random() * 10000)
-                    },
-                    {
-                        headimg: './img/myhead/' + Math.floor(Math.random() * 10) + '.jpg',
-                        author: 'Echo'+Math.random()*10,
-                        time: '2015-10-10 12:12:12',
-                        content: '乱花渐欲迷人眼，浅草才能没马蹄',
-                        likes: Math.floor(Math.random() * 10000)
-                    }
-                ]
-            }
-        }*/
+            });
+        }
     }
 </script>

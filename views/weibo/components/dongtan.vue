@@ -3,7 +3,6 @@
 </style>
 
 <template>
-    <p>{{prodata}}</p>
     <section class="dongtan" v-for="pro in prodata"><div class="head pr">
             <img class="headimg" v-bind:src="{{pro.headimg}}" alt="头像"/>
             <div class="dongtan-content">
@@ -19,7 +18,7 @@
                 <div class="like"><span>{{pro.likes}}</span></div>
             </div>
 
-            <my-comment :cmtdata="cmtdata"></my-comment>
+            <my-comment :cmtdata="pro.comments"></my-comment>
         </div>
     </section>
 </template>

@@ -282,7 +282,7 @@ router.get('/weibo', function (req, res) {
 router.post('/getFakeData', function(req, res) {
 
     function getRanDomNumber (n) {
-        return Math.floor(Math.random*n);
+        return Math.floor(Math.random()*n);
     }
     var base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     function getChar (m) {
@@ -297,7 +297,6 @@ router.post('/getFakeData', function(req, res) {
     * yyyy-mm-dd hh:mm:ss
     * */
     function getFormatTime () {
-        var ret = '';
         var curD = new Date(),
             oTime = curD.getTime();
 
@@ -330,6 +329,7 @@ router.post('/getFakeData', function(req, res) {
     var pro = [],
         cmt = [];
     for (var i = 0; i < 5; i++) {
+        cmt = [];
         for (var j = 0; j < 3; j++) {
             cmt.push({
                 headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
