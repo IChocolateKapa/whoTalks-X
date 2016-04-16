@@ -324,21 +324,31 @@ router.post('/getFakeData', function(req, res) {
         '看来我真的不适合养花啊，花都死掉了，绿色盆栽都被太阳烤糊了。cry...',
         '窗户开或者关，完全看个人心情， 就像我的头发，我自己的头发爱怎么弄就怎么弄，你他妈算个鸟，用你来指导！',
         '路过森林，山泉的声音非常吸引人，就像森林在低吟浅唱',
-        '"靠过来，听回响，永恒就是这一秒的时间"'
+        '"靠过来，听回响，永恒就是这一秒的时间"',
+        '你的温柔怎可以捕捉？',
+        '茶没有喝光早变酸，从来没热恋已相恋。陪着你天天在兜圈，那缠绕，怎么可算短？你的衣裳今天我再穿，未留住你，却仍然温暖。',
+        '一个一个一个人 谁比谁美丽, 一个一个一个人 谁比谁甜蜜,一个一个一个人 谁比谁容易,又有什么了不起',
+        '有太多太多魔力 太少道理,太多太多游戏 只是为了好奇,还有什么值得 歇斯底里,对什么东西 死心塌地,一个一个偶像 都不外如此,沉迷过的偶像 一个个消失,谁曾伤天害理 谁又是上帝, 我们在等待 什么奇迹,最后剩下自己 舍不得挑剔,最后对着自己 也不大看得起,谁给我全世界 我都会怀疑,心花怒放 却开到荼蘼',
+        '无聊透顶的人。确实没有什么值得歇斯底里。',
+        '心花怒放，开到荼蘼'
+
     ];
     var pro = [],
         cmt = [];
     for (var i = 0; i < 5; i++) {
         cmt = [];
-        for (var j = 0; j < 3; j++) {
-            cmt.push({
-                headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
-                author: getChar(6),
-                time: getFormatTime(),
-                likes: getRanDomNumber(30),
-                content: contents[getRanDomNumber(contents.length)]
-            })
+        if (i % 2 == 0) {
+            for (var j = 0; j < 3; j++) {
+                cmt.push({
+                    headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
+                    author: getChar(6),
+                    time: getFormatTime(),
+                    likes: getRanDomNumber(30),
+                    content: contents[getRanDomNumber(contents.length)]
+                })
+            }
         }
+
 
         pro.push({
             headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',

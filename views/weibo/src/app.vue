@@ -51,7 +51,7 @@
         data: function () {
           return {
               msg: '',
-              prodata: [],
+              prodata: []
           }
         },
         asyncData: function (resolve, reject) {
@@ -62,15 +62,13 @@
                 url: '/getFakeData',
                 dataType: 'json',
                 success: function (data) {
-                    console.log('fakedata: ', data);
                     resolve({
-                        msg: 'success',
                         prodata: data.data
                     })
                 },
                 error: function () {
                     reject({
-                        msg: 'failed'
+                        prodata: []
                     })
                 }
             });

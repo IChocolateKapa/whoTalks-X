@@ -3,8 +3,8 @@
 </style>
 
 <template>
-    <section class="dongtan" v-for="pro in prodata"><div class="head pr">
-            <img class="headimg" v-bind:src="{{pro.headimg}}" alt="头像"/>
+    <section class="dongtan" v-for="pro in prodata" tracked-by="$index"><div class="head pr">
+            <img class="headimg" v-bind:src="{{pro.headimg}}" alt="headimg"/>
             <div class="dongtan-content">
                 <p class="author">{{pro.author}}</p>
                 <p class="tip"><span>{{pro.time}}</span> <span>来自</span><strong>{{pro.client}}</strong></p>
@@ -15,7 +15,7 @@
             <div class="dongtan-footer">
                 <div class="star"></div>
                 <div class="comment" @click="toggleComment()"></div>
-                <div class="like"><span>{{pro.likes}}</span></div>
+                <div class="like" v-bind:class="{ 'active': cmt.likes == 0? true: false}" ><span>{{pro.likes}}</span></div>
             </div>
 
             <my-comment :cmtdata="pro.comments"></my-comment>
