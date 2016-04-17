@@ -12,4 +12,4 @@ var vm = new Vue({
         app: App
     }
 });
-vm.$on('generate-send');
+//vm.$on('generate-send');

@@ -29,12 +29,12 @@
         methods: {
             notify: function () {
                 if (this.msg.trim()) {
-                    this.$dispatch('child-msg-get', this.msg)
-                    this.msg = ''
+                    this.$dispatch('child-msg-get', this.msg);
+                    this.msg = '';
                 }
             }
         }
-    })
+    });
 
     // 启动父组件
     // 将收到消息时将事件推入一个数组
@@ -50,7 +50,7 @@
                 this.messages.push(msg)
             }
         }
-    })
+    });
 </script>
 </body>
 </html>
