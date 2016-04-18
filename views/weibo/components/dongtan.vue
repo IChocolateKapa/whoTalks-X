@@ -15,7 +15,9 @@
             <div class="dongtan-footer">
                 <div class="star"></div>
                 <div class="comment" @click="toggleComment()"></div>
-                <div class="like" v-bind:class="{ 'active': cmt.likes == 0? true: false}" ><span>{{pro.likes}}</span></div>
+                <div @click="toggleComment" class="like" v-bind:class="{ 'active': cmt.likes == 0? true: false}" >
+                    <span>{{pro.likes}}</span>
+                </div>
             </div>
 
             <my-comment :cmtdata="pro.comments"></my-comment>
@@ -31,7 +33,7 @@
         },
         methods: {
             toggleComment: function () {
-                alert('jkjkjk');
+                var self = this;
             }
         },
 

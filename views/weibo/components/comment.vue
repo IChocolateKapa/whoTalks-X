@@ -9,7 +9,9 @@
                     {{cmt.content}}
                 </p>
             </div>
-            <div class="like" v-bind:class="{ 'active': cmt.likes == 0? true: false}" ><span>{{cmt.likes}}</span></div>
+            <div class="like" v-bind:class="{ 'active': cmt.likes == 0? true: false}" >
+                <span>{{cmt.likes}}</span>
+            </div>
         </div>
 
         <p v-else class="none">暂无评论</p>
