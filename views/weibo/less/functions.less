@@ -1,7 +1,29 @@
 /**
  * Created by Echo on 2016/4/6.
  */
+/*æ ¹æ®media queryæ¥è®¾ç½®ä¸åŒå±å¹•åˆ†è¾¨ç‡ä¸‹çš„å­—ä½“å¤§å°*/
+.px2px_mq(@name, @px){
+    @{name}: round(@px / 2) * 1px;
 
+    @media screen and (max-width: 320px) {
+        @{name}: round(@px / 2)px;
+    }
+    @media screen and (min-width: 321px) and (max-width: 413px) {
+        @{name}: round(@px / 2) + 2px;
+    }
+    @media screen and (min-width: 414px) and (max-width: 639px) {
+        @{name}: round(@px / 2) + 4px;
+    }
+    @media screen and (min-width: 640px) and (max-width: 749px)  {
+        @{name}: round(@px / 2) + 6px;
+    }
+    @media screen and (min-width: 750px)  and (max-width: 1079px) {
+        @{name}: round(@px / 2) + 8px;
+    }
+    @media screen and (min-width: 1080px){
+        @{name}: round(@px * 1.5)px;
+    }
+}
 @base: 75;
 .px2rem(@name, @px){
     @{name}: @px / @base * 1rem;
@@ -28,9 +50,9 @@
     -ms-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
     -o-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
 }
-/*½áºÏÒ»¿ªÊ¼Ò³ÃæµÄscale·½·¨ js¿ØÖÆviewport µÄscaleÖµÎª 1/dpr, very crazy, right?*/
-/*×ÖÌåµÄ×ª»»·½·¨*/
-//ÀıÈç.px2px(font-szie, 22px);
+/*ç»“åˆä¸€å¼€å§‹é¡µé¢çš„scaleæ–¹æ³• jsæ§åˆ¶viewport çš„scaleå€¼ä¸º 1/dpr, very crazy, right?*/
+/*å­—ä½“çš„è½¬æ¢æ–¹æ³•*/
+//ä¾‹å¦‚.px2px(font-szie, 22px);
 .px2px(@name, @px){
     @{name}: round(@px / 2) * 1px;
     [data-dpr="2"] & {
@@ -40,7 +62,7 @@
 [data-dpr="2.5"] & {
 @{name}: round(@px * 2.5 / 2) * 1px;
 }
-// for Ğ¡Ã×note
+// for å°ç±³note
 [data-dpr="2.75"] & {
 @{name}: round(@px * 2.75 / 2) * 1px;
 }
@@ -50,7 +72,7 @@
 [data-dpr="3.5"] & {
 @{name}: round(@px / 2 * 3.5) * 1px
 }
-// for ÈıĞÇnote4
+// for ä¸‰æ˜Ÿnote4
 [data-dpr="4"] & {
 @{name}: @px * 2px;
 }
