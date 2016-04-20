@@ -1,0 +1,542 @@
+/*除字体之外的元素的尺寸转换方法*/
+/*结合一开始页面的scale方法 js控制viewport 的scale值为 1/dpr, very crazy, right?*/
+/*字体的转换方法*/
+/*.px2px(@name, @px){
+  @{name}: round(@px / 2) * 1px;
+  [data-dpr="2"] & {
+    @{name}: @px * 1px;
+  }
+  // for mx3
+  [data-dpr="2.5"] & {
+    @{name}: round(@px * 2.5 / 2) * 1px;
+  }
+  // for 小米note
+  [data-dpr="2.75"] & {
+    @{name}: round(@px * 2.75 / 2) * 1px;
+  }
+  [data-dpr="3"] & {
+    @{name}: round(@px / 2 * 3) * 1px
+  }
+  [data-dpr="3.5"] & {
+    @{name}: round(@px / 2 * 3.5) * 1px
+  }
+  // for 三星note4
+  [data-dpr="4"] & {
+    @{name}: @px * 2px;
+  }
+}*/
+html,
+body {
+  min-height: 100%;
+  min-width: 100%;
+}
+body,
+ul,
+p,
+h3,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-size: cover;
+  background: url("../img/bg.png") no-repeat;
+  height: 100%;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  z-index: 1100;
+  background: white;
+}
+.loading .loader-inner {
+  width: 80%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.line-scale > div:nth-child(1) {
+  animation: line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -webkit-animation: line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -moz-animation: line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -ms-animation: line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.line-scale > div:nth-child(2) {
+  animation: line-scale 1s 0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -webkit-animation: line-scale 1s 0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -moz-animation: line-scale 1s 0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -ms-animation: line-scale 1s 0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.line-scale > div:nth-child(3) {
+  animation: line-scale 1s 0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -webkit-animation: line-scale 1s 0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -moz-animation: line-scale 1s 0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -ms-animation: line-scale 1s 0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.line-scale > div:nth-child(4) {
+  animation: line-scale 1s 0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -webkit-animation: line-scale 1s 0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -moz-animation: line-scale 1s 0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -ms-animation: line-scale 1s 0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.line-scale > div:nth-child(5) {
+  animation: line-scale 1s 0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -webkit-animation: line-scale 1s 0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -moz-animation: line-scale 1s 0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  -ms-animation: line-scale 1s 0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+}
+.line-scale > div {
+  background-color: #209599;
+  width: .15rem;
+  height: .8rem;
+  border-radius: .05rem;
+  margin: .1rem;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: inline-block;
+}
+.pa {
+  position: absolute;
+}
+.pr {
+  position: relative;
+}
+.pf {
+  position: fixed;
+}
+.music {
+  background: url("../img/music.png") no-repeat;
+  background-size: cover;
+  width: .6rem;
+  height: .6rem;
+  top: .2rem;
+  right: .2rem;
+  border-radius: 50%;
+  z-index: 1000;
+}
+.music.play {
+  animation: rotate 5s linear 0.1s infinite;
+  -webkit-animation: rotate 5s linear 0.1s infinite;
+  -moz-animation: rotate 5s linear 0.1s infinite;
+  -ms-animation: rotate 5s linear 0.1s infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-359deg);
+    -webkit-transform: rotate(-359deg);
+    -moz-transform: rotate(-359deg);
+    -ms-transform: rotate(-359deg);
+    -o-transform: rotate(-359deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-359deg);
+    -webkit-transform: rotate(-359deg);
+    -moz-transform: rotate(-359deg);
+    -ms-transform: rotate(-359deg);
+    -o-transform: rotate(-359deg);
+  }
+}
+.swiper-slide {
+  min-height: 100%;
+}
+.page {
+  position: relative;
+  background: url("../img/bg.png") no-repeat;
+  background-size: cover;
+  height: 95%;
+  overflow: hidden;
+}
+.picPart .page {
+  box-sizing: border-box;
+  padding: 0 .2rem;
+}
+/*home page*/
+.flowerBg,
+.moon,
+.bird,
+.titile,
+.huaban,
+.myfooter,
+.happy,
+.mytip,
+.candle,
+.header,
+.footer,
+.laojiaPic,
+.handFlower,
+.weiwan {
+  width: 100%;
+}
+.flowerBg img,
+.moon img,
+.bird img,
+.titile img,
+.huaban img,
+.myfooter img,
+.happy img,
+.mytip img,
+.candle img,
+.header img,
+.footer img,
+.laojiaPic img,
+.handFlower img,
+.weiwan img {
+  width: 100%;
+}
+.flowerBg {
+  top: .32rem;
+  transform-origin: right top;
+  -webkit-transform-origin: right top;
+  left: 0;
+  height: 7.31rem;
+  overflow: visible;
+  z-index: 5;
+}
+.moon {
+  z-index: 6;
+  height: 5.02rem;
+  top: 1.78rem;
+  left: 0;
+}
+.bird {
+  z-index: 7;
+  height: 6.37rem;
+  top: .65rem;
+}
+/*.titile{
+  .px2rem(top, 462);
+  z-index: 8;
+  .px2rem(height, 74);
+}*/
+.huaban {
+  height: 9.35rem;
+  top: .93rem;
+  left: 0;
+  z-index: 10;
+}
+.myfooter {
+  left: 0;
+  bottom: 0;
+  height: 1.94rem;
+  z-index: 2;
+}
+.header {
+  z-index: 15;
+  height: 2.38rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  text-align: center;
+}
+.header img {
+  display: block;
+}
+.userSection {
+  position: relative;
+  z-index: 5;
+  margin-top: .2rem;
+  background: white;
+  border-radius: .1rem;
+  box-shadow: .01rem .02rem  .05rem .01rem #E2E6E9;
+  padding: .08rem;
+  min-height: 3.65rem;
+  height: auto;
+}
+.userSection:nth-of-type(1) {
+  margin-top: .3rem;
+}
+.userItem {
+  position: relative;
+  background: white;
+  border-radius: .1rem;
+  min-height: 3.49rem;
+  height: auto;
+  padding: .08rem 0;
+  border: .01rem dashed #B0B0B0;
+}
+.userItem-l,
+.userItem-r {
+  margin-left: auto;
+  margin-right: auto;
+}
+.userItem-l {
+  float: left;
+  height: 100%;
+  width: 2.23rem;
+  padding: 0 .2rem;
+  border-right: .01rem solid #EBEBEB;
+  position: relative;
+}
+.userItem-l .img_wrap {
+  width: 100%;
+}
+.userItem-l img {
+  width: 100%;
+  vertical-align: middle;
+}
+.userItem-r {
+  float: left;
+  width: 3.65rem;
+  height: auto;
+  padding-right: .1rem;
+}
+.userItem-r .userInfo {
+  float: left;
+  width: 100%;
+}
+.userItem-r .userInfo-l,
+.userItem-r .userInfo-r {
+  display: inline-block;
+  font-size: 12px;
+  line-height: .6rem;
+}
+@media screen and (max-width: 320px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 12 px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 413px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 639px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 749px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1079px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .userItem-r .userInfo-l,
+  .userItem-r .userInfo-r {
+    font-size: 36 px;
+  }
+}
+.userItem-r .userInfo-l {
+  width: 45%;
+  text-align: right;
+  float: left;
+  color: #E85490;
+}
+.userItem-r .userInfo-r {
+  text-align: left;
+  width: 54%;
+  color: #443A3B;
+  float: right;
+}
+.userItem-r .userInfo-r.mywish {
+  line-height: .27rem;
+  font-size: 11px;
+  padding-top: .14rem;
+  max-lines: 3;
+}
+@media screen and (max-width: 320px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 11 px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 413px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 639px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 749px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 17px;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1079px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 19px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .userItem-r .userInfo-r.mywish {
+    font-size: 33 px;
+  }
+}
+.userItem .userName {
+  position: absolute;
+  top: 3.18rem;
+  left: 0;
+  width: 2.31rem;
+  font-size: 12px;
+  display: inline-block;
+  color: #443A3B;
+  text-align: center;
+}
+@media screen and (max-width: 320px) {
+  .userItem .userName {
+    font-size: 12 px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 413px) {
+  .userItem .userName {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 639px) {
+  .userItem .userName {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 749px) {
+  .userItem .userName {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1079px) {
+  .userItem .userName {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .userItem .userName {
+    font-size: 36 px;
+  }
+}
+.userItem .sideBar {
+  position: absolute;
+  display: inline-block;
+  width: .89rem;
+  height: .74rem;
+  right: .08rem;
+  background-size: cover;
+}
+.userItem .sideBar._t {
+  top: .08rem;
+  background: url("../img/guajian_top.png") no-repeat;
+}
+.userItem .sideBar._b {
+  bottom: .08rem;
+  background: url("../img/guajian_btm.png") no-repeat;
+}
+.footer {
+  height: 1.26rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+}
+.clearFix {
+  zoom: 1;
+}
+.tr {
+  text-align: right;
+}
+/*third page*/
+.line {
+  padding-top: .5rem;
+  height: auto;
+}
+.line > .ani {
+  height: .6rem;
+}
+.line > .ani img {
+  width: 100%;
+}
+.line > .tr {
+  height: .61rem;
+  margin-top: .03rem;
+}
+.line .laojiaPic {
+  position: relative;
+  z-index: 5;
+  height: 3.19rem;
+  margin-top: .3rem;
+}
+.weiwan {
+  height: 3rem;
+  margin-top: .4rem;
+}
+.handFlower {
+  z-index: 1;
+  height: 4.54rem;
+  position: absolute;
+  bottom: 0;
+}
+/*forth page*/
+.happy {
+  position: relative;
+  height: 6.19rem;
+}
+.mytip {
+  height: 1.8rem;
+  top: 6.15rem;
+}
+.candle {
+  height: 3.4rem;
+  margin-top: 2%;
+  position: absolute;
+  bottom: 0;
+}
+@-webkit-keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+  50% {
+    -webkit-transform: scaley(0.4);
+    transform: scaley(0.4);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+}
+@keyframes line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+  50% {
+    -webkit-transform: scaley(0.4);
+    transform: scaley(0.4);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+}
