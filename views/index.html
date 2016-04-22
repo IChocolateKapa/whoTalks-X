@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <meta name="author" content="Echo">
+    <meta name="description" content="五八赶集集团信息系统部 4月生日同学">
+    <meta name="keywords" content="五八赶集 生日 信息系统部">
+    <meta name="apple-mobile-web-app-title" content="五八赶集集团信息系统部4月生日同学生日快乐">
+    <title>生日快乐</title>
+
+    <link rel="stylesheet" href="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/dist_6beb004.css" />
+</head>
+<body>
+<div id='wx_pic' style='margin:0 auto; display:none;'>
+    <img src='http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/icon.jpg'/>
+</div>
+
+<div class="pf music play">
+    <audio id="music" src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/audio/song.mp3" loop="loop">
+        您的浏览器不支持 audio 标签。
+    </audio>
+</div>
+
+<main>
+    <div class="loading">
+        <div class="loader-inner line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</main>
+
+
+<div class="slide_wrap swiper-container" id="swiper">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide curr">
+            <div class="page">
+                <div class="pr flowerBg ani"  swiper-animate-effect="bounceInDown" swiper-animate-duration=".6s" swiper-animate-delay="0.2s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/flowerbg.png" alt="花环"/>
+
+                    <div class="pa moon ani"  swiper-animate-effect="bounceInLeft" swiper-animate-duration=".8s" swiper-animate-delay="1.1s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/moon.png" alt="饼图"/>
+                    </div>
+                    <div class="pa bird ani" swiper-animate-effect="bounceInRight" swiper-animate-duration=".8s" swiper-animate-delay="2.2s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/bird.png" alt="鸟儿"/>
+                    </div>
+
+                    <div class="pa huaban ani" swiper-animate-effect="zoomInLeft" swiper-animate-duration=".9s" swiper-animate-delay="3.2s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/huaban.png" alt="花瓣"/>
+                    </div>
+
+                </div>
+
+                <div class="pa myfooter ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.6s" swiper-animate-delay="4s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/footer-1.png" alt="蜡烛"/>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="swiper-slide laojia">
+
+            <div class="page">
+                <div class="line">
+                    <div class="word ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/line1.png" alt=""/>
+                    </div>
+                    <div class="word ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.6s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/line2.png" alt=""/>
+                    </div>
+                    <div class="word ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.1s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/line3.png" alt=""/>
+                    </div>
+                    <div class="word ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="1.6s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/line4.png" alt=""/>
+                    </div>
+                    <div class="word ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="2.1s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/line5.png" alt=""/>
+                    </div>
+                    <div class="name ani tr"  swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="2.6s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/laojia.png" alt=""/>
+                    </div>
+
+                    <div class="laojiaPic ani"  swiper-animate-effect="rotateInUpLeft" swiper-animate-duration="0.8s" swiper-animate-delay="3.4s">
+                        <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/laojiaPic.png" alt="老贾照片" />
+                    </div>
+                </div>
+
+                <div class="handFlower ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="0.8s" swiper-animate-delay="4.2s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/hand.png" alt="手捧花"/>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div v-for="person in userList" class="swiper-slide picPart">
+            <div class="page">
+                <header class="header ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".8s" swiper-animate-delay="0.1s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/headBanner.png" alt="生日童鞋"/>
+                </header>
+
+                <section class="userSection clearFix ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="1.1s">
+
+                    <div class="userItem">
+                        <div class="userItem-l ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".7s" swiper-animate-delay="1.4s">
+                            <img src="{{person[0].pic}}" alt="小伙伴的灶片"/>
+                        </div>
+
+
+                        <div class="userItem-r ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="2.2s">
+                            <div class="userInfo">
+                                <span class="userInfo-l">生日：</span>
+                                <span class="userInfo-r">{{person[0].birthday}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">入职时间：</span>
+                                <span class="userInfo-r">{{person[0].inTime}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">二级部门：</span>
+                                <span class="userInfo-r">{{person[0].department}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">职位：</span>
+                                <span class="userInfo-r mywish">{{person[0].title}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">{{person[1].wishType}}：</span>
+                                <span class="userInfo-r mywish">{{person[0].wish}}</span>
+                            </div>
+                        </div>
+
+                        <span class="userName ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".5s" swiper-animate-delay="1.6s">{{person[0].name}}</span>
+
+                        <i class="sideBar _t"></i>
+                        <i class="sideBar _b"></i>
+                    </div>
+                </section>
+
+
+                <section v-if="person[1]" class="userSection clearFix ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".6s" swiper-animate-delay="2.8s">
+                    <div class="userItem">
+                        <div class="userItem-l ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="3.2s">
+                            <img data-src="{{person[1].pic}}" class="swiper-lazy" alt="小伙伴的灶片"/>
+                        </div>
+                        <div class="userItem-r ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".6s" swiper-animate-delay="3.8s">
+                            <div class="userInfo">
+                                <span class="userInfo-l">生日：</span>
+                                <span class="userInfo-r">{{person[1].birthday}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">入职时间：</span>
+                                <span class="userInfo-r">{{person[1].inTime}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">二级部门：</span>
+                                <span class="userInfo-r">{{person[1].department}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">职位：</span>
+                                <span class="userInfo-r mywish">{{person[1].title}}</span>
+                            </div>
+                            <div class="userInfo">
+                                <span class="userInfo-l">{{person[1].wishType}}：</span>
+                                <span class="userInfo-r mywish">{{person[1].wish}}</span>
+                            </div>
+                        </div>
+
+                        <span class="userName ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".5s" swiper-animate-delay="3.4s">{{person[1].name}}</span>
+
+                        <i class="sideBar _t"></i>
+                        <i class="sideBar _b"></i>
+                    </div>
+                </section>
+
+                <div v-else class="weiwan clearFix ani" swiper-animate-effect="bounceInDown" swiper-animate-duration=".6s" swiper-animate-delay="2.8s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/weiwan.png" alt="未完待续"/>
+                </div>
+
+                <footer v-if="person[1]" class="footer ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".8s" swiper-animate-delay="4.5s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/footer.png" alt=""/>
+                </footer>
+                <footer v-else class="footer ani" swiper-animate-effect="{{animationList[Math.floor(Math.random() * 8)]}}" swiper-animate-duration=".8s" swiper-animate-delay="3.5s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/footer.png" alt=""/>
+                </footer>
+            </div>
+        </div>
+
+
+        <div class="swiper-slide last">
+            <div class="page">
+                <div class="happy ani" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.8s" swiper-animate-delay="0.1s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/happy1.png" alt="happy birthday"/>
+                </div>
+
+                <div class="mytip ani" swiper-animate-effect="flipInY" swiper-animate-duration="0.8s" swiper-animate-delay="1.1s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/myTip.png" alt="chupin"/>
+                </div>
+                <div class="candle ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.8s" swiper-animate-delay="1.9s">
+                    <img src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/img/candle.png" alt="蜡烛"/>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+        var docEl = document.documentElement;
+        document.getElementsByTagName('html')[0].style.fontSize=docEl.clientWidth/7.5+'px';
+        window.onresize = function () {
+            document.getElementsByTagName('html')[0].style.fontSize=docEl.clientWidth/7.5+'px';
+        };
+    </script>
+<script src="http://j2.58cdn.com.cn/mis/bc/order/orderOnline/birthShowNew/js/dist_d27dc97.js"></script>
+<script>
+
+    var eswiper = document.getElementById("swiper"),
+        scale = window.screen.height / window.screen.width;
+    var vm  =  new Vue({
+        el: '.swiper-wrapper',
+        data: {
+            userList: userList,
+            animationList: ['bounceInLeft', 'rollIn', 'fadeInUp', 'zoomInUp', 'flipInY', 'bounceInUp', 'fadeInDown', 'flipInX'],
+            num: 8
+        }
+    });
+
+    window.onresize = function () {
+        eswiper.style.height = document.documentElement.clientWidth * scale + "px";
+        $(".page").css({
+            'width': $(window).width(),
+            'height': $(window).height()
+        });
+    };
+
+    var orgY, st;
+    window.onload = function () {
+        $(".loading").hide();
+        eswiper.style.height = document.documentElement.clientWidth * scale + "px";
+
+        var mymusic = document.getElementById('music');
+        mymusic.play();
+
+
+        mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            preloadImages:false,
+            lazyLoading : true,
+            lazyLoadingInPrevNext : true,
+            lazyLoadingInPrevNextAmount : 2,
+            lazyLoadingOnTransitionStart : true,
+            touchRatio : 0.5,
+            longSwipesMs : 800,
+            longSwipes:false,
+            freeMode : false,
+            followFinger: false,
+//            simulateTouch: false,
+            preventLinksPropagation: true,
+            loop: true,
+            loopAdditionalSlides : $(".swiper-slide").length,
+            loopedSlides: $(".swiper-slide").length,//此参数最大设定为slide的个数，表示循环播放animation最多只能两遍
+            onSlideChangeEnd: function(swiper){
+                $(".page").css({
+                    'width': $(window).width(),
+                    'height': $(window).height()
+                });
+                swiperAnimate(swiper);
+            },
+            onTap: function(swiper, event){
+                event.stopPropagation();
+                event.preventDefault();
+            },
+            onTouchStart: function(swiper, event){
+                //你的事件
+                orgY = event.touches[0].pageY;
+                st = new Date() * 1;
+            },
+            onTouchMove: function(swiper, event){
+                //你的事件
+//                console.log('event: ', event);
+                var curY = event.touches[0].pageY;
+                moveY = curY - orgY;
+//                console.log('moveY: ', moveY);
+                var et = new Date() * 1;
+                td = et -st;
+
+                if (td > 500 || moveY < $(window).height / 6) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+            },
+            onSliderMove: function(swiper, event){
+            }
+        });
+
+
+        $(".swiper-container").on('touchend', ".mytip", function () {
+            window.location.reload();
+        });
+
+
+        $(".music").on('touchend', function (evt) {
+            var $this = $(this);
+            if ($this.hasClass('play')) {
+                mymusic.pause();
+                $this.removeClass('play');
+            } else {
+                $this.addClass('play');
+                mymusic.play();
+            }
+            evt.preventDefault();
+            evt.stopPropagation();
+        });
+
+        $(document).on('click', function (evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+        });
+    };
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

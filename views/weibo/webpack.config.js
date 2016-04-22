@@ -1,4 +1,4 @@
-//var path = require('path');
+var path = require('path');
 //var webpack = require('webpack');
 
 module.exports = {
@@ -12,15 +12,11 @@ module.exports = {
     },*/
     module: {
         loaders: [
-            {
-                test: /\.vue$/,
-                loader: 'vue'
-            },
-            {
-                test: /\.css$/,
-                loader: "style!css"
-            },//需要用双引号才不会报错哟~
-            //{ test: /\.png$/, loader: "url-loader?mimetype=image/png"},
+            { test: /\.vue$/, loader: 'vue' },
+            { test: /\.css$/, loader: 'style!css!autoprefixer'},
+            { test: /\.less/, loader: 'style!css!autoprefixer!less'},
+            { test: /\.(png|jpg|gif)$/, loader: 'url-loader'},
+            { test: /\.(html|tpl)$/, loader: 'html-loader' },
         ]
     },
     babel: {
