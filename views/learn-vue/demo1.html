@@ -150,12 +150,25 @@
             </li>
         </ul>
     </div>
+
+
+    <br/><br/>
+    <div id="model-example">
+        <input v-model="newTodo" v-on:keyup.enter="addTodo">
+        <ul>
+            <li v-for="todo in todos">
+                <span>{{ todo.text }}</span>
+                <button v-on:click="removeTodo($index)">X</button>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <script>
     var app = new Vue({
         el: '#app',
         data: {
+            newTodo: '',
             order: '-1',//这个值是在测试动态改变排序的时候用到的
             numbers: [100, 34, 56, 1, -210, 39, 53],
             numbers2: [324, 23, 177, 19, -10, -800, 533],
@@ -261,6 +274,17 @@
                 //貌似不能实现输入新内容同时排序
                 this.myName = '';
             },
+
+            addTodo: function () {
+                var text = this.newTodo.trim()
+                if (text) {
+                    this.todos.push({ text: text })
+                    this.newTodo = ''
+                }
+            },
+            removeTodo: function (index) {
+                this.todos.splice(index, 1)
+            }
 
         }
     })
