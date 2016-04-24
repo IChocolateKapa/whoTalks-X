@@ -162,12 +162,27 @@
             </li>
         </ul>
     </div>
+
+
+    <div id="object-example">
+        <ul>
+            <li v-for="ii in info">
+                {{ $key }} : {{ ii }}
+            </li>
+        </ul>
+    </div>
 </div>
 
 <script>
     var app = new Vue({
         el: '#app',
         data: {
+            info: {
+                name: 'EEECHO',
+                age: 25,
+                inTime:  '2015-12-12',
+                favSong: 'Silent in these years'
+            },
             newTodo: '',
             order: '-1',//这个值是在测试动态改变排序的时候用到的
             numbers: [100, 34, 56, 1, -210, 39, 53],
