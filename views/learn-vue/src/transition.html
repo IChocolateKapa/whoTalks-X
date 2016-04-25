@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <title></title>
+    <style>
+        .bounce-transition {
+            display: inline-block; /* otherwise scale animation won't work */
+        }
+        .bounce-enter {
+            animation: bounce-in .5s;
+        }
+        .bounce-leave {
+            animation: bounce-out .5s;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        @keyframes bounce-out {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <span v-show="show" transition="bounce">Look at me!</span>
+</div>
+</body>
+</html>
