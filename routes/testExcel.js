@@ -23,9 +23,12 @@ for (var i = 2; i < list.length; i++) {
         'wish': list[i][10]?list[i][10]: (list[i][11]?list[i][11]:'')
     };
     temp.push(mapTemp);
+    console.log(i)
     if (i % 2 == 0 && i != 2) {
         ret.push(temp);
         temp = [];
+    } else if (i % 2 != 0 && i == list.length-1) {
+        ret.push(temp);
     }
 }
 
