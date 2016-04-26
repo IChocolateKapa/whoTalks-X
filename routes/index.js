@@ -329,7 +329,9 @@ router.post('/getFakeData', function(req, res) {
         '有太多太多魔力 太少道理,太多太多游戏 只是为了好奇,还有什么值得 歇斯底里,对什么东西 死心塌地,一个一个偶像 都不外如此,沉迷过的偶像 一个个消失,谁曾伤天害理 谁又是上帝, 我们在等待 什么奇迹,最后剩下自己 舍不得挑剔,最后对着自己 也不大看得起,谁给我全世界 我都会怀疑,心花怒放 却开到荼蘼',
         '无聊透顶的人。确实没有什么值得歇斯底里。',
         '心花怒放，开到荼蘼',
-        '如果可以磊落，谁情愿闪躲。如果可以快乐，谁愿意忘掉心魔。或者，偷心要先去偷情，为了担一个愉快罪名。亦比寂寞人值得高兴。能浏览遍好风景才去认命，才不需要突发事情。'
+        '如果可以磊落，谁情愿闪躲。如果可以快乐，谁愿意忘掉心魔。或者，偷心要先去偷情，为了担一个愉快罪名。亦比寂寞人值得高兴。能浏览遍好风景才去认命，才不需要突发事情。',
+        '我等的恋人最怕过节。',
+        '写了卡片能够寄给谁，心碎的像天上的纸屑。'
 
     ];
     var pro = [],
@@ -339,7 +341,7 @@ router.post('/getFakeData', function(req, res) {
         if (i % 2 == 0) {
             for (var j = 0; j < 3; j++) {
                 cmt.push({
-                    headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
+                    headimg: 'http://wuhaiping.com/myhead/' + getRanDomNumber(12) + '.jpg',
                     author: getChar(6),
                     time: getFormatTime(),
                     likes: getRanDomNumber(30),
@@ -350,7 +352,7 @@ router.post('/getFakeData', function(req, res) {
 
 
         pro.push({
-            headimg: './img/myhead/' + getRanDomNumber(12) + '.jpg',
+            headimg: 'http://wuhaiping.com/myhead/' + getRanDomNumber(12) + '.jpg',
             author: getChar(6),
             time: getFormatTime(),
             client: clients[getRanDomNumber(10)],
