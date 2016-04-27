@@ -3,6 +3,7 @@
  */
 
 var Vue = require('vue');
+Vue.config.silent = true;
 var App = require('./app.vue');
 var VueAsyncData = require('vue-async-data');
 Vue.use(VueAsyncData);
