@@ -1,8 +1,8 @@
 {
-  "name": "cityList",
+  "name": "weibo",
   "version": "1.0.0",
-  "description": "一个城市列表组件，适用于移动端页面，Vue+webpack",
-  "main": "gulpfile.js",
+  "description": "心情的树洞 Vue+webpack",
+  "main": "app.js",
   "dependencies": {
     "css-loader": "^0.15.6",
     "gulp": "^3.9.0",
@@ -27,16 +27,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "citylist"
+    "weibo vue webpack"
   ],
-  "author": "Raito_MH",
+  "author": "IChocolateKapa",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mennghao/cityList.git"
+    "url": "https://github.com/IChocolateKapa/whoTalks-X.git"
   },
   "bugs": {
-    "url": "https://github.com/mennghao/cityList/issues"
+    "url": "https://github.com/IChocolateKapa/whoTalks-X/issues"
   },
-  "homepage": "https://github.com/mennghao/cityList"
+  "homepage": "https://github.com/IChocolateKapa/whoTalks-X/tree/master/views/weibo"
 }
