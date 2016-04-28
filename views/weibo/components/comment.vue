@@ -1,29 +1,6 @@
-<style lang="less">
-    .input_wrap{
-        height: .8rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        background-color: #fff;
-        .text{
-            flex: 4;
-            height: 95%;
-            text-indent: 10px;
-            border-radius: 10px;
-            outline: none;
-            border: 1px solid #eeeeee;
-        }
-        .danger{
-            flex: 1;
-            height: 100%;
-        }
-    }
-</style>
-
 <template>
     <div class="commentPanel">
-        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata">
+        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata" tracked-by="$index">
             <div v-for="cmt in cmtdata" style="position: relative;">
                 <img class="headimg" src='{{cmt.headimg}}'  alt="头像"/>
                 <div class="dongtan-content">
@@ -33,7 +10,7 @@
                         {{cmt.content}}
                     </p>
                 </div>
-                <div class="like" :class="{ 'active': cmt.likes == 0? true: false}" >
+                <div class="like" @click="toggleClass($index)" v-model="cmt.likeflag" :class="{ 'active': cmt.likeflag }">
                     <span>{{cmt.likes}}</span>
                 </div>
             </div>
@@ -41,48 +18,30 @@
 
         <div v-else class="none">暂无评论</div>
 
-        <!--<send-comment></send-comment>-->
-
-        <div class="input_wrap">
-            <input type="text" class="text" v-model="mycomment" placeholder="发表你的评论~~"/>
-            <input type="button" class="input danger" @click="sendcomment" value="发布"/>
-        </div>
+        <send-comment></send-comment>
 
     </div>
 </template>
 
 <script>
-//    var inputcomment = require('./sendText.vue');
-var util = require('../resource/js/util');
+    /*how lucky~*/
+    var inputcomment = require('./sendText.vue');
     module.exports = {
-        /*components: {
+        components: {
             'send-comment': inputcomment
-        },*/
+        },
         data: function () {
             return {
                 cmtdata: []
             }
         },
         props: ['cmtdata'],
-
         methods: {
-            sendcomment: function () {
+            toggleClass: function (index) {
                 var self = this;
-                if (self.mycomment.trim()) {
-                    var temp = {
-                        headimg: 'http://wuhaiping.com/myhead/' + util.getRanDomNumber(12) + '.jpg',
-                        author: util.getChar(6),
-                        time: util.getFormatTime(),
-                        likes: util.getRanDomNumber(30),
-                        content: self.mycomment
-                    };
-
-                    self.cmtdata.push(temp);
-
-                    self.mycomment = '';
-                }
+                var curFlag = self.cmtdata[index].likeflag;
+                self.cmtdata[index].likeflag = !curFlag;
             }
         }
-
     };
 </script>

@@ -16,22 +16,25 @@
             <div class="dongtan-footer">
                 <div class="star"></div>
                 <div class="comment" @click="toggleComment($index)"></div>
-                <div @click="toggleComment" class="like" :class="{ 'active': pro.likes == 0? true: false}" >
+                <div class="like" :class="{ 'active': pro.likes == 0? true: false}" >
                     <span>{{pro.likes}}</span>
                 </div>
             </div>
 
-            <my-comment :cmtdata="pro.comments" v-show="shows"></my-comment>
+            <my-comment :cmtdata="pro.comments" v-show="pro.showflag" v-model="pro.showflag"></my-comment>
         </div>
     </section>
 </template>
 
 <script>
-    var commentVue = require('./comment.vue'),
-        $ = require('jquery');
+    var commentVue = require('./comment.vue');
     module.exports = {
         data: function () {
             return {
+                prodata: [],
+                pro: {
+                  showflag: ''
+                },
                 shows: false
             }
         },
@@ -41,11 +44,8 @@
         methods: {
             toggleComment: function (index) {
                 var self = this,
-                    curFlag = $(".dongtan").eq(index).find(".commentPanel").css('display'),
-                    setStyle = curFlag == 'block'? 'none': 'block';
-//                    curFlag = self.$data.shows;
-//                self.$data.shows = !curFlag;
-                $(".dongtan").eq(index).find(".commentPanel").css('display', setStyle);
+                    curFlag = self.prodata[index].showflag;
+                self.pro.showflag = self.prodata[index].showflag = !curFlag;
             }
         },
 
