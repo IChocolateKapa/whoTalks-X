@@ -13,6 +13,13 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.vue$/, loader: 'vue' },
+           /* {
+                test: /\.js$/,
+                // excluding some local linked packages.
+                // for normal use cases only node_modules is needed.
+                exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
+                loader: 'babel'
+            },*/
             { test: /\.css$/, loader: 'style!css!autoprefixer'},
             { test: /\.less/, loader: 'style!css!autoprefixer!less'},
             { test: /\.(png|jpg|gif)$/, loader: 'url-loader'},
