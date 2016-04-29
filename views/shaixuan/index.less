@@ -1,0 +1,210 @@
+body, p, h1,h2,h3,h4{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.buttons{
+  display: inline-block;
+  a{
+    padding: 6px 10px;
+    background: @cr2;
+    color: #fff;
+    margin-right: 20px;
+  }
+  &._b{
+    width: 100%;
+    height: 30px;
+    margin-top: 30px;
+    text-align: center;
+    a{
+      padding: 8px 50px;
+    }
+  }
+}
+input, textarea, button{
+  outline: none;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+}
+input[type='text'],
+input[type='button']{
+  padding: 2px;
+}
+
+body{
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, "STHeiTi", sans-serif;
+  font-size: 12px;
+}
+@cr1: #353535;
+@cr2: #3284a7;
+.echo-search{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: ~'url(img/search.png) no-repeat';
+  background-size: contain;
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  cursor: pointer;
+}
+.close{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: ~'url(img/close.png) no-repeat';
+  background-size: contain;
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}
+.echo-main{
+  margin: 50px auto;
+  width: 730px;
+  padding-bottom: 20px;
+  min-height: 300px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  box-shadow: 1px 1px 10px 2px rgba(0,0,0,.3);
+  header{
+    height: 25px;
+    line-height: 25px;
+    color: @cr1;
+    text-indent: 10px;
+    background: #FAFAFA;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+  }
+  .echo-content{
+    padding: 18px;
+    border-bottom: 1px solid #ebebeb;
+    &-item{
+      &-header{
+        .label{
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .echo-select_wrap{
+          display: inline-block;
+          position: relative;
+          input[type='text']{
+            height: 22px;
+            text-indent: 10px;
+            width: 210px;
+            font-family: "Microsoft Yahei";
+          }
+        }
+        .buttons{
+          float: right;
+        }
+      }
+
+      &-abc{
+        a{
+          background: #fff;
+          padding: 3px 7px;
+          color: @cr2;
+          display: inline-block;
+          margin-bottom: 5px;
+          &:hover,
+          &.active{
+            background: @cr2;
+            color: #fff;
+          }
+        }
+      }
+      &-citys{
+        margin-top: 5px;
+        span{
+          cursor: pointer;
+          border-radius: 3px;
+          padding: 2px 8px;
+          background: #fff;
+          border: 1px solid transparent;
+          color: @cr1;
+          display: inline-block;
+          margin-bottom: 5px;
+          &.active{
+            background: #CCF0FE;
+            border: 1px solid #00b7f0;
+          }
+          &:hover{
+            background: #c4dfea;
+            border: 1px solid #00b6ef;
+          }
+          &:active{
+            background: #72b9d7;
+            border: 1px solid #00b6ef;
+          }
+        }
+      }
+
+      &-container{
+        margin-top: 20px;
+        min-height: 60px;
+        .pager-group {
+          height: 22px;
+          position: relative;
+          padding-right: 50px;
+          .pager {
+            text-align: left;
+            .pager-a{
+              cursor: pointer;
+              padding: 2px 5px;
+              border-radius: 3px;
+              display: inline-block;
+              margin: 0 8px;
+              &:hover,
+              &.active{
+                background: @cr2;
+                color: #fff;
+              }
+
+            }
+          }
+          .ctlr {
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top: 0;
+            span {
+              display: inline-block;
+              margin-left: 5px;
+              transition: all linear .2s 0s;
+            }
+            .arrow {
+              width: 13px;
+              height: 13px;
+              background: ~'url("./img/arrow.png") no-repeat';
+              background-size: contain;
+            }
+
+            &.open{
+              .arrow{
+                transform: rotate(-180deg);
+              }
+            }
+          }
+        }
+
+        &-content{
+          width: ~'calc(100% - 8px)';
+          background: #f2f2f2;
+          padding: 4px;
+          min-height: 16px;
+          max-height: 200px;
+          overflow: hidden;
+          span{
+            display: inline-block;
+            padding: 2px 8px;
+          }
+        }
+      }
+    }
+  }
+}
