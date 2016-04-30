@@ -1,0 +1,210 @@
+@import "functions";
+@import "common";
+
+
+body, h1, h2, h3, h4, h5, p, figure, section, u, input{
+  margin: 0;
+  padding: 0;
+}
+ul li{list-style: none;}
+a{text-decoration: none;}
+input, textarea, button, select{outline: none;}
+textarea{resize: none;}
+html,
+body{
+  min-height: 100%;
+  width: 100%;
+}
+
+/*顶部文字居中*/
+header h4{
+  text-align: center;
+  .px2px(font-size, 34);
+  margin: .1rem;
+}
+
+
+
+@c1: #333;
+@c2: #D1D648;
+@c3: #262626;
+@c4: #666;
+
+
+.send_text{
+  text-align: center;
+  padding: .2rem;
+  display: flex;
+  flex-direction: column;
+}
+textarea{
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+/*textarea样式*/
+.mysend{
+  width: ~'calc(100% - 0.4rem)';
+  height: 1.5rem;
+  .px2px(font-size, 26);
+  color: @c2;
+  padding: .2rem;
+  background: @c3;
+}
+.send_wrap{
+  background: @c3;
+  //background: #424647;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  input[type='button']{
+    width: 1.6rem;
+    height: 100%;
+    line-height: .7rem;
+    .px2px(font-size, 30);
+  }
+}
+
+.headimg{
+  position: absolute;
+  border-radius: 50%;
+  top: .1rem;
+  left: .1rem;
+  width: 1rem;
+  height: 1rem;
+}
+.dongtan{
+  &-content{
+    padding: .1rem .1rem 0 1.3rem;
+    p{
+      margin-bottom: .08rem;
+    }
+    .author{
+      .px2px(font-size, 30);
+    }
+    .tip{
+      .px2px(font-size, 18);
+      color: @c4;
+    }
+    .content{
+      .px2px(font-size, 26);
+      color: @c3;
+    }
+  }
+
+  &-footer{
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    height: .54rem;
+    background: #fff;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    &>div{
+      display: inline-block;
+      width: .45rem;
+      height: .45rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: relative;
+      margin-left: .4rem;
+      margin-right: .6rem;
+    }
+  }
+}
+.star{
+  background-image: ~'url("../img/star1.png")';
+  &.active{
+    background-image: ~'url("../img/star.png")';
+  }
+}
+.comment{
+  background-image: ~'url("../img/comment.png")';
+}
+.like{
+  background-image: ~'url("../img/like1.png")';
+  &.active{
+    background-image: ~'url("../img/like2.png")';
+  }
+  span{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    .px2px(font-size, 26);
+  }
+}
+.visible{display: block !important;}
+.hidden{display: none;}
+.commentPanel{
+  margin-top: .5rem;
+  height: auto;
+  border: 1px solid #eee;
+  background: rgba(69, 103, 137, .3);
+  position: relative;
+  /*输入框*/
+
+  &::before{
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    .transform(translate(-50%, -100%));
+    border-bottom: .4rem solid #eee;
+    border-right: .2rem solid transparent;
+    border-left: .2rem solid transparent;
+  }
+
+
+  .none{
+    .px2px(font-size, 26);
+    text-align: center;
+    height: 1rem;
+    line-height: 1rem;
+  }
+  .commentItem{
+    position: relative;
+    .author{
+      .px2px(font-size, 28);
+    }
+    .content{
+      .px2px(font-size, 24);
+    }
+    .dongtan-content{.px2rem(padding-left, 120);}
+    .headimg{
+      width: .7rem;
+      height: .7rem;
+      left: .4rem;
+      border-radius: 50%;
+      img{
+        border-radius: 50%;
+        width: 100%;
+      }
+    }
+    .like{
+      width: .35rem;
+      height: .35rem;
+      right: .4rem;
+      top: .15rem;
+      background-size: cover;
+      position: absolute;
+      span{
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        vertical-align: middle;
+        right: -100%;
+        //top: 40%;
+        .px2px(font-size, 20);
+      }
+
+    }
+  }
+}
+
