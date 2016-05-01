@@ -148,7 +148,6 @@ html,
 body {
   min-height: 100%;
   width: 100%;
-  font-family: "Microsoft Yahei";
 }
 /*顶部文字居中*/
 header h4 {
@@ -158,7 +157,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   header h4 {
-    font-size: 17 px;
+    font-size: 17px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -183,62 +182,32 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   header h4 {
-    font-size: 51 px;
+    font-size: 51px;
   }
 }
 .send_text {
   text-align: center;
+  padding: .2rem;
+  display: flex;
+  flex-direction: column;
 }
-.send_text input[type='button'] {
-  width: 1.6rem;
-  height: 100%;
-  font-size: 15px;
-  line-height: .7rem;
-  float: right;
-}
-@media screen and (max-width: 320px) {
-  .send_text input[type='button'] {
-    font-size: 15 px;
-  }
-}
-@media screen and (min-width: 321px) and (max-width: 413px) {
-  .send_text input[type='button'] {
-    font-size: 17px;
-  }
-}
-@media screen and (min-width: 414px) and (max-width: 639px) {
-  .send_text input[type='button'] {
-    font-size: 19px;
-  }
-}
-@media screen and (min-width: 640px) and (max-width: 749px) {
-  .send_text input[type='button'] {
-    font-size: 21px;
-  }
-}
-@media screen and (min-width: 750px) and (max-width: 1079px) {
-  .send_text input[type='button'] {
-    font-size: 23px;
-  }
-}
-@media screen and (min-width: 1080px) {
-  .send_text input[type='button'] {
-    font-size: 45 px;
-  }
+textarea {
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 /*textarea样式*/
 .mysend {
-  width: 90%;
-  border: 1px solid #004444;
+  width: calc(100% - 0.4rem);
   height: 1.5rem;
-  padding: .2rem;
   font-size: 13px;
   color: #d1d648;
+  padding: .2rem;
   background: #262626;
 }
 @media screen and (max-width: 320px) {
   .mysend {
-    font-size: 13 px;
+    font-size: 13px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -263,28 +232,25 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .mysend {
-    font-size: 39 px;
+    font-size: 39px;
   }
 }
 .send_wrap {
-  height: .7rem;
-  top: -0.22rem;
-  background: #424647;
-  position: relative;
-  width: 95.5%;
-  margin: 0 auto;
+  background: #262626;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 .send_wrap input[type='button'] {
   width: 1.6rem;
   height: 100%;
   line-height: .7rem;
   font-size: 15px;
-  float: right;
-  position: relative;
 }
 @media screen and (max-width: 320px) {
   .send_wrap input[type='button'] {
-    font-size: 15 px;
+    font-size: 15px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -309,7 +275,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .send_wrap input[type='button'] {
-    font-size: 45 px;
+    font-size: 45px;
   }
 }
 .headimg {
@@ -331,7 +297,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .dongtan-content .author {
-    font-size: 15 px;
+    font-size: 15px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -356,7 +322,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .dongtan-content .author {
-    font-size: 45 px;
+    font-size: 45px;
   }
 }
 .dongtan-content .tip {
@@ -365,7 +331,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .dongtan-content .tip {
-    font-size: 9 px;
+    font-size: 9px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -390,7 +356,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .dongtan-content .tip {
-    font-size: 27 px;
+    font-size: 27px;
   }
 }
 .dongtan-content .content {
@@ -399,7 +365,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .dongtan-content .content {
-    font-size: 13 px;
+    font-size: 13px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -424,7 +390,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .dongtan-content .content {
-    font-size: 39 px;
+    font-size: 39px;
   }
 }
 .dongtan-footer {
@@ -433,14 +399,18 @@ header h4 {
   height: .54rem;
   background: #fff;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
 .dongtan-footer > div {
   display: inline-block;
   width: .45rem;
   height: .45rem;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   position: relative;
-  top: -0.22rem;
   margin-left: .4rem;
   margin-right: .6rem;
 }
@@ -461,13 +431,15 @@ header h4 {
 }
 .like span {
   position: absolute;
-  right: -65%;
-  top: 27%;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
   font-size: 13px;
 }
 @media screen and (max-width: 320px) {
   .like span {
-    font-size: 13 px;
+    font-size: 13px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -492,14 +464,22 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .like span {
-    font-size: 39 px;
+    font-size: 39px;
   }
+}
+.visible {
+  display: block !important;
+}
+.hidden {
+  display: none;
 }
 .commentPanel {
   margin-top: .5rem;
   height: auto;
   border: 1px solid #eee;
-  background: #456789;
+  background: rgba(69, 103, 137, 0.3);
+  position: relative;
+  /*输入框*/
 }
 .commentPanel::before {
   content: '';
@@ -512,9 +492,9 @@ header h4 {
   -moz-transform: translate(-50%, -100%);
   -ms-transform: translate(-50%, -100%);
   -o-transform: translate(-50%, -100%);
-  border-bottom: .5rem solid #eee;
-  border-right: .25rem solid transparent;
-  border-left: .25rem solid transparent;
+  border-bottom: .4rem solid #eee;
+  border-right: .2rem solid transparent;
+  border-left: .2rem solid transparent;
 }
 .commentPanel .none {
   font-size: 13px;
@@ -524,7 +504,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .commentPanel .none {
-    font-size: 13 px;
+    font-size: 13px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -549,7 +529,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .commentPanel .none {
-    font-size: 39 px;
+    font-size: 39px;
   }
 }
 .commentPanel .commentItem {
@@ -560,7 +540,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .commentPanel .commentItem .author {
-    font-size: 14 px;
+    font-size: 14px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -585,7 +565,7 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .commentPanel .commentItem .author {
-    font-size: 42 px;
+    font-size: 42px;
   }
 }
 .commentPanel .commentItem .content {
@@ -593,7 +573,7 @@ header h4 {
 }
 @media screen and (max-width: 320px) {
   .commentPanel .commentItem .content {
-    font-size: 12 px;
+    font-size: 12px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -618,15 +598,15 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .commentPanel .commentItem .content {
-    font-size: 36 px;
+    font-size: 36px;
   }
 }
 .commentPanel .commentItem .dongtan-content {
   padding-left: 1.6rem;
 }
 .commentPanel .commentItem .headimg {
-  width: .5rem;
-  height: .5rem;
+  width: .7rem;
+  height: .7rem;
   left: .4rem;
   border-radius: 50%;
 }
@@ -644,13 +624,16 @@ header h4 {
 }
 .commentPanel .commentItem .like span {
   position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
   right: -100%;
-  top: 40%;
   font-size: 10px;
 }
 @media screen and (max-width: 320px) {
   .commentPanel .commentItem .like span {
-    font-size: 10 px;
+    font-size: 10px;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 413px) {
@@ -675,20 +658,6 @@ header h4 {
 }
 @media screen and (min-width: 1080px) {
   .commentPanel .commentItem .like span {
-    font-size: 30 px;
+    font-size: 30px;
   }
-}
-.triangle {
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  -webkit-transform: translate(-50%, -100%);
-  -moz-transform: translate(-50%, -100%);
-  -ms-transform: translate(-50%, -100%);
-  -o-transform: translate(-50%, -100%);
-  border-bottom: 0.13333333rem solid #eeeeee;
-  border-right: 0.13333333rem solid transparent;
-  border-left: 0.13333333rem solid transparent;
 }

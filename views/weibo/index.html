@@ -10,11 +10,23 @@
     <meta name="description" content="">
     <meta name="author" content="Echo,echochocolatekapa@163.com">
     <meta name="robots" content="index,follow">
-    <link rel="stylesheet" href="css/index.css"/>
-    <script src="js/lib/change.js"></script>
+    <link rel="stylesheet" href="resource/css/index.css"/>
     <title>你我的新鲜事儿~快来动弹一下吧</title>
+    <script>
+        var docEl = document.documentElement;
+        document.getElementsByTagName('html')[0].style.fontSize=docEl.clientWidth/7.5+'px';
+        window.onresize = function () {
+            document.getElementsByTagName('html')[0].style.fontSize=docEl.clientWidth/7.5+'px';
+        };
+        dpr = window.devicePixelRatio || 1;
+        // 设置data-dpr属性，留作的css hack之用
+        docEl.setAttribute('data-dpr', dpr);
+    </script>
 </head>
 <body>
+    <div id='wx_pic' style='margin:0 auto; display:none;'>
+        <img src="./resource/img/echo.png" alt=""/>
+    </div>
     <app></app>
     <script src="dist/bundle.js"></script>
 </body>
