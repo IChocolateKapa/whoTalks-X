@@ -23,7 +23,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 
-
+global.server = server;
 
 
 
@@ -51,6 +51,30 @@ io.on('connection', function (socket) {
         console.log('received message: ' + msg);
         io.emit('chat message', msg);
     });
+
+
+    socket.on('sendNewDongtan', function (dongtan) {
+        console.log('received message: ', dongtan);
+        /*顺便这里该需要存储的就存储*/
+        io.emit("showDongtan", dongtan);
+    });
+
+    socket.on('sendNewComment', function (comment) {
+        console.log('received comment: ', comment);
+        /*顺便这里该需要存储的就存储*/
+        io.emit("showComment", comment);
+    });
+
+    socket.on('sendLikes', function (info) {
+        console.log('received likes info: ', info);
+        /*顺便这里该需要存储的就存储*/
+        io.emit("showLikes", info);
+    });
+   /* socket.on('sendLikes2', function (info) {
+        console.log('received likes info222: ', info);
+        /!*顺便这里该需要存储的就存储*!/
+        io.emit("showLikes2", info);
+    });*/
 });
 /**
  * Listen on provided port, on all network interfaces.

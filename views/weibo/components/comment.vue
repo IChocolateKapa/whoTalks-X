@@ -1,6 +1,6 @@
 <template>
     <div class="commentPanel">
-        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata" tracked-by="$index">
+        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata" tracke-by="$index">
             <div v-for="cmt in cmtdata" style="position: relative;">
                 <img class="headimg" src='{{cmt.headimg}}'  alt="头像"/>
                 <div class="dongtan-content">
@@ -26,13 +26,27 @@
 <script>
     /*how lucky~*/
     var inputcomment = require('./sendText.vue');
+
+  /*  var socket1 = require('socket.io-client'),
+        socket = socket1();*/
+
     module.exports = {
         components: {
             'send-comment': inputcomment
         },
+        compiled: function () {
+            var self = this;
+            /*socket.on('showLikes2', function (info) {
+                console.log('showLikes2, received likes info: ', info)
+                if (self.cmtdata.length != 0) {
+                    self.cmtdata[info.index].likes += info.dif;
+                }
+            })*/
+        },
         data: function () {
             return {
-                cmtdata: []
+                cmtdata: [],
+                cmt: {}
             }
         },
         props: ['cmtdata'],
@@ -41,6 +55,15 @@
                 var self = this;
                 var curFlag = self.cmtdata[index].likeflag;
                 self.cmtdata[index].likeflag = !curFlag;
+                var dif = 1;
+                if (curFlag) dif = -1;
+
+                self.cmtdata[index].likes += dif;
+                var tem = {
+                    index: index,
+                    dif: dif
+                };
+//                socket.emit('sendLikes2',  tem);
             }
         }
     };

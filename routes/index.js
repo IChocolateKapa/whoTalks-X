@@ -4,7 +4,8 @@
 var express = require('express');
 var router = express.Router();
 var https = require('https');
-var jsSHA = require('jssha');
+var jsSHA = '';
+//var jsSHA = require('jssha');
 //var str = 'jsapi_ticket=' + '1234' + '&noncestr=' + 'ewre' + '&timestamp='+ 'wewre' +'&url=' + 'wedwaf';
 //shaObj = new jsSHA(str, 'TEXT');
 //console.log(shaObj.getHash('SHA-1', 'HEX'));
@@ -27,7 +28,6 @@ router.get('/', function(req, res) {
 });
 
 router.get('/login', function(req, res) {
-
     res.render("login/login");
 });
 
@@ -317,10 +317,10 @@ router.post('/getFakeData', function(req, res) {
     var contents = [
         '乱花渐欲迷人眼，浅草才能没马蹄, 又来到颐和园的白堤，心情仿佛也回到了3年前那次春游，愿我们心如明镜，不卑不亢，接受生活的美好和丑恶',
         '终于爬到山顶啦！快看是谁在偷笑~~',
-        '昨天加班到深夜，今天又在催，妈的智障吗？不会安排工作就不要安排',
+        '昨天加班到深夜，今天又在催，你是智障么？',
         '秒针分针滴答滴答在转动，我的内心忽上忽下的阵阵悸动。明天我要嫁给你啦，明天我要嫁给你啦，要不是你问我，要不是你劝我，要不是适当的时候，你让我心动。【此时应该响起婚礼进行曲的钢琴版.....】',
         '看来我真的不适合养花啊，花都死掉了，绿色盆栽都被太阳烤糊了。cry...',
-        '窗户开或者关，完全看个人心情， 就像我的头发，我自己的头发爱怎么弄就怎么弄，你他妈算个鸟，用你来指导！',
+        '窗户开或者关，完全看个人心情， 就像我的头发，我自己的头发爱怎么弄就怎么弄，不用你来指导',
         '路过森林，山泉的声音非常吸引人，就像森林在低吟浅唱',
         '"靠过来，听回响，永恒就是这一秒的时间"',
         '你的温柔怎可以捕捉？',
@@ -331,7 +331,8 @@ router.post('/getFakeData', function(req, res) {
         '心花怒放，开到荼蘼',
         '如果可以磊落，谁情愿闪躲。如果可以快乐，谁愿意忘掉心魔。或者，偷心要先去偷情，为了担一个愉快罪名。亦比寂寞人值得高兴。能浏览遍好风景才去认命，才不需要突发事情。',
         '我等的恋人最怕过节。',
-        '写了卡片能够寄给谁，心碎的像天上的纸屑。'
+        '写了卡片能够寄给谁，心碎的像天上的纸屑。',
+        '真烦人呀。每天都在强奸我的耳朵。。。只能每天塞紧耳机。。。'
 
     ];
     var pro = [],
@@ -345,6 +346,7 @@ router.post('/getFakeData', function(req, res) {
                     author: getChar(6),
                     time: getFormatTime(),
                     likes: getRanDomNumber(30),
+                    likeflag: Math.floor(Math.random()*10)%2 == 0? true: false,
                     content: contents[getRanDomNumber(contents.length)]
                 })
             }
@@ -357,11 +359,13 @@ router.post('/getFakeData', function(req, res) {
             time: getFormatTime(),
             client: clients[getRanDomNumber(10)],
             likes: getRanDomNumber(30),
+            likeflag: Math.floor(Math.random()*10)%2 == 0? true: false,
             content: contents[getRanDomNumber(contents.length)],
-            comments: cmt
+            comments: cmt,
+            showflag: false,
+            starflag: Math.floor(Math.random()*10)%2 == 0? true: false
         })
     }
-
     res.send({'data': pro});
 });
 

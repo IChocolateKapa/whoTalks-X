@@ -3,8 +3,8 @@
 </style>
 
 <template>
-    <section class="dongtan" v-for="pro in prodata" tracked-by="$index"><div class="head pr">
-            <!--<img class="headimg" src="https://www.baidu.com/img/2016_4_26logo_843a64cc86a54b8da14d7e9baad4d15f.gif" alt="headimg"/>-->
+    <section class="dongtan" v-for="pro in prodata" tracke-by="$index">
+        <div class="head pr">
             <img class="headimg" src="{{pro.headimg}}" alt="headimg"/>
             <div class="dongtan-content">
                 <p class="author">{{pro.author}}</p>
@@ -14,9 +14,9 @@
                 </p>
             </div>
             <div class="dongtan-footer">
-                <div class="star"></div>
+                <div class="star" @click="toggleClass($index, 'star')" :class="{ 'active': pro.starflag}"></div>
                 <div class="comment" @click="toggleComment($index)"></div>
-                <div class="like" :class="{ 'active': pro.likes == 0? true: false}" >
+                <div class="like" @click="toggleClass($index)" :class="{ 'active': pro.likeflag}" >
                     <span>{{pro.likes}}</span>
                 </div>
             </div>
@@ -28,15 +28,20 @@
 
 <script>
     var commentVue = require('./comment.vue');
+    var socket1 = require('socket.io-client'),
+        socket = socket1();
     module.exports = {
         data: function () {
             return {
                 prodata: [],
-                pro: {
-                  showflag: ''
-                },
-                shows: false
+                pro: {}
             }
+        },
+        ready: function () {
+            var self = this;
+            socket.on('showLikes', function (info) {
+                self.prodata[info.index].likes += info.dif;
+            })
         },
         components: {
             'my-comment': commentVue
@@ -45,7 +50,27 @@
             toggleComment: function (index) {
                 var self = this,
                     curFlag = self.prodata[index].showflag;
-                self.pro.showflag = self.prodata[index].showflag = !curFlag;
+                    self.prodata[index].showflag = !curFlag;
+            },
+            toggleClass: function (index, type) {
+                var self = this;
+                var curFlag;
+                if (type) {
+                    curFlag = self.prodata[index].starflag;
+                    self.prodata[index].starflag = !curFlag;
+                } else {
+                    curFlag = self.prodata[index].likeflag;
+                    var dif = 1;
+                    if (curFlag) dif = -1;
+                    self.prodata[index].likeflag = !curFlag;
+
+                    var tem = {
+                        index: index,
+                        dif: dif
+                    };
+                    socket.emit('sendLikes',  tem);
+                }
+
             }
         },
 
