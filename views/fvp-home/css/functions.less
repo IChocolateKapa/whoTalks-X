@@ -1,0 +1,99 @@
+/**
+ * Created by Echo on 2016/4/6.
+ */
+/*根据media query来设置不同屏幕分辨率下的字体大小*/
+.px2px_mq(@name, @px){
+    @{name}: round(@px / 2) * 1px;
+
+    @media screen and (max-width: 320px) {
+        @{name}: round(@px / 2) * 1px;
+    }
+    @media screen and (min-width: 321px) and (max-width: 413px) {
+        @{name}: round(@px / 2) + 2px;
+    }
+    @media screen and (min-width: 414px) and (max-width: 639px) {
+        @{name}: round(@px / 2) + 4px;
+    }
+    @media screen and (min-width: 640px) and (max-width: 749px)  {
+        @{name}: round(@px / 2) + 6px;
+    }
+    @media screen and (min-width: 750px)  and (max-width: 1079px) {
+        @{name}: round(@px / 2) + 8px;
+    }
+    @media screen and (min-width: 1080px){
+        @{name}: round(@px * 1.5)px;
+    }
+}
+@base: 75;
+.px2rem(@name, @px){
+    @{name}: @px / @base * 1rem;
+}
+.px2rem_border(@name, @px, @bdr){
+    @{name}: @px / @base * 1rem @bdr;
+}
+.px2rem_border-radius(@px){
+    border-radius: @px / @base * 1rem;;
+    -webkit-border-radius: @px / @base * 1rem;
+    -moz-border-radius: @px / @base * 1rem;
+}
+.px2rem_translate2d(@x, @y) {
+    transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -webkit-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -moz-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -ms-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+    -o-transform: translate(@x / @base * 1rem, @y / @base * 1rem);
+}
+.px2rem_translate3d(@x, @y, @z) {
+    transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -webkit-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -moz-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -ms-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+    -o-transform: translate3d(@x / @base * 1rem, @y / @base * 1rem, @z / @base * 1rem);
+}
+
+
+.px2px(@name, @px){
+    @{name}: round(@px / 2) * 1px;
+
+    @media screen and (max-width: 320px) {
+        @{name}: round(@px / 2) * 1px;
+    }
+    @media screen and (min-width: 321px) and (max-width: 413px) {
+        @{name}: round(@px / 2) + 2px;
+    }
+    @media screen and (min-width: 414px) and (max-width: 639px) {
+        @{name}: round(@px / 2) + 4px;
+    }
+    @media screen and (min-width: 640px) and (max-width: 749px)  {
+        @{name}: round(@px / 2) + 6px;
+    }
+    @media screen and (min-width: 750px)  and (max-width: 1079px) {
+        @{name}: round(@px / 2) + 8px;
+    }
+    @media screen and (min-width: 1080px){
+        @{name}: round(@px * 1.5) * 1px;
+    }
+}
+
+
+.animation(@args){
+    animation: @args;
+    -webkit-animation: @args;
+    -moz-animation: @args;
+    -ms-animation: @args;
+}
+.transform(@args){
+    transform: @args;
+    -webkit-transform: @args;
+    -moz-transform: @args;
+    -ms-transform: @args;
+    -o-transform: @args;
+}
+
+.transition(@trans){
+    transition: @trans;
+    -webkit-transition: @trans;
+    -moz-transition: @trans;
+    -ms-transition: @trans;
+    -o-transition: @trans;
+}
