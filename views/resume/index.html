@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简历</title>
+    <link href="http://cdn.bootcss.com/fullPage.js/2.7.8/jquery.fullPage.min.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/fullPage.js/2.7.8/vendors/jquery.easings.min.js"></script>
+    <script src="http://cdn.bootcss.com/fullPage.js/2.7.8/vendors/jquery.slimscroll.min.js"></script>
+    <script src="http://cdn.bootcss.com/fullPage.js/2.7.8/jquery.fullPage.min.js"></script>
+    <style>
+        body{
+            padding-top: 63px;
+        }
+        .header{
+            position: fixed;
+            height: 62px;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            background: #c3c3c3;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .header ul{
+            width: 100%;
+        }
+        .header ul li{
+            display: inline-block;
+            width: 24%;
+            text-align: center;
+        }
+        #fullpage{
+            text-align: center;
+        }
+        .section{
+            background: #00b7f0;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <ul>
+            <li>简介&经历</li>
+            <li>技能</li>
+            <li>项目经验</li>
+            <li>联系我</li>
+        </ul>
+    </header>
+
+    <div id="fullpage">
+        <div class="section">
+            <img src="head.png" alt="headimg">
+        </div>
+        <div class="section">第二屏</div>
+        <div class="section">
+            <div class="slide">第三屏的第一屏</div>
+            <div class="slide">第三屏的第二屏</div>
+            <div class="slide"></div>
+            <div class="slide">仿网站静态页</div>
+        </div>
+        <div class="section">第四屏</div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#fullpage').fullpage();
+        });
+    </script>
+
+</body>
+</html>
