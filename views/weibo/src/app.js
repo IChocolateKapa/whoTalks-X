@@ -14,3 +14,27 @@ var vm = new Vue({
     }
 });
 //vm.$on('generate-send');
+
+
+function hasClass (src, clst) {
+    var ret = false;
+    for(var j = 0; j < clst.length; j++) {
+        if (src == clst[j]) {
+            ret = true;
+            break;
+        }
+    }
+    return ret;
+}
+
+function removeClass(src, clst) {
+    var index;
+    for(var j = 0; j < clst.length; j++) {
+        if (src == clst[j]) {
+            index = j;
+            break;
+        }
+    }
+
+    clst.splice(index, 1);
+}
