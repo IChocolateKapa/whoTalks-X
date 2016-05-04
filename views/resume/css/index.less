@@ -29,13 +29,14 @@ body{
       width: 24%;
       text-align: center;
       cursor: pointer;
+      &.active a{
+        background: #2B2B2B;
+        border-bottom: 1px solid #097367;
+      }
       a{
-        padding: 10px;
-        //background: #2B2B2B;
+        padding: 8px 35px;
         color: #0fd0bb;
         font-size: 14px;
-        //border-bottom: 1px solid #097367;
-        border-radius: 10px;
       }
     }
   }
@@ -59,4 +60,13 @@ body{
     font-size: 14px;
     line-height: 30px;
   }
+}
+
+.git{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: ~'url("../img/blacktocat.png") no-repeat';
+  background-size: contain;
+  vertical-align: -1px;
 }

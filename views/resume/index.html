@@ -14,45 +14,51 @@
 </head>
 <body>
     <header class="header">
-        <ul>
-            <li>
-                <a href="#">简介</a>
+        <ul id="myMenu">
+            <li data-menuanchor="profile" class="active">
+                <a href="#profile">简介</a>
             </li>
-            <li>
-                <a href="#">经历</a>
+            <li data-menuanchor="experience" >
+                <a href="#experience">经历</a>
             </li>
-            <li>
-                <a href="#">项目经验</a>
+            <li data-menuanchor="projects" >
+                <a href="#projects">项目经验</a>
             </li>
-            <li>
-                <a href="#">联系我</a>
+            <li data-menuanchor="contact" >
+                <a href="#contact">联系我</a>
             </li>
         </ul>
     </header>
 
     <div id="fullpage">
-        <div class="section info1">
-            <img src="head.png" alt="headimg" class="headimg">
-            <p>吴海萍&nbsp;&nbsp;26岁</p>
+        <div class="section info1" data-anchor="profile">
+            <img src="img/head.png" alt="headimg" class="headimg">
+            <p>吴海萍&nbsp;&nbsp;26岁&nbsp;&nbsp;未婚</p>
             <p>毕业于山东科技大学，本科，主修计算机相关知识</p>
             <p>目前就职于北京58赶集集团，任前端开发工程师之职</p>
             <p>掌握css3,html5,熟悉require.js, jquery, vue, bootstrap</p>
             <p>熟悉PC端和移动端开发</p>
             <p>熟悉python，node.js等后端语言，熟悉与后端交互</p>
         </div>
-        <div class="section">第二屏</div>
-        <div class="section">
+        <div class="section" data-anchor="experience">第二屏</div>
+        <div class="section" data-anchor="projects">
             <div class="slide">第三屏的第一屏</div>
             <div class="slide">第三屏的第二屏</div>
             <div class="slide"></div>
             <div class="slide">仿网站静态页</div>
         </div>
-        <div class="section">第四屏</div>
+        <div class="section" data-anchor="contact">
+            <!--联系我-->
+            <p><i class="git"></i><a href="https://github.com/IChocolateKapa">Github</a></p>
+        </div>
     </div>
 
     <script>
         $(function () {
-            $('#fullpage').fullpage();
+            $('#fullpage').fullpage({
+                anchors: ['profile', 'experience', 'projects', 'contact'],
+                menu: '#myMenu'
+            });
         });
     </script>
 
