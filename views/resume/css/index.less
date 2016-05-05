@@ -28,9 +28,12 @@ body{
   border-bottom: 1px solid @borerBTM;
   ul{
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     li{
       display: inline-block;
-      width: 24.3%;
+      flex: 1;
       text-align: center;
       cursor: pointer;
       &.active{
@@ -38,7 +41,7 @@ body{
         border-bottom: 1px solid #097367;
       }
       a{
-        //padding: 8px 35px;
+        display: inline-block;
         width: 100%;
         height: 100%;
         color: #0fd0bb;
@@ -63,60 +66,86 @@ body{
 }
 .info1{
   p{
-    font-size: 15px;
-    line-height: 35px;
-    letter-spacing: 2px;
+    font-size: 14px;
+    line-height: 33px;
+    letter-spacing: .5px;
   }
 }
 
-.git{
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: ~'url("../img/blacktocat.png") no-repeat';
-  background-size: contain;
-  vertical-align: -1px;
-}
-.git1{
-  vertical-align: -8px;
-  transform: scale(0.8);
-  -webkit-transform: scale(0.8);
-}
-.csdn{
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  background: ~'url("../img/csdn2.png") no-repeat';
-  background-size: contain;
-  vertical-align: -5px;
-  border-radius: 50%;
-}
-.phone{
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  background: ~'url("../img/csdn.png") no-repeat';
-  background-size: contain;
-  vertical-align: -5px;
-  border-radius: 50%;
-}
-.contact p{
-  font-size: 16px;
-  line-height: 38px;
+@media screen and (max-width: 320px) {
+  .contact-container {
+    width: 100%;
+  }
 }
 
-.exp-div{
-    width: 40%;
-    margin: 0 auto;
+@media screen and (min-width: 320px) and (max-width: 639px) {
+  .contact-container {
+    width: 96%;
+  }
+}
+@media screen and (min-width: 640px) {
+  .contact-container {
+    width: 60%;
+  }
+}
+
+
+.contact {
+  &-container {
+    //.setWidth(width);
+    position: relative;
+    left: 50%;
+    .transform(translate(-50%, 0));
     text-align: left;
+    p{
+      font-size: 16px;
+      line-height: 38px;
+      a{
+        color: #0fd0bb;
+        text-decoration: underline;
+      }
+    }
   }
+}
+
 .ex-p{
   line-height: 32px;
+  margin-bottom: 25px;
   span{
     display: block;
     font-size: 14px;
+    //color: #0fd0bb;
   }
   .time{
     font-size: 16px;
   }
 }
+.projects-item{
+  a{
+    font-size: 20px;
+    color: #0fd0bb;
+    line-height: 60px;
+    text-decoration: underline;
+    &.src{
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+  time{
+    line-height: 30px;
+    //color: #209599;
+    font-weight: bold;
+    display: block;
+  }
+  p{
+    font-size: 16px;
+    line-height: 32px;
+    //color: #0fd0bb;
+  }
+}
+
+
+.w_70{width:70%}
+.w_65{width:65%}
+.w_60{width:60%}
+

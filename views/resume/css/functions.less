@@ -97,3 +97,14 @@
     -ms-transition: @trans;
     -o-transition: @trans;
 }
+
+
+.setWidth(@name){
+    @media screen and (min-width: 320px) and (max-width: 749px) {
+        @{name}: 80%;
+    }
+    @media screen and (min-width: 750px) {
+        @{name}: 40%;
+    }
+
+}

@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var sysm = require('./routes/systemMonitor');
+var hotc = require('./routes/HotCenter');
 
 
 var app = express();
@@ -31,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 /*这一部分就与tornado的app router声明一样的 so brilliant!*/
 app.use('/', routes);
+app.use('/systemMonitor', sysm);
+app.use('/hotCenter', hotc);
 
 
 

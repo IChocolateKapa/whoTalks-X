@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>练习</title>
+    <title>吴海萍个人简历</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
     <link rel="stylesheet" href="css/index.css"/>
@@ -32,33 +32,37 @@
 
     <div id="fullpage">
         <div class="section info1" data-anchor="profile">
-            <img src="img/head.png" alt="headimg" class="headimg">
-            <p>吴海萍&nbsp;&nbsp;26岁&nbsp;&nbsp;未婚</p>
-            <p>毕业于山东科技大学，本科，主修计算机相关知识</p>
-            <p>目前就职于北京58赶集集团，任前端开发工程师</p>
-            <p>掌握css3,html5,熟悉require.js, jquery, vue, bootstrap</p>
-            <p>熟悉python，node.js等后端语言，熟悉与后端交互</p>
-            <p>熟悉PC端和移动端开发</p>
+            <div class="container">
+                <img src="img/head.png" alt="headimg" class="headimg">
+                <p>吴海萍&nbsp;&nbsp;26岁&nbsp;&nbsp;未婚</p>
+                <p>毕业于山东科技大学，本科，主修计算机相关知识</p>
+                <p>目前就职于北京58赶集集团，任前端开发工程师</p>
+                <p>掌握css3,html5,熟悉require.js, vue, bootstrap</p>
+                <p>熟悉python，node.js等后端语言</p>
+                <p>学习能力较强， 勤奋，有毅力</p>
+            </div>
+
         </div>
+
         <div class="section experience" data-anchor="experience">
             <!--工作经历-->
-
-            <div class="exp-div">
+            <div class="container">
                 <p class="ex-p">
-                    <span class="time">2014.02-2015.07</span>
-                    <span class="time"> 北京子衿晨风科技有限公司</span>
-                    <span>软件开发工程师</span>
-                    <span>使用python的tornado和flask，以及java独立开发了多个web项目</span>
-                    <span>使用python语言开发QT客户端，也封装python的小工具。</span>
-                    <span>用到python, tornado, flask, mysql, cassandra, es, d3.js, bootstrap, mongodb</span>
+                    <span class="time">2015.09-至今 &nbsp;&nbsp;北京58赶集集团 &nbsp;&nbsp;前端开发工程师</span>
+                    <span>负责PC端，移动端，微信H5页面开发</span>
                 </p>
+
                 <p class="ex-p">
-                    <span class="time">2013.01-2014.01年</span>
-                    <span class="company"> 北京容天汇海科技有限公司</span>
-                    <span>软件开发工程师</span>
+                    <span class="time">2014.02-2015.07 &nbsp;&nbsp;北京子衿晨风科技有限公司&nbsp;&nbsp;软件开发工程师</span>
+                    <span>使用python和java开发了多个web项目。 用pyqt开发客户端</span>
+                </p>
+
+                <p class="ex-p">
+                    <span class="time">2013.01-2014.01 &nbsp;&nbsp;北京容天汇海科技有限公司&nbsp;&nbsp;软件开发工程师</span>
                     <span>用cuda对C代码进行高性能改造</span>
                 </p>
             </div>
+
 
 
 
@@ -67,26 +71,152 @@
 
         <div class="section" data-anchor="projects">
             <!--项目经验-->
-            <div class="slide">第三屏的第一屏</div>
-            <div class="slide">第三屏的第二屏</div>
-            <div class="slide"></div>
-            <div class="slide">仿网站静态页</div>
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="https://github.com/IChocolateKapa/whoTalks-X/tree/master/views/weibo" target="_blank">
+                        <strong>仿微博的小树洞</strong>
+                    </a>
+                    <time>2016.04-至今</time>
+                    <p>业余时间做的实时线上心情动态，可点赞、评论，项目在持续开发中</p>
+                    <p>使用：vue, websocket, node.js</p>
+                    <img src="img/weibo.png" width="200" height="200" alt=""/>
+                </div>
+            </div>
+
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="javascript:void(0)" target="_blank" style="text-decoration: underline;">
+                        <strong>每月部门生日祝福微信H5页面开发</strong>
+                    </a>
+                    <time>从16年3月开始每月做一次</time>
+                    <p>负责全部代码编写，使用fis3进行打包合并</p>
+                    <p>使用：vue.js, swiper.js</p>
+                    <img src="img/birthShow.png" width="200" height="200" alt=""/>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="http://wuhaiping.com/hotCenter" target="_blank">
+                        <strong>二手车热力图项目</strong>
+                    </a> &nbsp; &nbsp; &nbsp;
+                    <a href="http://wuhaiping.com/systemMonitor" target="_blank">
+                        <strong>系统监控项目</strong>
+                    </a>
+                    <time>2016.02-2016.05</time>
+                    <p>单页应用项目，负责前端页面切图展示与所有js部分，<br/>调用后端接口进行开发，数据均来源于ajax请求或web存储。</p>
+                    <p>使用： require.js, require-text, echarts3.0</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="http://bigdata.58.com" target="_blank">
+                        <strong>58大数据平台</strong>
+                    </a>
+                    <time>2015.09-2015.10</time>
+                    <p>参与数据开发与数据调度模块开发<br/>负责上线公告及微信H5宣传页开发</p>
+                    <p>使用: D3.js, echarts2.0</p>
+                </div>
+            </div>
+
+
+
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="https://github.com/IChocolateKapa/google-map-object" target="_blank">
+                        <strong>某社交App的帐号养殖-任务分发-结果查询系统</strong>
+                    </a>
+                    <time>2014.03-2014.08, 2015.03-2015.07</time>
+                    <p>使用：bootstrap,python,google map api,mongoDb</p>
+                    <p>1.负责Axure原型图设计，mysql数据库设计，整体架构规划，项目前端和后端逻辑处理代码编写</p>
+                    <p>2.向任务服务器分发养殖任务，对任务回传结果监控，具体养殖操作由同事开发</p>
+                </div>
+            </div>
+
+
+
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="https://github.com/IChocolateKapa/D3Extensionable" target="_blank">
+                        <strong>某著名国内被墙社交网站数据展示项目</strong>
+                    </a>
+                    <time>2014.09-2014.12</time>
+                    <p>负责：前端后端整站开发</p>
+                    <p>使用 Bootstrap, java, cassandra, es</p>
+                    <p>1.数据格式化存储</p>
+                    <p>2.用Bootstrap搭建前端框架，es查询</p>
+                    <p>3.用d3.js进行对人物关系图谱展示</p>
+                    <p>4.因项目不能公开，只提取简单demo在git上</p>
+                </div>
+            </div>
+
+
+
+            <div class="slide">
+                <div class="projects-item">
+                    <a href="http://wuhaiping.com/JingDongFood/templates/" target="_blank">
+                        <strong>仿京东美食页</strong>
+                    </a>
+                    <a href="https://github.com/IChocolateKapa/JingDongFood" class="src" target="_blank">
+                        查看源码
+                    </a><br/>
+                    <a href="http://wuhaiping.com/Dajie/templates/" target="_blank">
+                        <strong>仿大街网登录页</strong>
+                    </a>
+                    <a href="https://github.com/IChocolateKapa/Dajie" class="src" target="_blank">
+                        查看源码
+                    </a><br/>
+                    <a href="http://wuhaiping.com/foreSeeImage/demo2/src/demo.html" target="_blank">
+                        <strong>图片预览插件ForSeeImage</strong>
+                    </a>
+                    <a href="https://github.com/IChocolateKapa/foreSeeImage" class="src" target="_blank">
+                        查看源码
+                    </a><br/>
+                    <a href="http://wuhaiping.com/eModal" target="_blank">
+                        <strong>弹窗组件</strong>
+                    </a>
+                    <a href="https://github.com/IChocolateKapa/eModal" class="src" target="_blank">
+                        查看源码
+                    </a><br/>
+                    <a href="http://wuhaiping.com/progressBar" target="_blank">
+                        <strong>进度条组件</strong>
+                    </a>
+                    <a href="https://github.com/IChocolateKapa/progressBar" class="src" target="_blank">
+                        查看源码
+                    </a><br/>
+
+                    <a href="https://github.com/IChocolateKapa" style="color: #0fd0bb; font-size: 18px; font-weight: bold; margin-top: 15px;">更多项目，请移步github</a>
+
+                </div>
+            </div>
+            <!--<div class="slide">
+                <div class="projects-item">
+                    <a href="" target="_blank">
+                        <strong></strong>
+                    </a>
+                    <time></time>
+                    <p></p>
+                </div>
+            </div>-->
         </div>
         <div class="section contact" data-anchor="contact">
             <!--联系我-->
-            <p>
-                <svg aria-hidden="true" class="git1" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
-                &nbsp;<a href="https://github.com/IChocolateKapa">Github&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
-            <p><i class="csdn"></i>&nbsp;&nbsp;<a href="http://blog.csdn.net/ichocolatekapa">CSDN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+            <div class="contact-container">
+                <p>Github：
+                    <!--<svg aria-hidden="true" class="git1" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>-->
+                    &nbsp;<a href="https://github.com/IChocolateKapa">https://github.com/IChocolateKapa</a></p>
+                <p><!--<i class="csdn"></i>-->CSDN：&nbsp;&nbsp;<a href="http://blog.csdn.net/ichocolatekapa">http://blog.csdn.net/ichocolatekapa</a></p>
 
-            <p><i class="phone"></i>&nbsp;&nbsp;18612552963</p>
+                <p>邮箱： &nbsp;&nbsp;<a href="mailto:echochocolatekapa@163.com">echochocolatekapa@163.com</a></p>
+                <p><!--<i class="phone"></i>-->手机： &nbsp;&nbsp;18612552963</p>
+            </div>
+
         </div>
     </div>
 
     <script>
         $(function () {
             $('#fullpage').fullpage({
-                anchors: ['profile', 'experience', 'projects', 'contact'],
+                anchors: ['profile', /*'skills', */'experience', 'projects', 'contact'],
                 menu: '#myMenu'
             });
         });
