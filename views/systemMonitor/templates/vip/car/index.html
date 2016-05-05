@@ -1,0 +1,261 @@
+<header class="main-header">
+    <div class="block"></div>
+    <span class="title">车商浏览</span>
+    <div class="dot"></div>
+    <span class="subTitle">VIP中心</span>
+</header>
+
+<div class="main-container">
+
+    <!--选择框部分-->
+    <div class="selectWrap">
+        <div  class="ser_tj limitDate">
+            <label>日期</label>
+            <input class="text" id="begin" type="text" onclick="laydate({istime: false, format: 'YYYYMMDD'})"/>
+            <label>至</label>
+            <input class="text" id="end" type="text" onclick="laydate({istime: false, format: 'YYYYMMDD'})"/>
+
+            <p style="color: #ED0000">*时间查询范围建议在2周以内*</p>
+        </div>
+
+
+        <div  class="ser_tj">
+            <label>页面类型</label>
+            <div class="text selectMask" data-val="page">
+                <span class="tip"><span>至少选择一个页面类型</span></span>
+
+                <span class="drop"></span>
+                <div class="selectPanel">
+                    <div class="city all allPage">
+                        <label></label>
+                        <span>全选</span>
+                    </div>
+
+                    <br/>
+
+                    <div class="allPages">
+                        <div class="city" data-val="维修报告"><label></label><span>维修报告</span></div>
+                        <div class="city checked" data-val="管理车源"><label></label><span>管理车源</span></div>
+                        <div class="city" data-val="收车线索"><label></label><span>收车线索</span></div>
+                        <div class="city" data-val="异地车源待检"><label></label><span>异地车源待检</span></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div  class="ser_tj">
+            <label>城市</label>
+
+            <div class="text selectMask" data-val="city">
+                <span class="tip"><span>至少选择一个城市</span></span>
+                <span class="drop"></span>
+                <div class="selectPanel">
+                    <div class="huizong">
+                        <!--<br/>-->
+                        <p>汇总(单选)</p>
+
+                        <hr/>
+                        <div class="city " data-val="全国">
+                            <label></label>
+                            <span>全国</span>
+                        </div><br/>
+
+                        <div class="city" data-val="渠道城市">
+                            <label></label>
+                            <span>渠道城市</span>
+                        </div><br/>
+
+                        <div class="city" data-val="直销城市">
+                            <label></label>
+                            <span>直销城市</span>
+                        </div><br/>
+                    </div>
+
+
+
+                    <!--<br/>-->
+                    <p>分城市(可多选)</p>
+                    <hr/>
+                    <div class="city all allCity">
+                        <label></label>
+                        <span>全选</span>
+                    </div>
+
+                    <br/>
+                    <div class="allCitys">
+                        <div class="city" data-val="北京">
+                            <label></label>
+                            <span>北京</span>
+                        </div>
+
+                        <div class="city" data-val="上海">
+                            <label></label>
+                            <span>上海</span>
+                        </div>
+
+                        <div class="city" data-val="广州">
+                            <label></label>
+                            <span>广州</span>
+                        </div>
+                        <div class="city" data-val="深圳">
+                            <label></label>
+                            <span>深圳</span>
+                        </div>
+                        <div class="city" data-val="成都">
+                            <label></label>
+                            <span>成都</span>
+                        </div>
+
+                        <div class="city" data-val="大连">
+                            <label></label>
+                            <span>大连</span>
+                        </div>
+                        <div class="city" data-val="东莞">
+                            <label></label>
+                            <span>东莞</span>
+                        </div>
+                        <div class="city" data-val="福州">
+                            <label></label>
+                            <span>福州</span>
+                        </div>
+                        <div class="city" data-val="哈尔滨">
+                            <label></label>
+                            <span>哈尔滨</span>
+                        </div>
+                        <div class="city" data-val="杭州">
+                            <label></label>
+                            <span>杭州</span>
+                        </div>
+                        <div class="city" data-val="合肥">
+                            <label></label>
+                            <span>合肥</span>
+                        </div>
+                        <div class="city" data-val="济南">
+                            <label></label>
+                            <span>济南</span>
+                        </div>
+                        <div class="city" data-val="南京">
+                            <label></label>
+                            <span>南京</span>
+                        </div>
+                        <div class="city" data-val="南宁">
+                            <label></label>
+                            <span>南宁</span>
+                        </div>
+                        <div class="city" data-val="青岛">
+                            <label></label>
+                            <span>青岛</span>
+                        </div>
+                        <div class="city" data-val="厦门">
+                            <label></label>
+                            <span>厦门</span>
+                        </div>
+                        <div class="city" data-val="东莞">
+                            <label></label>
+                            <span>东莞</span>
+                        </div>
+                        <div class="city" data-val="沈阳">
+                            <label></label>
+                            <span>沈阳</span>
+                        </div>
+                        <div class="city" data-val="石家庄">
+                            <label></label>
+                            <span>石家庄</span>
+                        </div>
+                        <div class="city" data-val="苏州">
+                            <label></label>
+                            <span>苏州</span>
+                        </div>
+                        <div class="city" data-val="太原">
+                            <label></label>
+                            <span>太原</span>
+                        </div>
+                        <div class="city" data-val="天津">
+                            <label></label>
+                            <span>天津</span>
+                        </div>
+                        <div class="city" data-val="无锡">
+                            <label></label>
+                            <span>无锡</span>
+                        </div>
+                        <div class="city" data-val="武汉">
+                            <label></label>
+                            <span>武汉</span>
+                        </div>
+                        <div class="city" data-val="长春">
+                            <label></label>
+                            <span>长春</span>
+                        </div>
+                        <div class="city" data-val="长沙">
+                            <label></label>
+                            <span>长沙</span>
+                        </div>
+                        <div class="city" data-val="郑州">
+                            <label></label>
+                            <span>郑州</span>
+                        </div>
+                        <div class="city" data-val="重庆">
+                            <label></label>
+                            <span>重庆</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div  class="ser_tj">
+            <input type="button" id="search" value="查询"/>
+        </div>
+    </div>
+
+
+    <!--图表部分 日期-->
+    <div class="chart" id="date"></div>
+
+
+    <!--图表部分 页面类型-->
+    <div class="chart" id="pageChart">
+        <aside class="switch" data-val="pageType">
+            <a href="javascript:void(0)" class="fl active">PV</a>
+            <a href="javascript:void(0)" class="fr">UV</a>
+        </aside>
+        <div id="pageType"></div>
+    </div>
+
+    <!--图表部分 城市-->
+    <div class="chart" id="cityChart">
+        <aside class="switch" data-val="city">
+            <a href="javascript:void(0)" class="fl active">PV</a>
+            <a href="javascript:void(0)" class="fr">UV</a>
+        </aside>
+        <div id="city"></div>
+    </div>
+
+
+    <!--列表部分-->
+    <div class="list">
+        <img class="loading" id="loading" src="img/loading.gif" alt="" width="50" height="50"/>
+        <table class="table _0">
+            <thead>
+            <tr>
+                <th>日期</th>
+                <th>页面类型</th>
+                <th>城市</th>
+                <th>PV</th>
+                <th>UV</th>
+            </tr>
+            </thead>
+
+            <tbody></tbody>
+        </table>
+
+        <div class="pager" id="pager">
+
+        </div>
+    </div>
+
+</div>
