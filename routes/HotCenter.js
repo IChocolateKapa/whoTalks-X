@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 var https = require('https');
 
-router.get('/hotcenter', function(req, res) {
+router.get('/', function(req, res) {
     res.render("HotCenter/index");
 });
 router.post('/getHotCenterData', function(req, res) {
