@@ -1,7 +1,7 @@
 {
   "name": "weibo",
   "version": "1.0.0",
-  "description": "心情的树洞 Vue+webpack",
+  "description": "心情的树洞 vue+webpack",
   "main": "app.js",
   "dependencies": {
     "css-loader": "^0.15.6",
@@ -33,7 +33,7 @@
   "keywords": [
     "weibo vue webpack"
   ],
-  "author": "IChocolateKapa",
+  "author": "IChocolateKapa<echochocolatekapa@163.com>(http://wuhaiping.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
