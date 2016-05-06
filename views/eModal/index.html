@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="./eModal/css/eModal.css"/>
+    <script src="./eModal/eModal.js"></script>
+    <script>
+        function test(){
+            eModal.confirm("确定要点击我吗？", function(){
+            }, function(){}, {shade: false, draggable: true});
+        }
+        function test1(){
+            eModal.confirm("确定要点击我吗？", function(){
+            }, function(){}, {shade: true, sureTitle: "快来点我呀", cancleTitle: "不点我就走啦", skin: 'skin-gray'});
+        }
+        function test2 () {
+            eModal.alert("我是绿色的皮肤~",{shade: false,skin: 'skin-molv'});
+        }
+
+        function test4 () {
+            eModal.alert("我是灰色风格，可以拖动哟~", {
+                shade: true,
+                skin: 'skin-gray',
+                draggable: true,
+                clickShadeHide: false
+            });
+        }
+        function test3 () {
+            eModal.modalDialog(
+                    $("#test").html(),
+                    function(){
+                        /*在这个函数中进行左边标签的修改*/
+                        alert("这个函数中对引入的页面进行一些Dom操作");
+                    },
+                    function(){
+                        alert("确定, 这个函数写确定事件");
+                    },
+                    function(){
+                        alert("取消, 这个函数写取消事件");
+                    },
+                    {
+                        sureTitle: "快来点我呀",
+                        draggable: true,
+                        cancleTitle: "不点我就走啦",
+                        skin: 'skin-molv'
+                    }
+            )
+        }
+
+
+    </script>
+
+    <style>
+        input[type='button']{
+            outline: none;
+            height: 40px;
+            background: #fff;
+            border-radius: 10px;
+            width: 300px;
+            display: block;
+            border: 1px solid #3284a7;
+            margin-top: 19px;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 1px 0 10px 2px #3284a7;
+            transition: all linear .3s 0s;
+            -webkit-transition: all linear .3s 0s;
+        }
+        input[type='button']:hover{
+            background: #3284a7;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="无遮罩confirm" onclick="test()"/>
+<input type="button" value="遮罩confirm" onclick="test1()"/>
+<input type="button" value="无遮罩alert" onclick="test2()"/>
+<input type="button" value="遮罩alert" onclick="test4()"/>
+<input type="button" value="遮罩模态框" onclick="test3()"/>
+
+<div id="test" style="display: none">
+    <p>
+    好像我是被动加载进来的哟~
+    </p>
+</div>
+
+</body>
+</html>
