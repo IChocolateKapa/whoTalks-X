@@ -1,6 +1,6 @@
 <template>
     <div class="commentPanel">
-        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata" tracke-by="$index">
+        <div v-show="cmtdata.length > 0 ? true : false" class="commentItem" v-model="cmtdata" tracke-by="$index" transition="fade" transition-mode="out-in">
             <div v-for="cmt in cmtdata" style="position: relative;">
                 <img class="headimg" src='{{cmt.headimg}}'  alt="头像"/>
                 <div class="dongtan-content">

@@ -1,9 +1,17 @@
 <style lang="less">
-
+    .fade{
+        &-transition {
+            transition: opacity .3s ease;
+        }
+        &-enter, &-leave {
+            opacity: 0;
+        }
+    }
 </style>
 
 <template>
-    <section class="dongtan" v-for="pro in prodata" tracke-by="$index">
+    <section class="dongtan" v-for="pro in prodata" tracke-by="$index" transition="fade"
+             transition-mode="out-in">
         <div class="head pr">
             <img class="headimg" src="{{pro.headimg}}" alt="headimg"/>
             <div class="dongtan-content">
@@ -21,7 +29,8 @@
                 </div>
             </div>
 
-            <my-comment :cmtdata="pro.comments" v-show="pro.showflag" v-model="pro.showflag"></my-comment>
+            <my-comment :cmtdata="pro.comments" v-show="pro.showflag" v-model="pro.showflag" transition="fade"
+                        transition-mode="out-in">></my-comment>
         </div>
     </section>
 </template>

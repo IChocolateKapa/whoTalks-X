@@ -56,7 +56,7 @@
                         time: util.getFormatTime(),
                         likes: 0,
                         likeflag: false,
-                        content: self.mycomment,
+                        content: self.mycomment
                     };
 
                     socket.emit('sendNewComment', temp);
