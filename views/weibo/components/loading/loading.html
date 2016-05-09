@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, minimal-ui"/>
+    <!-- 禁止数字识自动别为电话号码 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Echo,echochocolatekapa@163.com">
+    <meta name="robots" content="index,follow">
+    <title>animation帧动画-step</title>
+    <style>
+        .loading{
+            width: 180px;
+            height: 200px;
+            background: url("./walk.png") no-repeat;
+            animation: walk 2s step-start infinite;
+            background-position-y: 0;
+
+        }
+        @keyframes walk {
+            0% {
+                background-position-x: 0;
+            }
+            10%{
+                background-position-x: -180px;
+            }
+            20%{
+                background-position-x: -360px;
+            }
+            30%{
+                background-position-x: -540px;
+            }
+            40%{
+                background-position-x: -720px;
+            }
+            50%{
+                background-position-x: -900px;
+            }
+            60%{
+                background-position-x: -1080px;
+            }
+            70%{
+                background-position-x: -1260px;
+            }
+            80%{
+                background-position-x: -1440px;
+            }
+            90%{
+                background-position-x: -1620px;
+            }
+            90%{
+                background-position-x: 0;
+            }
+        }
+        @-webkit-keyframes walk {
+            0% {
+                background-position-x: 0;
+            }
+            10%{
+                background-position-x: -180px;
+            }
+            20%{
+                background-position-x: -360px;
+            }
+            30%{
+                background-position-x: -540px;
+            }
+            40%{
+                background-position-x: -720px;
+            }
+            50%{
+                background-position-x: -900px;
+            }
+            60%{
+                background-position-x: -1080px;
+            }
+            70%{
+                background-position-x: -1260px;
+            }
+            80%{
+                background-position-x: -1440px;
+            }
+            90%{
+                background-position-x: -1620px;
+            }
+            90%{
+                background-position-x: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+</body>
+</html>
