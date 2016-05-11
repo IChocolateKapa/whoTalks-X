@@ -33,6 +33,26 @@
         .pare._2 span{
             word-spacing: 0;
         }
+
+
+        /*还有一种全兼容方案*/
+        #demo{
+            font-size:0;
+        [;font-size:12px;];
+            *font-size:0;
+            font-family:arial;
+        [;letter-spacing:-3px;];
+            *letter-spacing:normal;
+            *word-spacing:-1px;
+        }
+        #demo span{
+            display:inline-block;
+            *display:inline;
+            *zoom:1;
+            font-size:14px;
+            letter-spacing:normal;
+            word-spacing:normal;
+        }
     </style>
     <!--
     最简单的方法： 父级font-size:0,子级font-size:另行设定
