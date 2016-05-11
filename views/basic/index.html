@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>block</title>
+    <style>
+        .pare{
+            width: 300px;
+            height: 100px;
+            background: red;
+            position: relative;
+            /*font-size: 0;*/
+            transform: translate(120px, 30px);
+            -webkit-transform: translate(120px, 30px);
+            -webkit-text-size-adjust:none;
+        }
+        .pare span{
+            display: inline-block;
+            /*width: 80px;*/
+            font-size: 20px;
+            height: 100%;
+            background: #00AA91;
+        }
+        .home{
+            width: 100px;
+        }
+        .work{
+            min-width: 100px;
+        }
+        .pare._2{
+            word-spacing: -8px;
+        }
+        .pare._2 span{
+            word-spacing: 0;
+        }
+    </style>
+    <!--
+    最简单的方法： 父级font-size:0,子级font-size:另行设定
+    -->
+</head>
+<body>
+    <!--<div class="pare">
+        <span class="home">Home</span>
+        <span class="work">Work</span>
+        <span class="work">Work</span>
+    </div>-->
+
+    <a href="http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%e5%8e%bb%e9%99%a4%e9%97%b4%e8%b7%9d/">
+        去除inline-block元素间隙的N种方法
+    </a>
+    <div class="pare _2">
+        <span class="home">Home</span>
+        <span class="work">Work</span>
+        <span class="work">Work</span>
+    </div>
+</body>
+</html>
