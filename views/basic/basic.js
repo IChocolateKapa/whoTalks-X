@@ -73,7 +73,9 @@ function checkScope () {
     console.log('in function, ', scope);//localCheck
     var scope = 'mylocalscope';
     console.log(scope);//mylocalscope
-    /*函数作用域--scope在函数内部*/
+    /**
+     * 函数作用域--scope在函数内部
+     **/
     /**
      * 函数内部定义或者声明的变量与函数的参数变量
      * 最后才是外部的全局变量
@@ -173,8 +175,11 @@ function changeObj (obj) {
 
 function changeObj2 (obj) {
     obj.name = 'ldl123';
+
     obj = {};
+    console.log('obj: ', obj)
     obj.name = 'chocolate';
+    console.log('affter -- obj: ', obj)
     return obj;
 }
 
@@ -235,3 +240,28 @@ console.log(numarr.sort(function (a, b) {
  * */
 
 
+/*Test time*/
+var myscp = 'regular';
+function getScp (myscp) {
+    console.log(myscp);//regular
+    var myscp;
+    console.log(myscp);//regular
+}
+
+getScp(myscp);
+console.log(typeof getScp);//function
+/**
+ * 函数被调用时,两轮:初始化变量;执行代码
+ * 初始化变量又分为了三个步骤:
+ * 1, 声明并且初始化(!!)函数的参数
+ * 2,声明局部变量,包括将匿名函数赋给一个局部变量,但是并不(!!)初始化它们
+ * 3,声明并初始化函数
+ * */
+
+var curDate = new Date();
+console.log(curDate.toDateString())//Wed May 11 2016
+
+console.log(curDate.toTimeString())//09:17:24 GMT+0800 (CST)
+console.log(curDate.toLocaleDateString())//5/11/2016
+console.log(curDate.toLocaleTimeString())//9:17:24 AM
+console.log(curDate.toUTCString())//Wed, 11 May 2016 01:17:24 GMT
