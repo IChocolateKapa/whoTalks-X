@@ -24,30 +24,40 @@
 <template>
     <div class="input_wrap">
         <input type="text" class="text" v-model="mycomment" placeholder="发表你的评论~~"/>
-        <input type="button" class="input danger" @click="sendcomment" value="发布"/>
+        <input type="button" class="input danger" @click="sendcomment(index)" value="发布"/>
     </div>
 </template>
 
 <script>
     var util = require('../resource/js/util');
-    var socket1 = require('socket.io-client'),
-        socket = socket1();
+    /*var socket1 = require('socket.io-client'),
+        socket = socket1();*/
 
     module.exports = {
         data: function () {
             return {
-                mycomment: ''
+                mycomment: '',
+                socket: this.$parent.socket
             }
         },
+        props: ['index'],
         ready: function () {
             var self = this;
-            socket.on('showComment', function (comment) {
-                console.log('received comment: ', comment);
-                self.$parent.cmtdata.push(comment);
+            self.socket.on('showComment', function (data) {
+                console.log('received comment: ', data.data);
+                var cmts = self.$parent.$parent.prodata[data.index].comments;
+//                if (cmts.length != 0) {
+                    cmts.push(data.data);
+//                } else {
+//                    self.$parent.cmtdata.push(data.data);
+//                }
+
+//                self.$parent.$parent.prodata[data.index].comments.push(data.data);
             });
         },
         methods: {
-            sendcomment: function () {
+            sendcomment: function (index) {
+                console.log('index: ', index);
                 var self = this;
                 if (self.mycomment.trim()) {
                     var temp = {
@@ -58,8 +68,12 @@
                         likeflag: false,
                         content: self.mycomment
                     };
+                    var datas = {
+                        data: temp,
+                        index: index
+                    };
 
-                    socket.emit('sendNewComment', temp);
+                    self.socket.emit('sendNewComment', datas);
 
                     self.mycomment = '';
                 }

@@ -29,26 +29,27 @@
                 </div>
             </div>
 
-            <my-comment :cmtdata="pro.comments" v-show="pro.showflag" v-model="pro.showflag" transition="fade"
-                        transition-mode="out-in">></my-comment>
+            <my-comment :cmtdata="pro.comments" :index="$index" v-show="pro.showflag" v-model="pro.showflag" transition="fade"
+                        transition-mode="out-in"></my-comment>
         </div>
     </section>
 </template>
 
 <script>
     var commentVue = require('./comment.vue');
-    var socket1 = require('socket.io-client'),
-        socket = socket1();
+    /*var socket1 = require('socket.io-client'),
+        socket = socket1();*/
     module.exports = {
         data: function () {
             return {
                 prodata: [],
-                pro: {}
+                pro: {},
+                socket: this.$parent.socket
             }
         },
         ready: function () {
             var self = this;
-            socket.on('showLikes', function (info) {
+            self.$parent.socket.on('showLikes', function (info) {
                 self.prodata[info.index].likes += info.dif;
             })
         },
@@ -77,7 +78,7 @@
                         index: index,
                         dif: dif
                     };
-                    socket.emit('sendLikes',  tem);
+                    self.socket.emit('sendLikes',  tem);
                 }
 
             }

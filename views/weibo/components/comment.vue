@@ -18,7 +18,7 @@
 
         <div v-else class="none">暂无评论</div>
 
-        <send-comment></send-comment>
+        <send-comment :index="index"></send-comment>
 
     </div>
 </template>
@@ -27,8 +27,8 @@
     /*how lucky~*/
     var inputcomment = require('./sendText.vue');
 
-  /*  var socket1 = require('socket.io-client'),
-        socket = socket1();*/
+    var socket1 = require('socket.io-client'),
+        socket = socket1();
 
     module.exports = {
         components: {
@@ -36,34 +36,33 @@
         },
         compiled: function () {
             var self = this;
-            /*socket.on('showLikes2', function (info) {
-                console.log('showLikes2, received likes info: ', info)
-                if (self.cmtdata.length != 0) {
-                    self.cmtdata[info.index].likes += info.dif;
-                }
-            })*/
+            self.socket.on('showLikes2', function (info) {
+                console.log('showLikes2, received likes info: ', info);
+                self.cmtdata[info.index].likes += info.dif;
+            })
         },
         data: function () {
             return {
                 cmtdata: [],
-                cmt: {}
+                cmt: {},
+                socket: this.$parent.socket
             }
         },
-        props: ['cmtdata'],
+        props: ['cmtdata', "index"],
         methods: {
             toggleClass: function (index) {
                 var self = this;
                 var curFlag = self.cmtdata[index].likeflag;
-                self.cmtdata[index].likeflag = !curFlag;
+//                self.cmtdata[index].likeflag = !curFlag;
                 var dif = 1;
                 if (curFlag) dif = -1;
 
-                self.cmtdata[index].likes += dif;
+//                self.cmtdata[index].likes += dif;
                 var tem = {
                     index: index,
                     dif: dif
                 };
-//                socket.emit('sendLikes2',  tem);
+                self.socket.emit('sendLikes2',  tem);
             }
         }
     };
