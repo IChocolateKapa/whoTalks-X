@@ -1,7 +1,20 @@
+<style>
+    .myloading{
+        width: 180px;
+        height: 200px;
+        margin: 0 auto;
+        /*background: #004444;*/
+    }
+</style>
 <template>
     <header>
         <h4>快来动弹一下吧~</h4>
     </header>
+
+    <div class="myloading">
+        <loading></loading>
+    </div>
+
 
     <section class="send_text">
         <textarea v-model="msg" class="text mysend" placeholder="发布你的动弹~"></textarea>
@@ -22,14 +35,16 @@
     */
     var dongtanVue = require('../components/dongtan.vue'),
         $ = require('jquery'),
-        util = require('../resource/js/util');
+        util = require('../resource/js/util'),
+        loadingVue = require('../components/loading/loading.vue')    ;
 
     var socket1 = require('socket.io-client'),
         socket = socket1();
 
     module.exports = {
         components: {
-            'dongtan': dongtanVue
+            'dongtan': dongtanVue,
+            'loading': loadingVue
         },
         ready: function () {
             var self = this;
@@ -64,14 +79,15 @@
                     headimg: 'http://wuhaiping.com/myhead/' + util.getRanDomNumber(12) + '.jpg',
                     comments: []
                 };
-                socket.emit('sendNewDongtan', protemp);
+                self.socket.emit('sendNewDongtan', protemp);
                 /*其实不需要返回值，为了在后台存储发送的数据以及，socket发起通信*/
             }
         },
         data: function () {
           return {
               msg: '',
-              prodata: []
+              prodata: [],
+              socket: socket1()
           }
         },
         asyncData: function (resolve, reject) {
