@@ -70,11 +70,11 @@ io.on('connection', function (socket) {
         /*顺便这里该需要存储的就存储*/
         io.emit("showLikes", info);
     });
-   /* socket.on('sendLikes2', function (info) {
+    socket.on('sendLikes2', function (info) {
         console.log('received likes info222: ', info);
-        /!*顺便这里该需要存储的就存储*!/
+        /*顺便这里该需要存储的就存储*/
         io.emit("showLikes2", info);
-    });*/
+    });
 });
 /**
  * Listen on provided port, on all network interfaces.
