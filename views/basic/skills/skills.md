@@ -218,3 +218,29 @@
 
 >> var list = [1,2,3];
    console.log(list.sort(function() { Math.random() - 0.5 })); // [2,1,3]
+
+
+## 安全的类型检测
+
+> 在任何值上调用Object原生的toString()方法，都会返回一个[object NativeConstructorName]格式的字符串
+
+> 每个类在内部都有哦一个[[Class]]属性，这个属性就制订了上述字符串的构造函数名。
+
+>> function isArray (value) {
+
+>>     return Object.prototype.toString.call(value) === '[object Array]';
+
+>> }
+
+>> function isFunction (value) {
+
+>>     return Object.prototype.toString.call(value) === '[object Function]';
+
+>> }
+
+>> function isRegExp (value) {
+
+>>     return Object.prototype.toString.call(value) === '[object RegExp]';
+
+>> }
+
