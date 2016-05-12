@@ -181,8 +181,8 @@
 
     for (var  i = 0; i < imgList.length; i++) {
 
-//        imgHtml += '<li class="animated bounceIn" data-id="' + i + '" ><canvas id="cvs_' + i + '"></canvas></li>';
-        imgHtml += '<li class="animated bounceIn" data-id="' + i + '" ><img id="cvs_' + i + '/></li>';
+        imgHtml += '<li class="animated bounceIn" data-id="' + i + '" ><canvas id="cvs_' + i + '"></canvas></li>';
+//        imgHtml += '<li class="animated bounceIn" data-id="' + i + '" ><img id="cvs_' + i + '/></li>';
         var newImg = new Image();
         newImg.index = i;
         newImg.onload = function () {
@@ -230,7 +230,7 @@
 
     function saveImage () {
         var len = $("#container li").length;
-        for (var i = 0; i < 1; i++) {//len
+        for (var i = 0; i < len; i++) {//len
             var mycanvas = document.getElementById("cvs_" + i);
             var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 //            var image = mycanvas.toDataURL("image/png").replace("image/png", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
