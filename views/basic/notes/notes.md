@@ -100,6 +100,8 @@
 
 #### var domdiv = document.getElementById('div');
 
+> 使用 domdiv.getBoundingClientRect() ==> 返回 {top: x, left: x, bottom: x, right: y, width: x, height: x}//刚刚发现这个好方法
+
 #### 查询
 
 > querySelector等方法在之前已说过，不再表
