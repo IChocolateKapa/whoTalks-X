@@ -5,7 +5,7 @@
 var EventUtil = {
     addHandler: function (obj, type, handler) {
         if (obj.addEventListener) {
-            obj.addEventListener(type, handler, false);//false表示在事件冒泡阶段触发事件
+            obj.addEventListener(type, handler, false);//false表示在事件冒泡阶段触发事件, 也是该函数默认值
         } else if (obj.attachEvent) {
             obj.attachEvent('on'+type, handler);
         } else {
