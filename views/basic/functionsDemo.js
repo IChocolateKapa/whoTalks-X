@@ -114,4 +114,21 @@ console.log(basket.mapFunc());//[ '12-map', '34-map', 'echo-map' ]
 console.log(basket.getArr());//[ '12-map', '34-map', 'echo-map' ]
 console.log(basket.filterFunc());//[ 'echo-map' ]
 
+function testFor() {
 
+    for (var i = 0; i < 10; ++i) {
+        console.log("i: ", i);
+    }
+    for (var j = 0; j < 10; j++) {
+        console.log("j: ", j);
+    }
+}
+
+testFor();//结果竟然一样！why??==DUANG~~: 是因为++i或者j++都是在执行完函数体代码之后才执行的相当于
+/**
+ * var i = 0;
+ * while (i < 10) {
+ *      console.log(i);
+ *      i++; //或者++i;
+ * }
+ * */
