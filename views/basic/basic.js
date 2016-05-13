@@ -265,3 +265,118 @@ console.log(curDate.toTimeString())//09:17:24 GMT+0800 (CST)
 console.log(curDate.toLocaleDateString())//5/11/2016
 console.log(curDate.toLocaleTimeString())//9:17:24 AM
 console.log(curDate.toUTCString())//Wed, 11 May 2016 01:17:24 GMT
+
+
+/**
+ * 请用原生js实现一个函数,给页面制定的任意一个元素添加一个透明遮罩(透明度可变,默认0.2),
+ * 使这个区域点击无效,要求兼容IE8+及各主流浏览器
+ * */
+
+function addMask (ele, opcity) {
+    var opacity = opcity || 0.2;
+    var mask = document.createElement('div'),
+        rect = ele.getBoundingClientRect();
+    mw = rect.width,
+        mh = rect.height,
+        mt = rect.top,
+        ml = rect.left;
+
+    mask.id = 'mask';
+    mask.style.opacity = opacity;
+    mask.style.position = 'absolute';
+    mask.style.zIndex = 999999;
+    mask.style.top = mt + 'px';
+    mask.style.left = ml + 'px';
+    mask.style.height = mh + 'px';
+    mask.style.width = mw + 'px';
+    mask.style.backgroundColor = '#000';
+
+    if (mask.attachEvent) {
+        mask.attachEvent('click', function (event) {
+            var event = event || window.event;
+            event.cancelBubble = true;
+            event.returnValue = false;
+        })
+    } else if (mask.addEventListener) {
+        mask.addEventListener('click', function (event) {
+            var event = event || window.event;
+            event.stopPropagation();
+        })
+    } else {
+        mask.onclick = function (evnet) {
+            var event = event || window.event;
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+    }
+
+    ele.parentNode.insertBefore(mask, ele);
+}
+
+/*为数组增加一个去重的原型方法*/
+Array.prototype.uniquify = function () {
+    var _this = this;
+    var map = {},
+        len = _this.length,
+        i;
+    for (i = 0; i < len; i++) {
+        if (_this[i] in map) {
+            _this.splice(i, 1);//把当前元素删掉
+        } else {
+            map[_this[i]] = 1;
+        }
+    }
+    return _this;
+};
+
+var numArr = [1,2,3,56,23,1,3,67];
+numArr.uniquify();//如果不用返回值接收，numArr的值也发生了改变，因为numArr是引用类型
+console.log(numArr);
+
+
+
+/**
+ * 完成一个函数,接受数组作为参数,数组元素为整数或者数组,数组元素包含整数或数组,函数返回扁平化后的数组
+ * 如：[1, [2, [ [3, 4], 5], 6]] => [1, 2, 3, 4, 5, 6]
+ * 这里会用到递归， 递归时用arguments.callee
+ * */
+var retArr = [];
+function flattern (arr, retArr) {
+    for (var i = 0; len = arr.length, i < len; i++) {
+        if (typeof arr[i] != 'object') { //或者typeof arr[i] == 'number'
+            retArr.push(arr[i]);
+        } else {
+            /*使用arguments.callee代替函数名，它是一个指向正在执行的函数的指针*/
+            /*函数名其实也是一个指向函数的指针，但是函数名有可能会中途指定给其它什么东东，
+            不如arguments.callee始终是指向当前正在执行的函数的指针*/
+            arguments.callee(arr[i], retArr);
+            // flattern(arr[i], retArr);
+        }
+    }
+}
+
+var nums = [1, [2, [ [3, 4, 7,8,2,8,10], 5], 6]];
+var rret = [];
+flattern(nums, rret)
+
+console.log(rret);
+
+
+
+
+/**
+ * 判断一个对象是否是数组，参数不是对象或者不是数组，返回false
+ *
+ * @param {Object} arg 需要测试是否为数组的对象
+ * @return {Boolean} 传入参数是数组返回true，否则返回false
+ */
+function isArray(arg) {
+    if (typeof arg === 'object') {
+        /*call会把原型方法应用在参数身上*/
+        return Object.prototype.toString.call(arg) === '[object Array]';
+    }
+    return false;
+}
