@@ -1,7 +1,7 @@
 <style>
     .myloading{
-        width: 180px;
-        height: 200px;
+        width: 1.8rem;
+        height: 2rem;
         margin: 0 auto;
         /*background: #004444;*/
     }

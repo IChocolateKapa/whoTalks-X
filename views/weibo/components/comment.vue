@@ -39,7 +39,7 @@
             self.socket.on('showLikes2', function (info) {
                 console.log('showLikes2, received likes info: ', info);
                 self.cmtdata[info.index].likes += info.dif;
-            })
+            });
         },
         data: function () {
             return {

@@ -49,9 +49,13 @@
         },
         ready: function () {
             var self = this;
-            self.$parent.socket.on('showLikes', function (info) {
+            self.socket.on('showLikes', function (info) {
                 self.prodata[info.index].likes += info.dif;
-            })
+            });
+            self.socket.on('showComment', function (data) {
+                console.log('received comment: ', data.data);
+                self.prodata[data.index].comments.push(data.data);
+            });
         },
         components: {
             'my-comment': commentVue

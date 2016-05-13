@@ -41,20 +41,6 @@
             }
         },
         props: ['index'],
-        ready: function () {
-            var self = this;
-            self.socket.on('showComment', function (data) {
-                console.log('received comment: ', data.data);
-                var cmts = self.$parent.$parent.prodata[data.index].comments;
-//                if (cmts.length != 0) {
-                    cmts.push(data.data);
-//                } else {
-//                    self.$parent.cmtdata.push(data.data);
-//                }
-
-//                self.$parent.$parent.prodata[data.index].comments.push(data.data);
-            });
-        },
         methods: {
             sendcomment: function (index) {
                 console.log('index: ', index);
