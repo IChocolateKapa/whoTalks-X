@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加遮罩</title>
+    <script>
+        function addMask (ele, opcity) {
+            var opacity = opcity || 0.2;
+            var mask = document.createElement('div'),
+                rect = ele.getBoundingClientRect();
+                mw = rect.width,
+                mh = rect.height,
+                mt = rect.top,
+                ml = rect.left;
+
+            mask.id = 'mask';
+            mask.style.opacity = opacity;
+            mask.style.position = 'absolute';
+            mask.style.zIndex = 999999;
+            mask.style.top = mt + 'px';
+            mask.style.left = ml + 'px';
+            mask.style.height = mh + 'px';
+            mask.style.width = mw + 'px';
+            mask.style.backgroundColor = '#000';
+
+            if (mask.attachEvent) {
+                mask.attachEvent('click', function (event) {
+                    var event = event || window.event;
+                    event.cancelBubble = true;
+                    event.returnValue = false;
+                })
+            } else if (mask.addEventListener) {
+                mask.addEventListener('click', function (event) {
+                    var event = event || window.event;
+                    event.stopPropagation();
+                })
+            } else {
+                mask.onclick = function (evnet) {
+                    var event = event || window.event;
+                    if (event.stopPropagation) {
+                        event.stopPropagation();
+                    } else {
+                        event.cancelBubble = true;
+                    }
+                }
+            }
+
+            ele.parentNode.insertBefore(mask, ele);
+//            ele.parentNode.appendChild(mask);
+        }
+
+    </script>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #mydiv{
+            width: 400px;
+            height: 400px;
+            background: #00AA91;
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mydiv"></div>
+
+
+    <script>
+        addMask(document.getElementById('mydiv'), 0.5);
+    </script>
+</body>
+</html>
