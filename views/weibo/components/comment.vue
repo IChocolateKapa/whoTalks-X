@@ -10,7 +10,7 @@
                         {{cmt.content}}
                     </p>
                 </div>
-                <div class="like" @click="toggleClass($index)" v-model="cmt.likeflag" :class="{ 'active': cmt.likeflag }">
+                <div class="like" transition="fade" transition-mode="out-in" @click="toggleClass($index)" v-model="cmt.likeflag" :class="{ 'active': cmt.likeflag }">
                     <span>{{cmt.likes}}</span>
                 </div>
             </div>

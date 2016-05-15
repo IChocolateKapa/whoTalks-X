@@ -22,9 +22,9 @@
                 </p>
             </div>
             <div class="dongtan-footer">
-                <div class="star" @click="toggleClass($index, 'star')" :class="{ 'active': pro.starflag}"></div>
+                <div class="star" transition="fade" transition-mode="out-in" @click="toggleClass($index, 'star')" :class="{ 'active': pro.starflag}"></div>
                 <div class="comment" @click="toggleComment($index)"></div>
-                <div class="like" @click="toggleClass($index)" :class="{ 'active': pro.likeflag}" >
+                <div class="like" transition="fade" transition-mode="out-in"  @click="toggleClass($index)" :class="{ 'active': pro.likeflag}" >
                     <span>{{pro.likes}}</span>
                 </div>
             </div>
@@ -37,8 +37,6 @@
 
 <script>
     var commentVue = require('./comment.vue');
-    /*var socket1 = require('socket.io-client'),
-        socket = socket1();*/
     module.exports = {
         data: function () {
             return {
