@@ -41,7 +41,30 @@ var Util = {
 
         return args;
 
+    },
+    /*mousedowm-event.button-0:左键， 1：中键，2：右键*/
+    mouseMove: function (obj, moveHandler) {
+        if (!!obj) return;
+        var eventUtil = require('./eventUtil');
+
+        var event = eventUtil.getEvent(event);
+
+        eventUtil.addHandler(obj, 'mousedown', function (event) {
+            eventUtil.addHandler(document, 'mousemove', function (event) {
+                var event = eventUtil.getEvent(event);
+            })
+
+
+            eventUtil.addHandler(document, 'onmouseup', function (event) {
+                var event = eventUtil.getEvent(event);
+            })
+
+        })
     }
+
+
+
+
 };
 
 module.exports = Util;
