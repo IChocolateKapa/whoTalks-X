@@ -6,6 +6,8 @@
   "dependencies": {
     "css-loader": "^0.15.6",
     "gulp": "^3.9.0",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.4.17",
     "vue": "^1.0.8",
     "html-loader": "^0.3.0",
     "style-loader": "^0.12.3",
@@ -23,6 +25,8 @@
     "json-loader": "^0.5.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.0",
+    "mongodb": "^2.1.18",
+    "mongoose": "^4.4.17",
     "url-loader": "^0.5.6",
     "vinyl-named": "^1.1.0",
     "webpack": "^1.12"
