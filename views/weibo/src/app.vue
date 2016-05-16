@@ -95,7 +95,7 @@
             // or call reject(reason) if something goes wrong
             $.ajax({
                 type: 'post',
-                url: '/getFakeData',
+                url: '/weibo/getFakeData',
                 dataType: 'json',
                 success: function (data) {
                     resolve({
