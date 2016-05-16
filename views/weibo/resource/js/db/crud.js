@@ -3,32 +3,52 @@
  */
 
 var mongoose = require('mongoose'),
-    Dongtan = require('./schema_model/Dongtan'),
-    Comments = require('./schema_model/Comments');
+    rt = require('./schema_model/Dongtan'),
+    Comments = require('./schema_model/Comments'),
+    initDb = require('./initDb');
 
 function test() {
-    Dongtan.find(function (err, dts) {
+    initDb.getConnection();
+    rt.find(function (err, dts) {
         if (err) return console.error(err);
-
         console.log('dts: ', dts);
     });
 }
 
-test();
-
-
 var CRUD = {
-    insert: function (db, param) {
-
-
+    insert: function (tableName, param) {
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        var newInstance = new table(param);
+        newInstance.save();
     },
-    remove: function (db) {
-
+    remove: function (tableName, param, callback) {
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        table.remove(param, function (err) {
+            if (err) return console.error(err);
+            callback();
+        });
     },
 
-    find: function (db, param) {
+    update: function (tableName, findParam, updateParam, callback) {
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        table.update(findParam, updateParam, function (err) {
+            if (err) return console.error(err);
+            callback();
+        });
+    },
 
+    find: function (tableName, param, callback) {
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        table.find(param, function (err, results) {
+            if (err) return console.error(err);
+            console.log('results: ', results);
+            callback(results);
+        });
     }
 };
 
-// module.exports = CRUD;
+ module.exports = CRUD;

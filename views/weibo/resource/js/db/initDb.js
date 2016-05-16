@@ -99,7 +99,7 @@ function getConnection() {
     return ret;
 }
 
-getConnection();
+//getConnection();
 
 module.exports = {
     getConnection: getConnection
