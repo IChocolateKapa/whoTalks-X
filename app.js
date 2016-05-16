@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var sysm = require('./routes/systemMonitor');
 var hotc = require('./routes/HotCenter');
+var weibo = require('./routes/weibo');
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use('/', routes);
 app.use('/systemMonitor', sysm);
 app.use('/hotCenter', hotc);
+app.use('/weibo', weibo);
 
 
 
