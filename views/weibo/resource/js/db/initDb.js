@@ -75,9 +75,6 @@ function initDB () {
 
     Dongtan.find(function (err, dts) {
         if (err) return console.error(err);
-
-        console.log('dts: ', dts);
-
         if (dts.length == 0) {
             initData(Dongtan);
         }
