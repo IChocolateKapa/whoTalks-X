@@ -3,7 +3,6 @@
  */
 
 // define(function () {
-    var clients = ['三星Note5', 'MX4', '华为Mate8', '红米', 'HTC One', '安卓客户端', 'iphone 5', 'iphone 6', 'iphone 6s', 'iphone 6s plus'];
     var Util= {
         getFormatTime: function () {
             var curD = new Date(),
@@ -34,8 +33,17 @@
         getRanDomNumber: function (n) {
             return Math.floor(Math.random()*n);
         },
+        getAuthor: function () {
+            var authors = ['Jacob', 'Alice', 'Bree', 'Lynnett', 'Natasha', 'Roger', 'Chandler', 'Joey', 'Mark', 'Marting','Jane', 'Joanne', 'Tracy', 'Jason', 'Taylor', 'Mars', 'Andrew', 'Jolin'];
+            return authors[this.getRanDomNumber(authors.length)];
+        },
         getClient: function () {
-            return clients[this.getRanDomNumber(10)];
+            var s = navigator.userAgent;
+            if (s.indexOf('iPhone') != -1) {
+                return '苹果手机';
+            } else {
+                return '安卓客户端';
+            }
         }
     };
 
