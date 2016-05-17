@@ -56,7 +56,14 @@ io.on('connection', function (socket) {
     socket.on('sendNewDongtan', function (dongtan) {
         console.log('received message: ', dongtan);
         /*顺便这里该需要存储的就存储*/
-        io.emit("showDongtan", dongtan);
+        var crud = require('../views/weibo/resource/js/db/crud');
+
+        // var extend = require('util')._extend;
+        // var ret = extend({}, dongtan);
+
+        crud.insert('Dongtan', dongtan);
+
+        io.emit("showDongtan", ret);
     });
 
     socket.on('sendNewComment', function (comment) {
@@ -68,6 +75,9 @@ io.on('connection', function (socket) {
     socket.on('sendLikes', function (info) {
         console.log('received likes info: ', info);
         /*顺便这里该需要存储的就存储*/
+        var crud = require('../views/weibo/resource/js/db/crud');
+        
+
         io.emit("showLikes", info);
     });
     socket.on('sendLikes2', function (info) {

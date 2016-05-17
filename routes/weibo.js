@@ -25,10 +25,14 @@ router.get('/', function (req, res) {
 /*generate fake data for weibo*/
 router.post('/getFakeData', function(req, res) {
 
-
     var crud = require('../views/weibo/resource/js/db/crud');
 
-    console.log(crud);
+    crud.find('Dongtan', {}, function (results) {
+        console.log('in callback, results: ', results);
+        res.send({'data': results});
+    });
+
+    /*console.log(crud);
     var pro = [],
         cmt = [];
     for (var i = 0; i < 10; i++) {
@@ -59,12 +63,12 @@ router.post('/getFakeData', function(req, res) {
             showflag: false,
             starflag: Math.floor(Math.random()*10)%2 == 0? true: false
         })
-    }
+    }*/
 
 
     
 
-    res.send({'data': pro});
+
 });
 
 
