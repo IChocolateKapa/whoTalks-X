@@ -25,7 +25,7 @@ var CRUD = {
         var table = require('./schema_model/' + tableName);
         var newInstance = new table(param);
         newInstance.save();
-        callback(newInstance);
+        callback && callback(newInstance);
     },
     remove: function (tableName, param, callback) {
         if (Object.prototype.toString.call(param) != '[object Object]') {
@@ -84,12 +84,14 @@ var CRUD = {
     console.log('in callback, results: ',  results);
 });*/
 
-CRUD.find('Dongtan', {}, function (ret) {
+/*CRUD.find('Dongtan', {}, function (ret) {
     var len = ret.length;
     for (var i = 0; i < len; i++) {
         console.log(ret[i].comments);
     }
-});
+});*/
+var id = new mongoose.Schema.Types.ObjectId();
+console.log(id)
 
 
 

@@ -49,6 +49,9 @@
             self.socket.on('showLikes', function (info) {
                 self.prodata[info.index].likes += info.dif;
             });
+            self.socket.on('showLikes2', function (info) {
+                self.prodata[info.dtIndex].comments[info.index].likes += info.dif;
+            });
             self.socket.on('showComment', function (data) {
                 console.log('received comment: ', data.data);
                 self.prodata[data.index].comments.push(data.data);

@@ -33,7 +33,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack",
+    "debug": "node-debug"
   },
   "keywords": [
     "weibo vue webpack"

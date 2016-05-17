@@ -10,7 +10,7 @@
                         {{cmt.content}}
                     </p>
                 </div>
-                <div class="like" transition="fade" transition-mode="out-in" @click="toggleClass($index, id, cmt._id.toString())" v-model="cmt.likeflag" :class="{ 'active': cmt.likeflag }">
+                <div class="like" transition="fade" transition-mode="out-in" @click="toggleClass($index, index, id, cmt._id.toString())" v-model="cmt.likeflag" :class="{ 'active': cmt.likeflag }">
                     <span>{{cmt.likes}}</span>
                 </div>
             </div>
@@ -33,9 +33,7 @@
         },
         ready: function () {
             var self = this;
-            self.socket.on('showLikes2', function (info) {
-                self.cmtdata[info.index].likes += info.dif;
-            });
+
         },
         data: function () {
             return {
@@ -46,7 +44,7 @@
         },
         props: ['cmtdata', "index", "id"],
         methods: {
-            toggleClass: function (index, dtId, id) {
+            toggleClass: function (index, dtIndex, dtId, id) {
                 var self = this;
                 var curFlag = self.cmtdata[index].likeflag;
                 var dif = 1;
@@ -54,6 +52,7 @@
 
                 var tem = {
                     index: index,
+                    dtIndex: dtIndex,
                     id: id,
                     dtId: dtId,
                     dif: dif

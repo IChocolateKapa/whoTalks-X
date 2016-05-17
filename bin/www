@@ -58,12 +58,20 @@ io.on('connection', function (socket) {
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
 
-        // var extend = require('util')._extend;
-        // var ret = extend({}, dongtan);
+         var extend = require('util')._extend;
+        crud.insert('Comments', dongtan, function (instance) {
+            var _id = instance.get('_id');
+            /*查找并更新*/
+            crud.findById('Comments', {'_id': _id}, function (ret) {
+                var dtdata = extend(dongtan, {'_id': ret._id});
+                crud.insert('Dongtan', dtdata);
+                io.emit("showDongtan", dtdata);
+            });
+        });
 
-        crud.insert('Dongtan', dongtan);
 
-        io.emit("showDongtan", dongtan);
+
+
     });
 
     socket.on('sendNewComment', function (comment) {
@@ -71,10 +79,10 @@ io.on('connection', function (socket) {
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
 
-        crud.findById('Dongtan', {'_id': comment.dtId}, function (results) {
+        crud.findById('Dongtan', {'_id': comment.dtId.toString()}, function (results) {
             console.log('results: ', results);
             crud.insert('Comments', comment.data, function (instance) {
-                var _id = instance.get('_id').toString();
+                var _id = instance.get('_id');
                 /*查找并更新*/
                 crud.findById('Comments', {'_id': _id}, function (ret) {
                     results.comments.push(ret);
