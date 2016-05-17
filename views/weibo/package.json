@@ -13,7 +13,7 @@
     "style-loader": "^0.12.3",
     "vue-loader": "^2.1.1",
     "socket.io": "^1.4.5",
-    "socket.io-client": "^1.6.9",
+    "socket.io-client": "^1.4.6",
     "vue-async-data": "^1.0.2"
   },
   "devDependencies": {
@@ -32,7 +32,8 @@
     "webpack": "^1.12"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
   },
   "keywords": [
     "weibo vue webpack"
