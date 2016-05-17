@@ -72,6 +72,18 @@ var CRUD = {
             if (err) return console.error(err);
             callback(results);
         });
+    },
+    findSort: function (tableName, param, sort, callback) {
+        if (Object.prototype.toString.call(param) != '[object Object]') {
+            console.error('Error -- param is not json type');
+            return;
+        }
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        table.find(param, function (err, results) {
+            if (err) return console.error(err);
+            callback(results);
+        }).sort({'_id':-1});
     }
 };
 
@@ -84,14 +96,14 @@ var CRUD = {
     console.log('in callback, results: ',  results);
 });*/
 
-/*CRUD.find('Dongtan', {}, function (ret) {
+CRUD.findSort('Dongtan', {}, {sort: [['_id', -1]]}, function (ret) {
     var len = ret.length;
     for (var i = 0; i < len; i++) {
-        console.log(ret[i].comments);
+        console.log(ret[i]);
     }
-});*/
-var id = new mongoose.Schema.Types.ObjectId();
-console.log(id)
+});
+//var id = new mongoose.Schema.Types.ObjectId();
+//console.log(id)
 
 
 

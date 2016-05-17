@@ -32,8 +32,6 @@
             'send-comment': inputcomment
         },
         ready: function () {
-            var self = this;
-
         },
         data: function () {
             return {

@@ -27,8 +27,7 @@ router.post('/getFakeData', function(req, res) {
 
     var crud = require('../views/weibo/resource/js/db/crud');
 
-    crud.find('Dongtan', {}, function (results) {
-        console.log('in callback, results: ', results);
+    crud.findSort('Dongtan', {}, {sort: [['_id', -1]]}, function (results) {
         res.send({'data': results});
     });
 
