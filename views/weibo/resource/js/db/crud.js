@@ -17,12 +17,20 @@ function test() {
 
 var CRUD = {
     insert: function (tableName, param) {
+        if (Object.prototype.toString.call(param) != '[object Object]') {
+            console.error('Error -- param is not json type');
+            return;
+        }
         initDb.getConnection(tableName);
         var table = require('./schema_model/' + tableName);
         var newInstance = new table(param);
         newInstance.save();
     },
     remove: function (tableName, param, callback) {
+        if (Object.prototype.toString.call(param) != '[object Object]') {
+            console.error('Error -- param is not json type');
+            return;
+        }
         initDb.getConnection(tableName);
         var table = require('./schema_model/' + tableName);
         table.remove(param, function (err) {
@@ -32,6 +40,10 @@ var CRUD = {
     },
 
     update: function (tableName, findParam, updateParam, callback) {
+        if (Object.prototype.toString.call(param) != '[object Object]') {
+            console.error('Error -- param is not json type');
+            return;
+        }
         initDb.getConnection(tableName);
         var table = require('./schema_model/' + tableName);
         table.update(findParam, updateParam, function (err) {
@@ -41,14 +53,24 @@ var CRUD = {
     },
 
     find: function (tableName, param, callback) {
+        if (Object.prototype.toString.call(param) != '[object Object]') {
+            console.error('Error -- param is not json type');
+            return;
+        }
         initDb.getConnection(tableName);
         var table = require('./schema_model/' + tableName);
         table.find(param, function (err, results) {
             if (err) return console.error(err);
-            console.log('results: ', results);
             callback(results);
         });
     }
 };
+
+
+
+CRUD.find('Dongtan', {'_id': ''}, function (results) {
+    console.log('in callback, results: ', results);
+});
+
 
  module.exports = CRUD;
