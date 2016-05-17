@@ -39,6 +39,14 @@ var CRUD = {
         });
     },
 
+    findById: function (tableName, id, callback) {
+        initDb.getConnection(tableName);
+        var table = require('./schema_model/' + tableName);
+        table.findById(id, function (err, ret) {
+            if (err) return console.error(err);
+            callback(ret);
+        })
+    },
     update: function (tableName, findParam, updateParam, callback) {
         if (Object.prototype.toString.call(param) != '[object Object]') {
             console.error('Error -- param is not json type');
@@ -68,9 +76,14 @@ var CRUD = {
 
 
 
-CRUD.find('Dongtan', {'_id': ''}, function (results) {
-    console.log('in callback, results: ', results);
+CRUD.findById('Dongtan', {'_id': '5739e6da0ffb4c4603bdd562'}, function (results) {
+    var num = -1;
+    results.likes = results.likes + num;
+    results.save();
+    console.log('in callback, results: ',  results);
 });
 
 
  module.exports = CRUD;
+
+

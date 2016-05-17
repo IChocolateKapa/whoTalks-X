@@ -43,12 +43,11 @@
         props: ['index'],
         methods: {
             sendcomment: function (index) {
-                console.log('index: ', index);
                 var self = this;
                 if (self.mycomment.trim()) {
                     var temp = {
                         headimg: 'http://wuhaiping.com/myhead/' + util.getRanDomNumber(12) + '.jpg',
-                        author: util.getChar(6),
+                        author: util.getAuthor(),
                         time: util.getFormatTime(),
                         likes: 0,
                         likeflag: false,

@@ -10,7 +10,7 @@
 </style>
 
 <template>
-    <section class="dongtan" v-for="pro in prodata" tracke-by="$index" transition="fade"
+    <section class="dongtan" v-for="pro in prodata" data-id="{{pro._id.toString()}}" tracke-by="$index" transition="fade"
              transition-mode="out-in">
         <div class="head pr">
             <img class="headimg" src="{{pro.headimg}}" alt="headimg"/>
@@ -22,9 +22,9 @@
                 </p>
             </div>
             <div class="dongtan-footer">
-                <div class="star" transition="fade" transition-mode="out-in" @click="toggleClass($index, 'star')" :class="{ 'active': pro.starflag}"></div>
+                <div class="star" transition="fade" transition-mode="out-in" @click="toggleClass($index, pro._id.toString(), 'star')" :class="{ 'active': pro.starflag}"></div>
                 <div class="comment" @click="toggleComment($index)"></div>
-                <div class="like" transition="fade" transition-mode="out-in"  @click="toggleClass($index)" :class="{ 'active': pro.likeflag}" >
+                <div class="like" transition="fade" transition-mode="out-in"  @click="toggleClass($index, pro._id.toString())" :class="{ 'active': pro.likeflag}" >
                     <span>{{pro.likes}}</span>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     curFlag = self.prodata[index].showflag;
                     self.prodata[index].showflag = !curFlag;
             },
-            toggleClass: function (index, type) {
+            toggleClass: function (index, id, type) {
                 var self = this;
                 var curFlag;
                 if (type) {
@@ -78,6 +78,7 @@
 
                     var tem = {
                         index: index,
+                        id: id,
                         dif: dif
                     };
                     self.socket.emit('sendLikes',  tem);
