@@ -2,7 +2,6 @@
  * Created by Echo on 2016/5/16.
  */
 
-var list = null;
 var express = require('express');
 var router = express.Router();
 var https = require('https');
@@ -27,6 +26,9 @@ router.get('/', function (req, res) {
 router.post('/getFakeData', function(req, res) {
 
 
+    var crud = require('../views/weibo/resource/js/db/crud');
+
+    console.log(crud);
     var pro = [],
         cmt = [];
     for (var i = 0; i < 10; i++) {
