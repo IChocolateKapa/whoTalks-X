@@ -41,6 +41,10 @@
     var socket1 = require('socket.io-client'),
         socket = socket1();
 
+    /*获取设备型号*/
+    var client = util.getClient(),
+        author = util.getAuthor();
+
     module.exports = {
         components: {
             'dongtan': dongtanVue,
@@ -69,13 +73,13 @@
                 var self = this;
                 var protemp = {
                     content: msg,
-                    author: util.getChar(6),
+                    author: author,
                     time: util.getFormatTime(),
                     likes: 0,
                     likeflag: false,
                     showflag: false,
                     starflag: false,
-                    client: util.getClient(),
+                    client: client,
                     headimg: 'http://wuhaiping.com/myhead/' + util.getRanDomNumber(12) + '.jpg',
                     comments: []
                 };
