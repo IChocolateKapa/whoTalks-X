@@ -63,16 +63,43 @@ io.on('connection', function (socket) {
 
         crud.insert('Dongtan', dongtan);
 
-        io.emit("showDongtan", ret);
+        io.emit("showDongtan", dongtan);
     });
 
     socket.on('sendNewComment', function (comment) {
         console.log('received comment: ', comment);
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
-        crud.insert('Dongtan', comment.data);
-        io.emit("showComment", comment);
+
+        crud.findById('Dongtan', {'_id': comment.dtId}, function (results) {
+            console.log('results: ', results);
+            crud.insert('Comments', comment.data, function (instance) {
+                var _id = instance.get('_id').toString();
+                /*查找并更新*/
+                crud.findById('Comments', {'_id': _id}, function (ret) {
+                    results.comments.push(ret);
+                    results.save();
+                    io.emit("showComment", {
+                        index: comment.index,
+                        data: ret
+                    });
+                });
+            });
+
+
+        });
     });
+
+    socket.on('sendStar', function (info) {
+        console.log('received stars info: ', info);
+        /*顺便这里该需要存储的就存储*/
+        var crud = require('../views/weibo/resource/js/db/crud');
+        crud.findById('Dongtan', {'_id': info.id}, function (results) {
+            results.starflag = info.flag;
+            results.save();
+        });
+    });
+
 
     socket.on('sendLikes', function (info) {
         console.log('received likes info: ', info);
@@ -81,19 +108,27 @@ io.on('connection', function (socket) {
         crud.findById('Dongtan', {'_id': info.id}, function (results) {
             results.likes = results.likes + info.dif;
             results.save();
+            io.emit("showLikes", info);
         });
-
-        io.emit("showLikes", info);
     });
     socket.on('sendLikes2', function (info) {
         console.log('received likes info222: ', info);
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
-        crud.findById('Comments', {'_id': info.id}, function (results) {
-            results.likes = results.likes + info.dif;
-            results.save();
+        crud.findById('Dongtan', {'_id': info.dtId}, function (results) {
+            var cmts = results.comments;
+            var len = cmts.length;
+            for (var i = 0; i < len; i++) {
+                if (cmts[i]._id.toString() == info.id) {
+                    console.log('bingo i: ', cmts[i]);
+                    cmts[i].likes = cmts[i].likes + info.dif;
+                    results.save();
+                    io.emit("showLikes2", info);
+                    break;
+                }
+            }
+
         });
-        io.emit("showLikes2", info);
     });
 });
 /**

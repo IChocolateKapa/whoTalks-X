@@ -29,8 +29,7 @@
                 </div>
             </div>
 
-            <my-comment :cmtdata="pro.comments" :index="$index" v-show="pro.showflag" v-model="pro.showflag" transition="fade"
-                        transition-mode="out-in"></my-comment>
+            <my-comment :cmtdata="pro.comments" :index="$index" :id="pro._id.toString()" v-show="pro.showflag" v-model="pro.showflag" transition="fade" transition-mode="out-in"></my-comment>
         </div>
     </section>
 </template>
@@ -70,6 +69,13 @@
                 if (type) {
                     curFlag = self.prodata[index].starflag;
                     self.prodata[index].starflag = !curFlag;
+                    var tem = {
+                        index: index,
+                        id: id,
+                        flag: !curFlag
+                    };
+                    self.socket.emit('sendStar',  tem);
+
                 } else {
                     curFlag = self.prodata[index].likeflag;
                     var dif = 1;

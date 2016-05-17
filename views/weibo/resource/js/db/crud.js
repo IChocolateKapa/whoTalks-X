@@ -16,7 +16,7 @@ function test() {
 }
 
 var CRUD = {
-    insert: function (tableName, param) {
+    insert: function (tableName, param, callback) {
         if (Object.prototype.toString.call(param) != '[object Object]') {
             console.error('Error -- param is not json type');
             return;
@@ -25,6 +25,7 @@ var CRUD = {
         var table = require('./schema_model/' + tableName);
         var newInstance = new table(param);
         newInstance.save();
+        callback(newInstance);
     },
     remove: function (tableName, param, callback) {
         if (Object.prototype.toString.call(param) != '[object Object]') {
@@ -76,12 +77,20 @@ var CRUD = {
 
 
 
-CRUD.findById('Dongtan', {'_id': '5739e6da0ffb4c4603bdd562'}, function (results) {
+/*CRUD.findById('Dongtan', {'_id': '5739e6da0ffb4c4603bdd562'}, function (results) {
     var num = -1;
     results.likes = results.likes + num;
-    results.save();
+    // results.save();
     console.log('in callback, results: ',  results);
+});*/
+
+CRUD.find('Dongtan', {}, function (ret) {
+    var len = ret.length;
+    for (var i = 0; i < len; i++) {
+        console.log(ret[i].comments);
+    }
 });
+
 
 
  module.exports = CRUD;

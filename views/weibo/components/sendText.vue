@@ -24,7 +24,7 @@
 <template>
     <div class="input_wrap">
         <input type="text" class="text" v-model="mycomment" placeholder="发表你的评论~~"/>
-        <input type="button" class="input danger" @click="sendcomment(index)" value="发布"/>
+        <input type="button" class="input danger" @click="sendcomment(index, id)" value="发布"/>
     </div>
 </template>
 
@@ -40,9 +40,9 @@
                 socket: this.$parent.socket
             }
         },
-        props: ['index'],
+        props: ['index', 'id'],
         methods: {
-            sendcomment: function (index) {
+            sendcomment: function (index, id) {
                 var self = this;
                 if (self.mycomment.trim()) {
                     var temp = {
@@ -55,7 +55,8 @@
                     };
                     var datas = {
                         data: temp,
-                        index: index
+                        index: index,
+                        dtId: id
                     };
 
                     self.socket.emit('sendNewComment', datas);
