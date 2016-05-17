@@ -47,6 +47,7 @@
             toggleClass: function (index, dtIndex, dtId, id) {
                 var self = this;
                 var curFlag = self.cmtdata[index].likeflag;
+                self.cmtdata[index].likeflag = !curFlag;
                 var dif = 1;
                 if (curFlag) dif = -1;
 
