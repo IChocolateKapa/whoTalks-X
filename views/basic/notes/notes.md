@@ -296,3 +296,15 @@
 > b {display:inline-block; width:12px; height:2px; background:#f00; font-size:0; line-height:0;vertical-align:middle;-webkit-transform: rotate(45deg);}
   
 > b:after { content:'.'; display:block; width:12px; height:2px; background:#f00;-webkit-transform: rotate(-90deg);}
+
+
+
+## IE盒子模型与W3C盒模型的区别
+
+> W3C盒模型下，一个元素的宽高不包含padding和border的大小，如果给div设定width: 20px; border: 2px solid red; padding: 20px; 这个div的宽是10+2x2+20x2 px;
+
+> IE怪异模式下， 一个元素的宽高包含了padding和border值.
+![图片展示区别](./boxmodel.jpg)
+
+
+
