@@ -1,4 +1,4 @@
-<h1>随手笔记</h1>
+<h1>笔记</h1>
 
 <hr/>
 
@@ -75,6 +75,8 @@ return args;</code></pre><p>}</p></blockquote></blockquote>
 
 <h4>var domdiv = document.getElementById(&#39;div&#39;);</h4>
 
+<blockquote><p>使用 domdiv.getBoundingClientRect() ==&gt; 返回 {top: x, left: x, bottom: x, right: y, width: x, height: x}//刚刚发现这个好方法</p></blockquote>
+
 <h4>查询</h4>
 
 <blockquote><p>querySelector等方法在之前已说过，不再表</p><p> domdiv.firstChild    返回第一个子节点</p><p> domdiv.lastChild      返回最后一个子节点</p><p> domdiv.parentNode   返回父节点的对象</p><p>domdiv.nextSibling    返回下一个兄弟节点的对象</p><p>domdiv.previousSibling 返回前一个兄弟节点的对象</p></blockquote>
@@ -140,3 +142,9 @@ return args;</code></pre><p>}</p></blockquote></blockquote>
 <h3>window.name</h3>
 
 <h3>window.postMessage();</h3>
+
+<h2>http://www.mkyong.com/mongodb/how-to-install-mongodb-on-mac-os-x/</h2>
+
+<h2>CSS3画叉号</h2>
+
+<blockquote><blockquote><p>思路打开,其实就是一根线与另外一根线,搭在一块,旋转一下</p></blockquote><p>b {display:inline-block; width:12px; height:2px; background:#f00; font-size:0; line-height:0;vertical-align:middle;-webkit-transform: rotate(45deg);}</p><p>b:after { content:&#39;.&#39;; display:block; width:12px; height:2px; background:#f00;-webkit-transform: rotate(-90deg);}</p></blockquote>

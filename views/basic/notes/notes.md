@@ -287,3 +287,12 @@
 
 
 ##http://www.mkyong.com/mongodb/how-to-install-mongodb-on-mac-os-x/
+
+
+## CSS3画叉号
+
+>> 思路打开,其实就是一根线与另外一根线,搭在一块,旋转一下
+
+> b {display:inline-block; width:12px; height:2px; background:#f00; font-size:0; line-height:0;vertical-align:middle;-webkit-transform: rotate(45deg);}
+  
+> b:after { content:'.'; display:block; width:12px; height:2px; background:#f00;-webkit-transform: rotate(-90deg);}
