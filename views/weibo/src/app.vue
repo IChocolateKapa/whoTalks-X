@@ -11,9 +11,9 @@
         <h4>快来动弹一下吧~</h4>
     </header>
 
-    <div class="myloading">
+<!--    <div class="myloading">
         <loading></loading>
-    </div>
+    </div>-->
 
 
     <section class="send_text">
