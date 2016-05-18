@@ -244,3 +244,43 @@
 
 >> }
 
+
+
+## 移动端的动态设置字体，JS方式
+
+> 在网页制作过程中，经常会遇到产品或者设计给出要求，要根据某一块内容的长度，来动态设置这块内容的字体大小，【无奈脸....】,所以下面的方法是根据屏幕的尺寸来设置字体的大小
+
+>> function px2px (fs) {
+
+>> var clientWidth = document.body.clientWidth,
+
+>> ret;
+
+>> if (clientWidth < 320) {
+
+>>     ret = Math.floor(fs/2);
+
+>> } else if (clientWidth >= 320 && clientWidth < 414) {
+
+>>     ret = Math.floor(fs/2) + 2;
+
+>> } else if (clientWidth >= 414 && clientWidth < 639) {
+
+>>     ret = Math.floor(fs/2) + 4;
+
+>> } else if (clientWidth >= 640 && clientWidth < 750) {
+
+>>     ret = Math.floor(fs/2) + 6;
+
+>> } else if (clientWidth >= 750 && clientWidth < 1079) {
+
+>>     ret = Math.floor(fs/2) + 8;
+
+>> } else {
+
+>>     ret = Math.floor(fs*1.5);
+
+>> }
+
+                   return ret;
+               }

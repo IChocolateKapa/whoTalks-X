@@ -78,3 +78,14 @@ this.age = age || 27;</code></pre></blockquote><p>}</p><p>var user1 = new User()
 
 <blockquote><p>对于数组元素的洗牌，不需要使用任何外部的库，比如Lodash，只要这样做：</p><blockquote><p>var list = [1,2,3];
    console.log(list.sort(function() { Math.random() - 0.5 })); // [2,1,3]</p></blockquote></blockquote>
+
+<h2>安全的类型检测</h2>
+
+<blockquote><p>在任何值上调用Object原生的toString()方法，都会返回一个[object NativeConstructorName]格式的字符串</p><p>每个类在内部都有哦一个[[Class]]属性，这个属性就制订了上述字符串的构造函数名。</p><blockquote><p>function isArray (value) {</p><pre><code>return Object.prototype.toString.call(value) === &#39;[object Array]&#39;;</code></pre><p>}</p><p>function isFunction (value) {</p><pre><code>return Object.prototype.toString.call(value) === &#39;[object Function]&#39;;</code></pre><p>}</p><p>function isRegExp (value) {</p><pre><code>return Object.prototype.toString.call(value) === &#39;[object RegExp]&#39;;</code></pre><p>}</p></blockquote></blockquote>
+
+<h2>移动端的动态设置字体，JS方式</h2>
+
+<blockquote><p>在网页制作过程中，经常会遇到产品或者设计给出要求，要根据某一块内容的长度，来动态设置这块内容的字体大小，【无奈脸....】,所以下面的方法是根据屏幕的尺寸来设置字体的大小</p><blockquote><p>function px2px (fs) {</p><p>var clientWidth = document.body.clientWidth,</p><p>ret;</p><p>if (clientWidth &lt; 320) {</p><pre><code>ret = Math.floor(fs/2);</code></pre><p>} else if (clientWidth &gt;= 320 &amp;&amp; clientWidth &lt; 414) {</p><pre><code>ret = Math.floor(fs/2) + 2;</code></pre><p>} else if (clientWidth &gt;= 414 &amp;&amp; clientWidth &lt; 639) {</p><pre><code>ret = Math.floor(fs/2) + 4;</code></pre><p>} else if (clientWidth &gt;= 640 &amp;&amp; clientWidth &lt; 750) {</p><pre><code>ret = Math.floor(fs/2) + 6;</code></pre><p>} else if (clientWidth &gt;= 750 &amp;&amp; clientWidth &lt; 1079) {</p><pre><code>ret = Math.floor(fs/2) + 8;</code></pre><p>} else {</p><pre><code>ret = Math.floor(fs*1.5);</code></pre><p>}</p></blockquote></blockquote>
+
+<pre><code>               return ret;
+           }</code></pre>
