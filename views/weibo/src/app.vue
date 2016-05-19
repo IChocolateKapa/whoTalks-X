@@ -5,11 +5,16 @@
         margin: 0 auto;
         /*background: #004444;*/
     }
+
 </style>
 <template>
     <header>
-        <h4>快来动弹一下吧~</h4>
+        <h4>来动弹一下吧~</h4>
     </header>
+
+    <section class="total">
+        <p>当前有 <span>{{total}}</span> 人正在浏览</p>
+    </section>
 
 <!--    <div class="myloading">
         <loading></loading>
@@ -38,8 +43,8 @@
         util = require('../resource/js/util'),
         loadingVue = require('../components/loading/loading.vue')    ;
 
-    var socket1 = require('socket.io-client'),
-        socket = socket1();
+    var socket1 = require('socket.io-client')/*,
+        socket = socket1()*/;
 
     /*获取设备型号*/
     var client = util.getClient(),
@@ -52,10 +57,14 @@
         },
         ready: function () {
             var self = this;
-            socket.on('showDongtan', function (user) {
+            self.socket.on('showDongtan', function (user) {
                 console.log('received user: ', user);
                 self.prodata.splice(0, 0, user);
             });
+
+            self.socket.on('totalUser', function (total) {
+                self.total = total;
+            })
         },
         methods: {
             notify: function () {
@@ -91,7 +100,8 @@
           return {
               msg: '',
               prodata: [],
-              socket: socket1()
+              socket: socket1(),
+              total: 0
           }
         },
         asyncData: function (resolve, reject) {

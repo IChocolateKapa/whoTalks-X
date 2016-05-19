@@ -153,7 +153,7 @@ body {
 header h4 {
   text-align: center;
   font-size: 17px;
-  margin: .1rem;
+  line-height: 1rem;
 }
 @media screen and (max-width: 320px) {
   header h4 {
@@ -659,5 +659,42 @@ textarea {
 @media screen and (min-width: 1080px) {
   .commentPanel .commentItem .like span {
     font-size: 30px;
+  }
+}
+.total {
+  height: .7rem;
+  font-size: 18px;
+  line-height: .7rem;
+  text-align: center;
+  color: #d1d648;
+}
+@media screen and (max-width: 320px) {
+  .total {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 413px) {
+  .total {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 639px) {
+  .total {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 749px) {
+  .total {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 750px) and (max-width: 1079px) {
+  .total {
+    font-size: 26px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .total {
+    font-size: 54px;
   }
 }
