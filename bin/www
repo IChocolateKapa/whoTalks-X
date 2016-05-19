@@ -48,13 +48,13 @@ io.on('connection', function (socket) {
     });
 
     socket.on('chatMessage', function (msg) {
-        console.log('received message: ' + msg);
+        // console.log('received message: ' + msg);
         io.emit('chat message', msg);
     });
 
 
     socket.on('sendNewDongtan', function (dongtan) {
-        console.log('received message: ', dongtan);
+        // console.log('received message: ', dongtan);
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
 
@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
     });
 
     socket.on('sendNewComment', function (comment) {
-        console.log('received comment: ', comment);
+        // console.log('received comment: ', comment);
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
 
@@ -117,7 +117,7 @@ io.on('connection', function (socket) {
         });
     });
     socket.on('sendLikes2', function (info) {
-        console.log('received likes info222: ', info);
+        // console.log('received likes info222: ', info);
         /*顺便这里该需要存储的就存储*/
         var crud = require('../views/weibo/resource/js/db/crud');
         crud.findById('Dongtan', {'_id': info.dtId}, function (results) {

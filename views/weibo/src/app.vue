@@ -43,8 +43,7 @@
         util = require('../resource/js/util'),
         loadingVue = require('../components/loading/loading.vue')    ;
 
-    var socket1 = require('socket.io-client')/*,
-        socket = socket1()*/;
+    var socket1 = require('socket.io-client');
 
     /*获取设备型号*/
     var client = util.getClient(),

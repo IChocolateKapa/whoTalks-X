@@ -30,8 +30,6 @@
 
 <script>
     var util = require('../resource/js/util');
-    /*var socket1 = require('socket.io-client'),
-        socket = socket1();*/
 
     module.exports = {
         data: function () {
