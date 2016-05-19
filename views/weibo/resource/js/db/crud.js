@@ -7,14 +7,6 @@ var mongoose = require('mongoose'),
     Comments = require('./schema_model/Comments'),
     initDb = require('./initDb');
 
-function test() {
-    initDb.getConnection();
-    rt.find(function (err, dts) {
-        if (err) return console.error(err);
-        console.log('dts: ', dts);
-    });
-}
-
 var CRUD = {
     insert: function (tableName, param, callback) {
         if (Object.prototype.toString.call(param) != '[object Object]') {
@@ -96,12 +88,12 @@ var CRUD = {
     console.log('in callback, results: ',  results);
 });*/
 
-CRUD.findSort('Dongtan', {}, {sort: [['_id', -1]]}, function (ret) {
+/*CRUD.findSort('Dongtan', {}, {sort: [['_id', -1]]}, function (ret) {
     var len = ret.length;
     for (var i = 0; i < len; i++) {
         console.log(ret[i]);
     }
-});
+});*/
 //var id = new mongoose.Schema.Types.ObjectId();
 //console.log(id)
 
