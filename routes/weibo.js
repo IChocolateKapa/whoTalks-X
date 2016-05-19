@@ -31,6 +31,8 @@ router.post('/getFakeData', function(req, res) {
         res.send({'data': results});
     });
 
+
+    /*fake data*/
     /*console.log(crud);
     var pro = [],
         cmt = [];
@@ -65,7 +67,7 @@ router.post('/getFakeData', function(req, res) {
     }*/
 
 
-    
+
 
 
 });
